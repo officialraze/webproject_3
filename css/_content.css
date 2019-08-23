@@ -1,0 +1,79 @@
+/*
+// --------------------------
+// Webprojekt 3.0
+// Copyright Melvin Lauber
+// --------------------------
+*/
+
+@import "_config.css";
+
+/* @group search field */
+#search_navigation_wrap {
+	margin-bottom: 85px;
+}
+.search {
+	float: left;
+	position: relative;
+	width: 380px;
+}
+#navigation {
+	float: right;
+}
+#navigation ul li.main_navigation_element {
+	float: left;
+	font-size: 20px;
+	line-height: 26px;
+	color: var(--light_text);
+	margin-left: 30px;
+	list-style-type: none;
+}
+#navigation ul li.main_navigation_element:hover,
+#navigation ul li.main_navigation_element.active {
+	color: var(--primary-color);
+	position: relative;
+}
+#navigation ul li.main_navigation_element:hover:after,
+#navigation ul li.main_navigation_element.active:after {
+	content: '';
+	position: absolute;
+	bottom: -6px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 30px;
+	height: 2px;
+	background: var(--primary-color);
+}
+#navigation ul li.main_navigation_element a {
+	text-decoration: none;
+	color: inherit;
+}
+#navigation ul li.main_navigation_element:first-child {
+	margin-left: 0;
+}
+#search_navigation_wrap .search .search_form .search_field {
+	font-size: 12px;
+	line-height: 16px;
+	color: var(--light_text);
+	width: 100%;
+	padding: 15px 20px;
+	padding-left: 55px;
+	border: none;
+	-webkit-border-radius: 23px;
+	-moz-border-radius: 23px;
+	-o-border-radius: 23px;
+	border-radius: 23px;
+	box-shadow: 0 0 26px rgba(0,0,0,0.3);
+	box-sizing: border-box;
+}
+#search_navigation_wrap .search .search_form input.search_field::placeholder {
+	font-size: 12px;
+	line-height: 16px;
+	color: var(--light_text);
+}
+#search_navigation_wrap .search .search_form .search_icon {
+	position: absolute;
+	left: 15px;
+	top: 10px;
+}
+
+/* @end */

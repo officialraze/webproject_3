@@ -1,0 +1,135 @@
+/*
+// --------------------------
+// Webprojekt 3.0
+// Copyright Melvin Lauber
+// --------------------------
+*/
+
+@import "_config.css";
+
+/* @group navigation_left */
+
+.navigation_left {
+	position: fixed;
+	width: 290px;
+	height: 100%;
+	border-right: 1px solid var(--border);
+	padding: 80px 0;
+	box-sizing: border-box;
+}
+.navigation_left .profile {
+	width: 195px;
+	margin: 0 auto;
+	margin-bottom: 50px;
+}
+h3.profile_name {
+	margin-top: 5px;
+	font-size: 16px;
+	line-height: 21px;
+	color: #000;
+	font-weight: 700;
+}
+.profile_mail {
+	font-size: 12px;
+	line-height: 25px;
+	margin: 0;
+	margin-bottom: 5px;
+}
+.profile_settings:hover svg circle,
+.profile_settings:hover svg path {
+	stroke: #000 !important;
+}
+.navigation_left .profile div.profile_picture {
+	width: 90px;
+	height: 90px;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	-o-border-radius: 100%;
+	border-radius: 100%;
+	margin: 0 auto;
+}
+.navigation_left .main_navigation ul {
+	padding-right: 30px;
+	box-sizing: border-box;
+	width: 100%;
+}
+.navigation_left .main_navigation ul li.navigation_element {
+	position: relative;
+	list-style-type: none;
+	color: var(--navigation_left);
+	margin-top: 20px;
+}
+.navigation_left .main_navigation ul li.navigation_element a:hover svg path {
+	fill: #fff !important;
+}
+.navigation_left .main_navigation ul li.navigation_element:first-child {
+	margin-top: 0;
+}
+.navigation_left .main_navigation ul li.navigation_element:last-child {
+	margin-top: 80px;
+}
+.navigation_left .main_navigation ul li.navigation_element:last-child svg,
+.navigation_left .main_navigation ul li.navigation_element:nth-child(4) svg {
+	top: 15px;
+}
+.navigation_left .main_navigation ul li.navigation_element svg {
+	position: absolute;
+	left: 28px;
+}
+.navigation_left .main_navigation ul li.navigation_element.active a,
+.navigation_left .main_navigation ul li.navigation_element a:hover {
+	background: var(--primary-color);
+	color: #fff;
+	box-shadow: 2px 4px 6px rgba(99, 106, 253, 0.4);
+	transition: background 0.2s ease, color 0.2s ease;
+}
+.navigation_left .main_navigation ul li a {
+	color: inherit;
+	text-decoration: none;
+	padding: 12px 20px;
+	padding-left: 60px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	box-sizing: border-box;
+	display: inline-block;
+	width: 100%;
+	transition: background 0.2s ease, color 0.2s ease;
+}
+
+.playlist_wrapper {
+	margin-top: 40px;
+	padding-right: 30px;
+	box-sizing: border-box;
+	width: 100%;
+}
+.playlist_wrapper .playlist_title {
+	padding-left: 28px;
+	box-sizing: border-box;
+}
+.playlist_wrapper ul li.playlist_element {
+	list-style-type: none;
+	color: var(--navigation_left);
+	margin-top: 10px;
+}
+.playlist_wrapper ul li.playlist_element a:hover {
+	background: var(--primary-color);
+	color: #fff;
+	box-shadow: 2px 4px 6px rgba(99, 106, 253, 0.4);
+	transition: background 0.2s ease, color 0.2s ease;
+}
+.playlist_wrapper ul li.playlist_element a {
+	color: inherit;
+	text-decoration: none;
+	padding: 8px 20px;
+	padding-left: 28px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	box-sizing: border-box;
+	display: inline-block;
+	width: 100%;
+	transition: background 0.2s ease, color 0.2s ease;
+}
+
+
+
+/* @end */

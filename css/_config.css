@@ -7,5 +7,9 @@
 
 /* set variables */
 :root{
+	--primary-color: #636AFD;
 	--text: #222;
+	--navigation_left: #6B6B6B;
+	--border: #C7C7C7;
+	--light_text: #9D9FB3;
 }

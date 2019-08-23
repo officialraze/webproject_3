@@ -14,11 +14,56 @@ body {
 	margin: 0;
 	padding: 0;
 	color: var(--text);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 h1 {
 	font-size: 48px;
 	line-height: 56px;
+}
+h3 {
+	margin: 0;
+	padding: 0;
+}
+h3.short_title {
+	font-size: 28px;
+	line-height: 37px;
+	font-weight: 700;
+	color: var(--text);
+	margin-bottom: 40px;
+}
+ul {
+	padding: 0;
+	margin: 0;
+}
+.cf,
+.clear {
+	float: none;
+    clear: both;
+    line-height: 0;
+    width: 1px;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    height: 0;
+}
+
+/* @end */
+
+/* @group content */
+
+.main_content_wrapper {
+	padding-top: 80px;
+}
+
+.main_content_inner {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.profile {
+	text-align: center;
 }
 
 /* @end */

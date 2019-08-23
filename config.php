@@ -6,6 +6,7 @@
 // --------------------------
 */
 
+// admin settings
 $config = array(
 	'admin' => TRUE,
 	'testing' => TRUE,
