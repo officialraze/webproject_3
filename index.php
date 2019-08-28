@@ -1,25 +1,11 @@
 <?php
-/*
-// --------------------------
-// Webprojekt 3.0
-// Copyright Melvin Lauber
-// --------------------------
-*/
+include 'includes/start.php';
 
-// includes
-include 'language/de.php';
-include 'config.php';
-
-// check if user is logged in, else redirect to login
-if($config['testing'] == FALSE) {
-	if (!isset($_SESSION['user']['id']) || $_SESSION['user']['id'] = 0 || empty($_SESSION['user']['id'])) {
-		header('Location: login.php');
-		exit;
-	}
-}
+// unset session and set new active element
+unset($_SESSION['active']);
+$_SESSION['active'] = 'discover';
 
 ?>
-
 <!DOCTYPE html>
 <html lang="de">
 	<head>
@@ -31,7 +17,7 @@ if($config['testing'] == FALSE) {
 		<script src="js/jquery.min.js" charset="utf-8"></script>
 		<script src="js/functions.js" charset="utf-8"></script>
 		<?php // TODO: ADD THIS PLEASE IN FINAL VERSION FOR SHOWING THE CORRECT FONT --> LOCAL INSTALLED FONT LOADS FASTER :) ?>
-		<!-- <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,700&display=swap" rel="stylesheet"> -->
+		<link href="https://fonts.googleapis.com/css?family=DM+Sans:400,700&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<?php include 'includes/navigation_left.php'; ?>

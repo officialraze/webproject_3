@@ -1,3 +1,11 @@
+<?php
+
+// get active element from session
+if(isset($_SESSION['active'])) {
+	$active_class = $_SESSION['active'];
+}
+
+?>
 <div class="navigation_left">
 	<div class="navigation_wrapper">
 		<div class="profile">
@@ -9,11 +17,11 @@
 
 		<div class="main_navigation">
 			<ul>
-				<li class="navigation_element active"><a href=""><img class="svg" src="img/assets/discover.svg" alt="<?php echo DISCOVER; ?>"><?php echo DISCOVER; ?></a></li>
-				<li class="navigation_element"><a href="my_songs.php"><img class="svg" src="img/assets/my_songs.svg" alt="<?php echo MY_SONGS; ?>"><?php echo MY_SONGS; ?></a></li>
-				<li class="navigation_element"><a href="#"><img class="svg" src="img/assets/artists.svg" alt="<?php echo ARTISTS; ?>"><?php echo ARTISTS; ?></a></li>
-				<li class="navigation_element"><a href="#"><img class="svg" src="img/assets/events.svg" alt="<?php echo EVENTS; ?>"><?php echo EVENTS; ?></a></li>
-				<li class="navigation_element"><a href="#"><img class="svg" src="img/assets/settings_nav.svg" alt="<?php echo SETTINGS; ?>"><?php echo SETTINGS; ?></a></li>
+				<li class="navigation_element <?php if($active_class === 'discover') { echo 'active'; } ?>"><a href="index.php"><img class="svg" src="img/assets/discover.svg" alt="<?php echo DISCOVER; ?>"><?php echo DISCOVER; ?></a></li>
+				<li class="navigation_element <?php if($active_class === 'my_songs') { echo 'active'; } ?>"><a href="my_songs.php"><img class="svg" src="img/assets/my_songs.svg" alt="<?php echo MY_SONGS; ?>"><?php echo MY_SONGS; ?></a></li>
+				<li class="navigation_element <?php if($active_class === 'artists') { echo 'active'; } ?>"><a href="artists.php"><img class="svg" src="img/assets/artists.svg" alt="<?php echo ARTISTS; ?>"><?php echo ARTISTS; ?></a></li>
+				<li class="navigation_element <?php if($active_class === 'events') { echo 'active'; } ?>"><a href="events.php"><img class="svg" src="img/assets/events.svg" alt="<?php echo EVENTS; ?>"><?php echo EVENTS; ?></a></li>
+				<li class="navigation_element <?php if($active_class === 'settings') { echo 'active'; } ?>"><a href="settings.php"><img class="svg" src="img/assets/settings_nav.svg" alt="<?php echo SETTINGS; ?>"><?php echo SETTINGS; ?></a></li>
 			</ul>
 		</div>
 
