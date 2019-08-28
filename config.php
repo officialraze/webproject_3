@@ -9,5 +9,5 @@
 // admin settings
 $config = array(
 	'admin' => TRUE,
-	'testing' => FALSE,
+	'testing' => TRUE,
 );
