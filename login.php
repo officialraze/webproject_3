@@ -32,8 +32,9 @@ include 'config.php';
 					<div class="login_form_element">
 						<input type="text" name="password" placeholder="<?php echo PASSWORD; ?>">
 					</div>
-					<input type="submit" name="login_submitter" value="<?php echo LOGIN; ?>">
-					<a href="register.php"><?php echo REGISTER; ?></a>
+
+					<input class="submit-button" type="submit" name="login_submitter" value="<?php echo LOGIN; ?>">
+					<a class="submit-button-cancel"href="register.php"><?php echo REGISTER; ?></a>
 				</form>
 			</div>
 		</div>
