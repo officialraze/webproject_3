@@ -24,7 +24,7 @@ include 'config.php';
 	<body>
 		<div id="login_form_wrapper">
 			<div class="login_form_inner">
-				<h1><?php echo PLEASE_LOGIN; ?></h1>
+				<h1 class="title_login"><?php echo PLEASE_LOGIN; ?></h1>
 				<form class="form_login" action="" method="post">
 					<div class="login_form_element">
 						<input type="text" name="username" placeholder="<?php echo USERNAME_MAIL; ?>">
