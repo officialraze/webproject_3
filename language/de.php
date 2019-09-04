@@ -38,3 +38,5 @@ define('PASSWORD', 'Passwort');
 define('RETYPE_PASSWORD', 'Passwort bestätigen');
 define('MAIL', 'E-Mail');
 define('USERNAME_MAIL', 'Benutzername oder E-Mail');
+define('LASTNAME', 'Nachname');
+define('FIRSTNAME', 'Vorname');
