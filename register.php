@@ -23,9 +23,15 @@ include 'config.php';
 	</head>
 	<body>
 		<div id="register_form_wrapper">
-			<div class="login_form_inner register">
-				<h1><?php echo NEW_REGISTER; ?></h1>
-				<form class="form_register" action="" method="post">
+			<div class="login_form_inner">
+				<h1 class="title_register"><?php echo NEW_REGISTER; ?></h1>
+				<form class="form_login" action="" method="post">
+					<div class="login_form_element">
+						<input type="text" name="FIRSTNAME" placeholder="<?php echo FIRSTNAME; ?>">
+					</div>
+					<div class="login_form_element">
+						<input type="text" name="LASTNAME" placeholder="<?php echo LASTNAME; ?>">
+					</div>
 					<div class="login_form_element">
 						<input type="text" name="mail" placeholder="<?php echo MAIL; ?>">
 					</div>
@@ -38,7 +44,8 @@ include 'config.php';
 					<div class="login_form_element">
 						<input type="text" name="retype_password" placeholder="<?php echo RETYPE_PASSWORD; ?>">
 					</div>
-					<input type="submit" name="login_submitter" value="<?php echo REGISTER; ?>">
+					<a class="submit-button-cancel-register"href="register.php"><?php echo REGISTER; ?></a>
+					<input class="submit-button-register" type="submit" name="login_submitter" value="<?php echo LOGIN; ?>">
 				</form>
 			</div>
 		</div>
