@@ -50,6 +50,10 @@
 #navigation ul li.main_navigation_element:first-child {
 	margin-left: 0;
 }
+#search_navigation_wrap .search {
+	position: relative;
+	z-index: 1;
+}
 #search_navigation_wrap .search .search_form .search_field {
 	font-size: 12px;
 	line-height: 16px;

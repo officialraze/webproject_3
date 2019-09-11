@@ -1,0 +1,113 @@
+/*
+// --------------------------
+// Webprojekt 3.0
+// Copyright Melvin Lauber
+// --------------------------
+*/
+
+@import "_config.css";
+
+/* @group artist detail page */
+
+body.artist_detail #navigation {
+	display: none;
+}
+h1.artist_detail_title {
+	font-size: 70px;
+	line-height: 78px;
+	margin-bottom: 15px;
+	margin-top: 0;
+}
+a.follow_button,
+a.follow_button.is_following:hover {
+	display: inline-block;
+	font-size: 14px;
+	background: var(--button);
+	color: var(--text);
+	text-decoration: none;
+	border-radius: 50px;
+	padding: 8px 12px;
+	text-align: center;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+}
+a.follow_button:hover,
+a.follow_button.is_following {
+	background: var(--primary-color_light);
+	color: var(--primary-color);
+}
+h3.popular_title {
+	margin-bottom: 25px;
+}
+.artist_image {
+	position: absolute;
+	top: 0;
+	left: 290px;
+	z-index: 0;
+	width: calc(100% - 290px);
+	max-height: 560px;
+	overflow: hidden;
+}
+.artist_image img {
+	width: 100%;
+}
+.artist_content {
+	margin-top: 415px;
+}
+.popular_song {
+	max-width: 576px;
+	background: var(--button);
+	border-radius: 13px;
+}
+.popular_song .popular_song_inner {
+	padding: 8px 25px;
+	box-sizing: border-box;
+}
+.popular_song .popular_song_inner .play_song,
+.popular_song .popular_song_inner .like_song,
+.popular_song .popular_song_inner .more_song,
+.popular_song .popular_song_inner .song_options .time {
+	position: relative;
+	float: left;
+	top: 17px;
+}
+.popular_song .popular_song_inner .more_song {
+	top: 21px;
+	margin-left: 20px;
+}
+.popular_song .popular_song_inner .song_options .time {
+	top: 13px;
+}
+.popular_song .popular_song_inner .play_song:hover path,
+.popular_song .popular_song_inner .like_song:hover path {
+	fill: var(--primary-color);
+	cursor: pointer;
+}
+.popular_song .popular_song_inner .cover_img {
+	float: left;
+	margin-left: 20px;
+}
+.popular_song .popular_song_inner .song_information {
+	float: left;
+	margin-left: 20px;
+}
+.popular_song .popular_song_inner .song_name {
+	font-size: 18px;
+	line-height: 26px;
+	color: var(--text);
+	font-weight: 700;
+	margin: 0;
+}
+.popular_song .popular_song_inner .artist_name {
+	font-size: 14px;
+	color: var(--light_text);
+	margin: 0;
+}
+.popular_song .popular_song_inner .song_options {
+	float: right;
+}
+.popular_song .popular_song_inner .like_song {
+	margin-left: 20px;
+}
+
+/* @end */

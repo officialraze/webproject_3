@@ -1,4 +1,8 @@
-$(function(){
+// functions.js
+// Webproject 3.0
+// copyright by Melvin und David
+$(function() {
+	// change img tag with class svg into an svg
     activate('img[src*=".svg"]');
 
     function activate(string){
@@ -29,7 +33,5 @@ $(function(){
 
             }, 'xml');
         });
-    }
-
-
+    };
 });
