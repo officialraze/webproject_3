@@ -40,3 +40,6 @@ define('MAIL', 'E-Mail');
 define('USERNAME_MAIL', 'Benutzername oder E-Mail');
 define('LASTNAME', 'Nachname');
 define('FIRSTNAME', 'Vorname');
+
+// RADIO
+define('RADIO_AND_LIVESTREAMS', 'Radio und Livestreams');
