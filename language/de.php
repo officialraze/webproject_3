@@ -40,6 +40,7 @@ define('MAIL', 'E-Mail');
 define('USERNAME_MAIL', 'Benutzername oder E-Mail');
 define('LASTNAME', 'Nachname');
 define('FIRSTNAME', 'Vorname');
+define('LOGIN_SPOTIFY', 'Mit Spotify einloggen');
 
 // artist
 define('IS_FOLLOW', 'Folge ich');

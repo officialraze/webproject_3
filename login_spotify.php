@@ -1,53 +1,70 @@
 <?php
-/*
-// --------------------------
-// Webprojekt 3.0
-// Copyright Melvin Lauber
-// --------------------------
-*/
-
-// includes
-include 'language/de.php';
-include 'config.php';
-
-
-$baseurl = 'https://api.spotify.com/';
-$get_tracks = 'v1/me/tracks';
+include 'includes/start.php';
 
 ?>
+
 <!DOCTYPE html>
-<html lang="de">
-	<head>
-		<meta charset="utf-8">
-		<title>Web Player | <?php echo LOGIN; ?></title>
+<html>
+  <head>
+	  <title><?php echo LOGIN_SPOTIFY; ?></title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <style type="text/css">
+      #login, #loggedin {
+        display: none;
+      }
+      .text-overflow {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 500px;
+      }
+    </style>
+  </head>
 
-		<!-- load all styles -->
-		<link rel="stylesheet" href="css/styles.css">
-		<script src="js/jquery.min.js" charset="utf-8"></script>
-		<script src="js/functions.js" charset="utf-8"></script>
-		<script src="js/handlebars.min.js" charset="utf-8"></script>
-		<!-- <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,700&display=swap" rel="stylesheet"> -->
-	</head>
-	<body>
-		<div id="login_form_wrapper">
-			<div class="login_form_inner">
-				<h1 class="title_login"><?php echo PLEASE_LOGIN; ?></h1>
-				<form class="form_login" action="" method="post">
-					<div class="login_form_element">
-						<input type="text" name="username" placeholder="<?php echo USERNAME_MAIL; ?>">
-					</div>
-					<div class="login_form_element">
-						<input type="text" name="password" placeholder="<?php echo PASSWORD; ?>">
-					</div>
+  <body>
+    <div class="container">
+      <div id="login">
+        <h1>This is an example of the Implicit Grant flow</h1>
+        <button id="login-button" class="btn btn-primary">Log in with Spotify</button>
+      </div>
+      <div id="loggedin">
+        <div id="user-profile">
+        </div>
+        <div id="oauth">
+        </div>
+      </div>
+    </div>
 
-					<input class="submit-button" type="submit" name="login_submitter" value="<?php echo LOGIN; ?>">
-					<a class="submit-button-cancel"href="register.php"><?php echo REGISTER; ?></a>
-					<button type="button" id="login_spotify" name="button"><?php echo LOGIN_SPOTIFY; ?></button>
-				</form>
-			</div>
-		</div>
-	</body>
-	<script>
+    <script id="user-profile-template" type="text/x-handlebars-template">
+      <h1>Logged in as {{display_name}}</h1>
+      <div class="media">
+        <div class="pull-left">
+          <img class="media-object" width="150" src="{{images.0.url}}" />
+        </div>
+        <div class="media-body">
+          <dl class="dl-horizontal">
+            <dt>Display name</dt><dd class="clearfix">{{display_name}}</dd>
+            <dt>Id</dt><dd>{{id}}</dd>
+            <dt>Email</dt><dd>{{email}}</dd>
+            <dt>Spotify URI</dt><dd><a href="{{external_urls.spotify}}">{{external_urls.spotify}}</a></dd>
+            <dt>Link</dt><dd><a href="{{href}}">{{href}}</a></dd>
+            <dt>Profile Image</dt><dd class="clearfix"><a href="{{images.0.url}}">{{images.0.url}}</a></dd>
+            <dt>Country</dt><dd>{{country}}</dd>
+          </dl>
+        </div>
+      </div>
+    </script>
+
+    <script id="oauth-template" type="text/x-handlebars-template">
+      <h2>oAuth info</h2>
+      <dl class="dl-horizontal">
+        <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
+      </dl>
+    </script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script>
       (function() {
 
         var stateKey = 'spotify_auth_state';
@@ -81,6 +98,14 @@ $get_tracks = 'v1/me/tracks';
           return text;
         };
 
+        var userProfileSource = document.getElementById('user-profile-template').innerHTML,
+            userProfileTemplate = Handlebars.compile(userProfileSource),
+            userProfilePlaceholder = document.getElementById('user-profile');
+
+            oauthSource = document.getElementById('oauth-template').innerHTML,
+            oauthTemplate = Handlebars.compile(oauthSource),
+            oauthPlaceholder = document.getElementById('oauth');
+
         var params = getHashParams();
 
         var access_token = params.access_token,
@@ -109,7 +134,7 @@ $get_tracks = 'v1/me/tracks';
               $('#loggedin').hide();
           }
 
-          document.getElementById('login_spotify').addEventListener('click', function() {
+          document.getElementById('login-button').addEventListener('click', function() {
 
             var client_id = '8bcc0337bb3f45359150837eed2035a0'; // Your client id
             var redirect_uri = 'http://localhost/molvin_web'; // Your redirect uri
@@ -129,8 +154,6 @@ $get_tracks = 'v1/me/tracks';
             window.location = url;
           }, false);
         }
-
       })();
-
     </script>
 </html>

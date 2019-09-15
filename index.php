@@ -61,6 +61,5 @@ $_SESSION['active'] = 'discover';
 				</div>
 			</div>
 		</div>
-
 	</body>
 </html>
