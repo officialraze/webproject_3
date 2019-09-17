@@ -18,7 +18,7 @@
 			<li class="main_navigation_element active"><a href=""><?php echo HOME; ?></a></li>
 			<li class="main_navigation_element"><a href=""><?php echo GENRES; ?></a></li>
 			<li class="main_navigation_element"><a href=""><?php echo PLAYLISTS; ?></a></li>
-			<li class="main_navigation_element"><a href=""><?php echo RADIO; ?></a></li>
+			<li class="main_navigation_element"><a href="radio.php"><?php echo RADIO; ?></a></li>
 		</ul>
 	</div>
 	<div class="cf"></div>
