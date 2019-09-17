@@ -1,3 +1,11 @@
+<?php
+/*
+// --------------------------
+// Webprojekt 3.0
+// Copyright Melvin Lauber & David Clausen
+// --------------------------
+*/
+?>
 <div id="search_navigation_wrap">
 	<div class="search">
 		<form class="search_form" action="" method="post">

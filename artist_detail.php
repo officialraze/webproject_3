@@ -1,4 +1,11 @@
 <?php
+/*
+// --------------------------
+// Webprojekt 3.0
+// Copyright Melvin Lauber & David Clausen
+// --------------------------
+*/
+
 include 'includes/start.php';
 
 // unset session and set new active element
@@ -12,12 +19,7 @@ $_SESSION['active'] = 'artists';
 		<meta charset="utf-8">
 		<title>Web Player | <?php echo HOME; ?></title>
 
-		<!-- load all styles -->
-		<link rel="stylesheet" href="css/styles.css">
-		<script src="js/jquery.min.js" charset="utf-8"></script>
-		<script src="js/functions.js" charset="utf-8"></script>
-		<?php // TODO: ADD THIS PLEASE IN FINAL VERSION FOR SHOWING THE CORRECT FONT --> LOCAL INSTALLED FONT LOADS FASTER :) ?>
-		<link href="https://fonts.googleapis.com/css?family=DM+Sans:400,700&display=swap" rel="stylesheet">
+		<?php include 'includes/meta_data.php'; ?>
 	</head>
 	<body class="artist_detail">
 		<?php include 'includes/navigation_left.php'; ?>

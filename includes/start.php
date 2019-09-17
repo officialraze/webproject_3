@@ -2,7 +2,7 @@
 /*
 // --------------------------
 // Webprojekt 3.0
-// Copyright Melvin Lauber
+// Copyright Melvin Lauber & David Clausen
 // --------------------------
 */
 

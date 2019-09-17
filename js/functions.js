@@ -1,6 +1,10 @@
-// functions.js
-// Webproject 3.0
-// copyright by Melvin und David
+/*
+// --------------------------
+// Webprojekt 3.0
+// Copyright Melvin Lauber & David Clausen
+// --------------------------
+*/
+
 $(function() {
 	// change img tag with class svg into an svg
     activate('img[src*=".svg"]');

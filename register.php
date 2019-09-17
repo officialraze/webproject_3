@@ -2,7 +2,7 @@
 /*
 // --------------------------
 // Webprojekt 3.0
-// Copyright Melvin Lauber
+// Copyright Melvin Lauber & David Clausen
 // --------------------------
 */
 
@@ -17,9 +17,7 @@ include 'config.php';
 		<meta charset="utf-8">
 		<title>Web Player | <?php echo REGISTER; ?></title>
 
-		<!-- load all styles -->
-		<link rel="stylesheet" href="css/styles.css">
-		<link href="https://fonts.googleapis.com/css?family=DM+Sans:400,700&display=swap" rel="stylesheet">
+		<?php include 'includes/meta_data.php'; ?>
 	</head>
 	<body>
 		<div id="register_form_wrapper">

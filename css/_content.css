@@ -1,7 +1,7 @@
 /*
 // --------------------------
 // Webprojekt 3.0
-// Copyright Melvin Lauber
+// Copyright Melvin Lauber & David Clausen
 // --------------------------
 */
 
@@ -88,6 +88,48 @@
 
 #recently_listened {
 	margin-bottom: 80px;
+}
+#artists_u_like {
+	max-width: 450px;
+	float: left;
+}
+#new_songs {
+	float: right;
+	margin-left: 188px;
+}
+#new_songs .currency {
+	float: right;
+}
+#new_songs .short_title {
+	float: left;
+	margin-right: 60px;
+}
+#new_songs .new_songs_wrapper {
+	clear: both;
+	float: none;
+}
+#new_songs .currency .currency_button {
+	display: inline-block;
+	font-size: 14px;
+	background: var(--button);
+	color: var(--text);
+	text-decoration: none;
+	border-radius: 50px;
+	padding: 8px 12px;
+	text-align: center;
+	box-sizing: border-box;
+	margin-left: 15px;
+}
+#new_songs .currency .currency_button:hover {
+	cursor: pointer;
+}
+#new_songs .currency .currency_button:first-child {
+	margin-left: 0;
+}
+#new_songs .currency .currency_button.current,
+#new_songs .currency .currency_button:hover {
+	background: var(--primary-color_light);
+	color: var(--primary-color);
 }
 
 /* @end */

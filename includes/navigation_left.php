@@ -1,4 +1,10 @@
 <?php
+/*
+// --------------------------
+// Webprojekt 3.0
+// Copyright Melvin Lauber & David Clausen
+// --------------------------
+*/
 
 // get active element from session
 if(isset($_SESSION['active'])) {
