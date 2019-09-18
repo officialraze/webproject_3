@@ -60,6 +60,8 @@ ul {
 .main_content_inner {
 	max-width: 1200px;
 	margin: 0 auto;
+	padding-bottom: 150px;
+	box-sizing: border-box;
 }
 
 .profile {

@@ -7,7 +7,7 @@
 */
 ?>
 
-<div class="currently_playing_wrap" style="position: fixed; bottom: 0; height: 111px; width: 100%; background: #fff; box-shadow: 0 -5px 14px rgba(0,0,0,0.16);">
+<div class="currently_playing_wrap" style="position: fixed; bottom: 0; height: 111px; width: 100%; background: #fff; box-shadow: 0 -5px 14px rgba(0,0,0,0.16); z-index: 100;">
 	<div class="currently_playing_inner">
 		<div class="song_information">
 			<img src="img/covers/preset-junkies.jpg" alt="Cover" width="88" style="border-radius: 13px;">

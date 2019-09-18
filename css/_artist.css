@@ -54,10 +54,20 @@ h3.popular_title {
 .artist_content {
 	margin-top: 415px;
 }
+#popular_wrapper .left_wrapper {
+	float: left;
+}
+#popular_wrapper .right_wrapper {
+	float: right;
+}
 .popular_song {
-	max-width: 576px;
+	min-width: 545px;
 	background: var(--button);
 	border-radius: 13px;
+	margin-top: 20px;
+}
+.popular_song:first-child {
+	margin-top: 0;
 }
 .popular_song .popular_song_inner {
 	padding: 8px 25px;
@@ -108,6 +118,20 @@ h3.popular_title {
 }
 .popular_song .popular_song_inner .like_song {
 	margin-left: 20px;
+}
+#albums_overview {
+	margin-top: 70px;
+}
+#albums_overview .album_item {
+	float: left;
+	margin-left: 30px;
+}
+#albums_overview .album_item img {
+	border-radius: 13px;
+	overflow: hidden;
+}
+#albums_overview .album_item:first-child {
+	margin-left: 0;
 }
 
 /* @end */

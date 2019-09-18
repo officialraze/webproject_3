@@ -45,6 +45,7 @@ define('FIRSTNAME', 'Vorname');
 define('IS_FOLLOW', 'Folge ich');
 define('FOLLOW', 'Folgen');
 define('POPULAR', 'Beliebt');
+define('ALBUM', 'Alben');
 
 // RADIO
 define('RADIO_AND_LIVESTREAMS', 'Radio und Livestreams');

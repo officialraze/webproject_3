@@ -23,6 +23,7 @@ $_SESSION['active'] = 'artists';
 	</head>
 	<body class="artist_detail">
 		<?php include 'includes/navigation_left.php'; ?>
+		<?php include 'includes/playbar.php'; ?>
 
 		<div class="main_content_wrapper">
 			<div class="main_content_inner">
@@ -39,22 +40,105 @@ $_SESSION['active'] = 'artists';
 						<a href="#" class="follow_button is_following"><?php echo IS_FOLLOW; ?></a>
 						<div id="popular_wrapper">
 							<h3 class="short_title popular_title"><?php echo POPULAR; ?></h3>
-							<div class="popular_song">
-								<div class="popular_song_inner">
-									<img src="img/assets/play.svg" alt="Play" class="svg play_song">
-									<img src="img/covers/preset-junkies.jpg" class="cover_img" alt="Cover" width="49px">
-									<div class="song_information">
-										<h4 class="song_name">One Two</h4>
-										<h4 class="artist_name">Virtual Riot</h4>
+
+							<div class="left_wrapper">
+								<div class="popular_song">
+									<div class="popular_song_inner">
+										<img src="img/assets/play.svg" alt="Play" class="svg play_song">
+										<img src="img/covers/preset-junkies.jpg" class="cover_img" alt="Cover" width="49px">
+										<div class="song_information">
+											<h4 class="song_name">One Two</h4>
+											<h4 class="artist_name">Virtual Riot</h4>
+										</div>
+										<div class="song_options">
+											<span class="time">04:35</span>
+											<img src="img/assets/like.svg" alt="Like" class="svg like_song">
+											<img src="img/assets/show_more.svg" alt="More" class="svg more_song">
+										</div>
+										<div class="cf"></div>
 									</div>
-									<div class="song_options">
-										<span class="time">04:35</span>
-										<img src="img/assets/like.svg" alt="Like" class="svg like_song">
-										<img src="img/assets/show_more.svg" alt="More" class="svg more_song">
+								</div>
+
+								<div class="popular_song">
+									<div class="popular_song_inner">
+										<img src="img/assets/play.svg" alt="Play" class="svg play_song">
+										<img src="img/covers/preset-junkies.jpg" class="cover_img" alt="Cover" width="49px">
+										<div class="song_information">
+											<h4 class="song_name">Preset Junkies VIP</h4>
+											<h4 class="artist_name">Virtual Riot</h4>
+										</div>
+										<div class="song_options">
+											<span class="time">04:35</span>
+											<img src="img/assets/like.svg" alt="Like" class="svg like_song">
+											<img src="img/assets/show_more.svg" alt="More" class="svg more_song">
+										</div>
+										<div class="cf"></div>
 									</div>
-									<div class="cf"></div>
+								</div>
+
+								<div class="popular_song">
+									<div class="popular_song_inner">
+										<img src="img/assets/play.svg" alt="Play" class="svg play_song">
+										<img src="img/covers/preset-junkies.jpg" class="cover_img" alt="Cover" width="49px">
+										<div class="song_information">
+											<h4 class="song_name">Remedy (ft. Leah Culver)</h4>
+											<h4 class="artist_name">Virtual Riot</h4>
+										</div>
+										<div class="song_options">
+											<span class="time">04:35</span>
+											<img src="img/assets/like.svg" alt="Like" class="svg like_song">
+											<img src="img/assets/show_more.svg" alt="More" class="svg more_song">
+										</div>
+										<div class="cf"></div>
+									</div>
 								</div>
 							</div>
+
+							<div class="right_wrapper">
+								<div class="popular_song">
+									<div class="popular_song_inner">
+										<img src="img/assets/play.svg" alt="Play" class="svg play_song">
+										<img src="img/covers/preset-junkies.jpg" class="cover_img" alt="Cover" width="49px">
+										<div class="song_information">
+											<h4 class="song_name">Come With Me (ft. Leah Culver)</h4>
+											<h4 class="artist_name">Virtual Riot</h4>
+										</div>
+										<div class="song_options">
+											<span class="time">04:35</span>
+											<img src="img/assets/like.svg" alt="Like" class="svg like_song">
+											<img src="img/assets/show_more.svg" alt="More" class="svg more_song">
+										</div>
+										<div class="cf"></div>
+									</div>
+								</div>
+								<div class="cf"></div>
+							</div>
+							<div class="cf"></div>
+						</div>
+
+						<div id="albums_overview">
+							<h3 class="short_title popular_title"><?php echo ALBUM; ?></h3>
+							<div class="album_wrapper">
+								<div class="album_item">
+									<img src="img/covers/preset-junkies.jpg" alt="Album" width="175">
+								</div>
+								<div class="album_item">
+									<img src="img/covers/preset-junkies.jpg" alt="Album" width="175">
+								</div>
+								<div class="album_item">
+									<img src="img/covers/preset-junkies.jpg" alt="Album" width="175">
+								</div>
+								<div class="album_item">
+									<img src="img/covers/preset-junkies.jpg" alt="Album" width="175">
+								</div>
+								<div class="album_item">
+									<img src="img/covers/preset-junkies.jpg" alt="Album" width="175">
+								</div>
+								<div class="album_item">
+									<img src="img/covers/preset-junkies.jpg" alt="Album" width="175">
+								</div>
+							</div>
+							<div class="cf"></div>
 						</div>
 					</div>
 				</div>
