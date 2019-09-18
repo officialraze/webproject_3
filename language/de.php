@@ -48,3 +48,10 @@ define('POPULAR', 'Beliebt');
 
 // RADIO
 define('RADIO_AND_LIVESTREAMS', 'Radio und Livestreams');
+
+// SETTINGS
+define('LOGOUT', 'Logout');
+define('LANGUAGE', 'Sprache');
+define('SETTINGS_CHANGE', 'Einstellungen ändern');
+define('CHANGE_COLOURS', 'Darkmode');
+define('CHANGE_BASICS', 'Benutzerangaben ändern');
