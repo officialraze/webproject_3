@@ -11,14 +11,23 @@ if(isset($_SESSION['active'])) {
 	$active_class = $_SESSION['active'];
 }
 
+$query = "SELECT * FROM `users` WHERE `id` = ".$user_id;
+
 ?>
 <div class="navigation_left">
 	<div class="navigation_wrapper">
 		<div class="profile">
 			<div class="profile_picture" style="background-image: url('img/profiles/melvin.jpg');background-position: center; background-size: 250%;" alt="Profil-Bild"></div>
-			<h3 class="profile_name">Melvin Lauber</h3>
-			<p class="profile_mail">molvinlauber@gmail.com</p>
-			<a class="profile_settings" href="profile_settings.php?user_id=<?php echo 1; ?>"><img src="img/assets/settings.svg" alt="<?php echo SETTINGS; ?>"></a>
+			<h3 class="profile_name">
+				<?php foreach ($pdo->query($query) as $user_data) {
+					echo $user_data['firstname'].' '.$user_data['lastname'];
+				} ?>
+			</h3>
+			<p class="profile_mail">
+				<?php foreach ($pdo->query($query) as $user_data) {
+					echo $user_data['email'];
+				} ?>
+			</p>
 		</div>
 
 		<div class="main_navigation">

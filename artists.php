@@ -3,14 +3,14 @@ include 'includes/start.php';
 
 // unset session and set new active element
 unset($_SESSION['active']);
-$_SESSION['active'] = 'my_songs';
+$_SESSION['active'] = 'artists';
 
 ?>
 <!DOCTYPE html>
 <html lang="de">
 	<head>
 		<meta charset="utf-8">
-		<title>Web Player | <?php echo MY_SONGS; ?></title>
+		<title>Web Player | <?php echo ARTISTS; ?></title>
 
 		<?php include 'includes/meta_data.php'; ?>
 	</head>

@@ -48,6 +48,22 @@ ul {
     font-size: 0;
     height: 0;
 }
+.back_link {
+	display: inline-block;
+	font-size: 14px;
+	background: var(--button);
+	color: var(--text);
+	text-decoration: none;
+	border-radius: 50px;
+	padding: 8px 12px;
+	text-align: center;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+}
+.back_link:hover {
+	background: var(--primary-color_light);
+	color: var(--primary-color);
+}
 
 /* @end */
 

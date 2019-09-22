@@ -46,6 +46,16 @@ define('IS_FOLLOW', 'Folge ich');
 define('FOLLOW', 'Folgen');
 define('POPULAR', 'Beliebt');
 define('ALBUM', 'Alben');
+define('SONGS', 'Songs');
+define('SHOW_ALL', 'Alle anzeigen');
+define('ADD_NEW_ALBUM', 'Neues Album hinzufügen');
+define('MANAGE_SONGS_ABLUMS', 'Alben und Songs verwalten');
 
-// RADIO
+// album overview
+define('OVERVIEW', 'Übersicht');
+
+// radio
 define('RADIO_AND_LIVESTREAMS', 'Radio und Livestreams');
+
+// misc
+define('BACK', 'Zurück');

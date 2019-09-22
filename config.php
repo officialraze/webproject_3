@@ -10,4 +10,6 @@
 $config = array(
 	'admin' => TRUE,
 	'testing' => TRUE,
+	'home' => TRUE,
+	'school' => FALSE,
 );

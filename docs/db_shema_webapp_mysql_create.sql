@@ -45,7 +45,7 @@ CREATE TABLE `genre` (
 CREATE TABLE `livestream` (
 	`livestream_id` int NOT NULL AUTO_INCREMENT,
 	`livestream_name` varchar(255) NOT NULL,
-	`livestream_url` TEXT NOT NULL AUTO_INCREMENT,
+	`livestream_url` TEXT NOT NULL,
 	PRIMARY KEY (`livestream_id`)
 );
 
@@ -75,4 +75,3 @@ ALTER TABLE `playlist` ADD CONSTRAINT `playlist_fk0` FOREIGN KEY (`user_id`) REF
 ALTER TABLE `playlist_song` ADD CONSTRAINT `playlist_song_fk0` FOREIGN KEY (`playlist_id`) REFERENCES `playlist`(`playlist_id`);
 
 ALTER TABLE `playlist_song` ADD CONSTRAINT `playlist_song_fk1` FOREIGN KEY (`song_id`) REFERENCES `song`(`song_id`);
-
