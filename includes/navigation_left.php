@@ -13,6 +13,8 @@ if(isset($_SESSION['active'])) {
 
 $query = "SELECT * FROM `users` WHERE `id` = ".$user_id;
 
+$playlist_query = "SELECT * FROM `playlist` WHERE `user_id` = ".$user_id;
+
 ?>
 <div class="navigation_left">
 	<div class="navigation_wrapper">
@@ -43,8 +45,9 @@ $query = "SELECT * FROM `users` WHERE `id` = ".$user_id;
 		<div class="playlist_wrapper">
 			<h3 class="playlist_title"><?php echo MY_PLAYLISTS; ?></h3>
 			<ul>
-				<li class="playlist_element"><a href="#">Top 50 EDM Charts</a></li>
-				<li class="playlist_element"><a href="#">Daily Chill</a></li>
+				<?php foreach ($pdo->query($playlist_query) as $playlist_data) { ?>
+					<li class="playlist_element"><a href="playlist_overview.php?playlist_id=<?php echo $playlist_data['playlist_id']; ?>"><?php echo $playlist_data['playlist_name']; ?></a></li>
+				<?php } ?>
 			</ul>
 			<a class="create_playlist" href=""></a>
 		</div>

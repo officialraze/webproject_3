@@ -1,0 +1,60 @@
+/*
+// --------------------------
+// Webprojekt 3.0
+// Copyright Melvin Lauber & David Clausen
+// --------------------------
+*/
+
+@import "_config.css";
+
+/* @group song table */
+.saved_songs_list {
+	width: 100%;
+}
+.saved_songs_list tr {
+	display: inline-block;
+	width: 100%;
+	padding: 14.5px 20px;
+	box-sizing: border-box;
+	border-bottom: 1px solid var(--border-bottom);
+}
+.saved_songs_list tr td {
+	display: inline-block;
+}
+.saved_songs_list tr td.play {
+	margin-right: 20px;
+}
+.saved_songs_list tr td.song_name,
+.saved_songs_list tr td.artist_name a,
+.saved_songs_list tr td.artist_name a:hover {
+	font-size: 16px;
+	line-height: 21px;
+	font-weight: 400;
+	color: var(--text);
+	margin-right: 30px;
+	width: 12%;
+	text-decoration: none;
+}
+.saved_songs_list tr td.artist_name a {
+	color: var(--light_text);
+}
+.saved_songs_list tr td.actions,
+.saved_songs_list tr td.length {
+	float: right;
+}
+.saved_songs_list tr td.length {
+	position: relative;
+	top: 5px;
+	font-size: 14px;
+	line-height: 18px;
+	font-weight: 700;
+	color: var(--text);
+	margin-right: 12px;
+}
+.saved_songs_list tr td.actions .like {
+	margin-right: 12px;
+	position: relative;
+	top: 5px;
+}
+
+/* @end song table*/

@@ -62,6 +62,16 @@ CREATE TABLE `playlist_song` (
 	`song_id` int NOT NULL
 );
 
+CREATE TABLE `saved_songs` (
+	`user_id_link` INT NOT NULL,
+	`song_id` INT NOT NULL
+);
+
+CREATE TABLE `following_artist` (
+	`user_id_link` INT NOT NULL,
+	`artist_id` INT NOT NULL
+);
+
 ALTER TABLE `song` ADD CONSTRAINT `song_fk0` FOREIGN KEY (`artist_id`) REFERENCES `artist`(`artist_id`);
 
 ALTER TABLE `song` ADD CONSTRAINT `song_fk1` FOREIGN KEY (`album_id`) REFERENCES `album`(`album_id`);
@@ -75,3 +85,11 @@ ALTER TABLE `playlist` ADD CONSTRAINT `playlist_fk0` FOREIGN KEY (`user_id`) REF
 ALTER TABLE `playlist_song` ADD CONSTRAINT `playlist_song_fk0` FOREIGN KEY (`playlist_id`) REFERENCES `playlist`(`playlist_id`);
 
 ALTER TABLE `playlist_song` ADD CONSTRAINT `playlist_song_fk1` FOREIGN KEY (`song_id`) REFERENCES `song`(`song_id`);
+
+ALTER TABLE `saved_songs` ADD CONSTRAINT `saved_songs_fk0` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`);
+
+ALTER TABLE `saved_songs` ADD CONSTRAINT `saved_songs_fk1` FOREIGN KEY (`song_id`) REFERENCES `song`(`song_id`);
+
+ALTER TABLE `following_artist` ADD CONSTRAINT `following_artist_fk0` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`);
+
+ALTER TABLE `following_artist` ADD CONSTRAINT `following_artist_fk1` FOREIGN KEY (`artist_id`) REFERENCES `artist`(`artist_id`);

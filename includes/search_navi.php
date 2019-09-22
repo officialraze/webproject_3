@@ -15,9 +15,9 @@
 	</div>
 	<div id="navigation">
 		<ul>
-			<li class="main_navigation_element active"><a href=""><?php echo HOME; ?></a></li>
-			<li class="main_navigation_element"><a href=""><?php echo GENRES; ?></a></li>
-			<li class="main_navigation_element"><a href=""><?php echo PLAYLISTS; ?></a></li>
+			<li class="main_navigation_element active"><a href="index.php"><?php echo HOME; ?></a></li>
+			<li class="main_navigation_element"><a href="genres.php"><?php echo GENRES; ?></a></li>
+			<li class="main_navigation_element"><a href="playlists.php"><?php echo PLAYLISTS; ?></a></li>
 			<li class="main_navigation_element"><a href="radio.php"><?php echo RADIO; ?></a></li>
 		</ul>
 	</div>
