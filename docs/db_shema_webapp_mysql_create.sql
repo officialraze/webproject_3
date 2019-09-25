@@ -86,10 +86,10 @@ ALTER TABLE `playlist_song` ADD CONSTRAINT `playlist_song_fk0` FOREIGN KEY (`pla
 
 ALTER TABLE `playlist_song` ADD CONSTRAINT `playlist_song_fk1` FOREIGN KEY (`song_id`) REFERENCES `song`(`song_id`);
 
-ALTER TABLE `saved_songs` ADD CONSTRAINT `saved_songs_fk0` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`);
+ALTER TABLE `saved_songs` ADD CONSTRAINT `saved_songs_fk0` FOREIGN KEY (`user_id_link`) REFERENCES `users`(`id`);
 
 ALTER TABLE `saved_songs` ADD CONSTRAINT `saved_songs_fk1` FOREIGN KEY (`song_id`) REFERENCES `song`(`song_id`);
 
-ALTER TABLE `following_artist` ADD CONSTRAINT `following_artist_fk0` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`);
+ALTER TABLE `following_artist` ADD CONSTRAINT `following_artist_fk0` FOREIGN KEY (`user_id_link`) REFERENCES `users`(`id`);
 
 ALTER TABLE `following_artist` ADD CONSTRAINT `following_artist_fk1` FOREIGN KEY (`artist_id`) REFERENCES `artist`(`artist_id`);
