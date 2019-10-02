@@ -21,7 +21,7 @@ $_SESSION['active'] = 'discover';
 
 		<?php include 'includes/meta_data.php'; ?>
 	</head>
-	<body>
+	<body class="dark">
 		<?php include 'includes/navigation_left.php'; ?>
 		<?php include 'includes/playbar.php'; ?>
 
@@ -71,6 +71,5 @@ $_SESSION['active'] = 'discover';
 				</div>
 			</div>
 		</div>
-
 	</body>
 </html>
