@@ -102,3 +102,19 @@ h3.settings {
 	margin-bottom: 40px;
   margin: 20px 0px;
 }
+
+select {
+  width: 381px;
+  height: auto;
+  border-radius: 23px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
+  background-color: #ffffff;
+  margin-bottom: 40px;
+  border: none;
+  padding: 8px 12px;
+  box-sizing: border-box;
+}
+
+input {
+  box-sizing: border-box;
+}

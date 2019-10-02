@@ -21,7 +21,7 @@ $_SESSION['active'] = 'settings';
 
 		<?php include 'includes/meta_data.php'; ?>
 	</head>
-	<body>
+	<body class="dark">
 		<?php include 'includes/navigation_left.php'; ?>
 		<?php include 'includes/playbar.php'; ?>
 
@@ -69,7 +69,10 @@ $_SESSION['active'] = 'settings';
 
           <!-- Language -->
           <div class="choose_language">
-
+						<select name="change_language">
+							<option value="deutsch"><?php echo DEUTSCH; ?></option>
+							<option value="english"><?php echo ENGLISH; ?></option>
+						</select>
           </div>
         </div>
         <div class="logout">

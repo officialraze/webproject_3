@@ -55,3 +55,5 @@ define('LANGUAGE', 'Sprache');
 define('SETTINGS_CHANGE', 'Einstellungen ändern');
 define('CHANGE_COLOURS', 'Darkmode');
 define('CHANGE_BASICS', 'Benutzerangaben ändern');
+define('ENGLISH', 'English');
+define('DEUTSCH', 'Deutsch');
