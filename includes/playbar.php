@@ -12,14 +12,16 @@
 		<div class="song_information">
 			<img src="img/covers/preset-junkies.jpg" alt="Cover" width="88" style="border-radius: 13px;">
 			<div class="song_title_artist">
-				<h4 class="song_title">One Two</h4>
+				<a class="song_title" href="album_overview.php?album_id=1"><h4>One Two</h4></a>
 				<h4 class="song_artist">Virtual Riot</h4>
 			</div>
+			<div class="cf"></div>
 		</div>
 		<div class="player_options">
-			<img src="img/assets/previous.svg" class="svg" alt="previous">
+			<img src="img/assets/previous.svg" class="svg previous" alt="previous">
 			<img src="img/assets/play.svg" class="svg play" alt="play">
-			<img src="img/assets/next.svg" class="svg" alt="next">
+			<img src="img/assets/next.svg" class="svg next" alt="next">
 		</div>
+		<div class="cf"></div>
 	</div>
 </div>

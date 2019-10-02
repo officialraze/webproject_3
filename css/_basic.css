@@ -85,3 +85,55 @@ ul {
 }
 
 /* @end */
+
+
+/* @group currently playing */
+
+.currently_playing_inner {
+	height: 100%;
+	padding: 12px 20px;
+	box-sizing: border-box;
+}
+.currently_playing_wrap .song_information img,
+.currently_playing_wrap .song_title_artist,
+.currently_playing_wrap .song_information,
+.currently_playing_wrap .player_options {
+	float: left;
+}
+.currently_playing_wrap .song_title_artist {
+	position: relative;
+	top: 25px;
+	margin-left: 20px;
+}
+.currently_playing_wrap .song_title h4,
+.currently_playing_wrap .song_artist {
+	margin: 0;
+	margin-bottom: 4px;
+}
+.currently_playing_wrap .song_title {
+	color: inherit;
+	text-decoration: none;
+}
+.currently_playing_wrap .song_title:hover {
+	color: var(--primary-color);
+}
+.currently_playing_wrap .song_artist {
+	font-weight: 400;
+}
+.currently_playing_wrap .player_options {
+	position: relative;
+	top: 35px;
+	margin-left: 85px;
+}
+.currently_playing_wrap .player_options .previous,
+.currently_playing_wrap .player_options .play {
+	margin-right: 15px;
+}
+.currently_playing_wrap .player_options .play:hover path,
+.currently_playing_wrap .player_options .previous:hover path,
+.currently_playing_wrap .player_options .next:hover path {
+	cursor: pointer;
+	fill: var(--primary-color);
+}
+
+/* @end */
