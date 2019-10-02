@@ -21,7 +21,7 @@ $_SESSION['active'] = 'settings';
 
 		<?php include 'includes/meta_data.php'; ?>
 	</head>
-	<body class="dark">
+	<body>
 		<?php include 'includes/navigation_left.php'; ?>
 		<?php include 'includes/playbar.php'; ?>
 
