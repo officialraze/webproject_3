@@ -59,3 +59,12 @@ define('RADIO_AND_LIVESTREAMS', 'Radio und Livestreams');
 
 // misc
 define('BACK', 'Zurück');
+
+// SETTINGS
+define('LOGOUT', 'Logout');
+define('LANGUAGE', 'Sprache');
+define('SETTINGS_CHANGE', 'Einstellungen ändern');
+define('CHANGE_COLOURS', 'Darkmode');
+define('CHANGE_BASICS', 'Benutzerangaben ändern');
+define('ENGLISH', 'English');
+define('DEUTSCH', 'Deutsch');
