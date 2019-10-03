@@ -15,4 +15,8 @@
 	--light_text: #9D9FB3;
 	--button: #ededed;
 	--border-bottom: #707070;
+	--background_dark_mode: #21252B;
+	--dark_mode_border: #30353B;
+	--dark_mode_input: #30353B;
+	--dark_mode_light: #DDDDDD;
 }

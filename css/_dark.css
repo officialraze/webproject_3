@@ -1,0 +1,68 @@
+/*
+// --------------------------
+// Webprojekt 3.0
+// Copyright Melvin Lauber & David Clausen
+// --------------------------
+*/
+
+body.dark {
+  background: var(--background_dark_mode);
+}
+
+body.dark .navigation_left {
+	border-right: 1px solid var(--dark_mode_border);
+}
+
+body.dark input.search_field {
+  background-color: var(--dark_mode_input);
+}
+
+body.dark div.song_information {
+  background-color: var(--dark_mode_input);
+}
+
+body.dark .navigation_left .main_navigation ul li a {
+  color: var(--dark_mode_light);
+}
+
+body.dark .navigation_left .main_navigation ul li.navigation_element a svg path {
+  fill: var(--dark_mode_light) !important;
+}
+
+body.dark p {
+  color: var(--dark_mode_light) !important;
+}
+
+body.dark h1 {
+  color: var(--dark_mode_light) !important;
+}
+
+body.dark h2 {
+  color: var(--dark_mode_light) !important;
+}
+
+body.dark h3 {
+  color: var(--dark_mode_light) !important;
+}
+
+body.dark #new_songs .currency .currency_button{
+  background-color: var(--dark_mode_input);
+}
+
+body.dark .saved_songs_list tr{
+  border-bottom: 1px solid var();
+}
+
+body.dark .saved_songs_list tr td.song_name,
+.saved_songs_list tr td.artist_name a,
+.saved_songs_list tr td.artist_name a:hover {
+  color: var();
+}
+
+body.dark .saved_songs_list tr td.artist_name a {
+  color: var();
+}
+
+body.dark .saved_songs_list tr td.length {
+  color: var();
+}
