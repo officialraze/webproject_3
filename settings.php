@@ -37,17 +37,17 @@ $_SESSION['active'] = 'settings';
             <div class="choose_colours">
               <h3 class="settings"><?php echo CHANGE_COLOURS; ?></h3>
               <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider round"></span>
+                <input type="checkbox">
+                <span class="slider round darkmode"></span>
               </label>
             </div>
 
               <h3 class="settings"><?php echo CHANGE_BASICS; ?></h3>
             <!-- Benutzername -->
             <div class="change_username">
-              <div class="settings_change_username">
-    						<input type="text" name="change_username" placeholder="<?php echo USERNAME; ?>">
-    					</div>
+            	<div class="settings_change_username">
+					<input type="text" name="change_username" placeholder="<?php echo USERNAME; ?>">
+				</div>
             </div>
 
             <!-- Passwort -->
@@ -89,4 +89,9 @@ $_SESSION['active'] = 'settings';
 		</div>
 
 	</body>
+	<script type="text/javascript">
+		$('.darkmode').click(function() {
+			$('body').addClass('dark');
+		});
+	</script>
 </html>
