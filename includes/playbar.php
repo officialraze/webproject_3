@@ -7,21 +7,116 @@
 */
 ?>
 
-<div class="currently_playing_wrap" style="position: fixed; bottom: 0; height: 111px; width: 100%; background: #fff; box-shadow: 0 -5px 14px rgba(0,0,0,0.16); z-index: 100;">
-	<div class="currently_playing_inner">
-		<div class="song_information">
-			<img src="img/covers/preset-junkies.jpg" alt="Cover" width="88" style="border-radius: 13px;">
-			<div class="song_title_artist">
-				<a class="song_title" href="album_overview.php?album_id=1"><h4>One Two</h4></a>
-				<h4 class="song_artist">Virtual Riot</h4>
-			</div>
-			<div class="cf"></div>
-		</div>
-		<div class="player_options">
-			<img src="img/assets/previous.svg" class="svg previous" alt="previous">
-			<img src="img/assets/play.svg" class="svg play" alt="play">
-			<img src="img/assets/next.svg" class="svg next" alt="next">
-		</div>
-		<div class="cf"></div>
+<div class="audio-player" style="position: fixed; bottom: 0; height: 111px; width: 100%; background: #fff; box-shadow: 0 -5px 14px rgba(0,0,0,0.16); z-index: 100;">
+	<div id="play-btn"></div>
+	<div class="audio-wrapper" id="player-container" href="javascript:;">
+		<audio id="player" ontimeupdate="initProgressBar();">
+			<source src="http://www.lukeduncan.me/oslo.mp3" type="audio/mp3">
+		</audio>
 	</div>
+	<div class="player-controls scrubber">
+		<p><a href="album_overview.php?album_id=1">Come With Me </a><small>von</small> <a href="artist_detail.php?artist_id=1">Virtual Riot</a></p>
+		<span id="seekObjContainer">
+			<progress id="seekObj" value="0" max="1"></progress>
+		</span>
+		<br>
+		<small style="float: left; position: relative; left: 15px;" class="start-time"></small>
+		<small style="float: right; position: relative; right: 20px;" class="end-time"></small>
+	</div>
+	<div class="album-image" style="background-image: url('img/covers/preset-junkies.jpg')"></div>
 </div>
+
+<script type="text/javascript">
+$(function() {
+	function calculateTotalValue(length) {
+	  var minutes = Math.floor(length / 60),
+		seconds_int = length - minutes * 60,
+		seconds_str = seconds_int.toString(),
+		seconds = seconds_str.substr(0, 2),
+		time = minutes + ':' + seconds
+
+	  return time;
+  };
+
+	function calculateCurrentValue(currentTime) {
+	  var current_hour = parseInt(currentTime / 3600) % 24,
+		current_minute = parseInt(currentTime / 60) % 60,
+		current_seconds_long = currentTime % 60,
+		current_seconds = current_seconds_long.toFixed(),
+		current_time = (current_minute < 10 ? "0" + current_minute : current_minute) + ":" + (current_seconds < 10 ? "0" + current_seconds : current_seconds);
+
+	  return current_time;
+	  };
+
+	function initProgressBar() {
+	  var player = document.getElementById('player');
+	  var length = player.duration
+	  var current_time = player.currentTime;
+
+	  // calculate total length of value
+	  var totalLength = calculateTotalValue(length)
+	  jQuery(".end-time").html(totalLength);
+
+	  // calculate current value time
+	  var currentTime = calculateCurrentValue(current_time);
+	  jQuery(".start-time").html(currentTime);
+
+	  var progressbar = document.getElementById('seekObj');
+	  progressbar.value = (player.currentTime / player.duration);
+	  progressbar.addEventListener("click", seek);
+
+	  if (player.currentTime == player.duration) {
+		$('#play-btn').removeClass('pause');
+	  }
+
+	  function seek(evt) {
+		var percent = evt.offsetX / this.offsetWidth;
+		player.currentTime = percent * player.duration;
+		progressbar.value = percent / 100;
+	  }
+	};
+
+	function initPlayers(num) {
+	  // pass num in if there are multiple audio players e.g 'player' + i
+
+	  for (var i = 0; i < num; i++) {
+		(function() {
+
+		  // Variables
+		  // ----------------------------------------------------------
+		  // audio embed object
+		  var playerContainer = document.getElementById('player-container'),
+			player = document.getElementById('player'),
+			isPlaying = false,
+			playBtn = document.getElementById('play-btn');
+
+		  // Controls Listeners
+		  // ----------------------------------------------------------
+		  if (playBtn != null) {
+			playBtn.addEventListener('click', function() {
+			  togglePlay()
+			});
+		  }
+
+		  // Controls & Sounds Methods
+		  // ----------------------------------------------------------
+		  function togglePlay() {
+			if (player.paused === false) {
+			  player.pause();
+			  isPlaying = false;
+			  $('#play-btn').removeClass('pause');
+
+			} else {
+			  player.play();
+			  $('#play-btn').addClass('pause');
+			  isPlaying = true;
+			}
+		  }
+		}());
+	  }
+  };
+
+	initPlayers(jQuery('#player-container').length);
+});
+
+</script>
