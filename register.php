@@ -6,9 +6,7 @@
 // --------------------------
 */
 
-// includes
-include 'language/de.php';
-include 'config.php';
+include 'includes/start.php';
 
 ?>
 <!DOCTYPE html>
@@ -20,6 +18,7 @@ include 'config.php';
 		<?php include 'includes/meta_data.php'; ?>
 	</head>
 	<body>
+		<?php include 'includes/cookie_banner.php'; ?>
 		<div id="register_form_wrapper">
 			<div class="login_form_inner">
 				<h1 class="title_register"><?php echo NEW_REGISTER; ?></h1>
@@ -42,8 +41,8 @@ include 'config.php';
 					<div class="login_form_element">
 						<input type="text" name="retype_password" placeholder="<?php echo RETYPE_PASSWORD; ?>">
 					</div>
-					<a class="submit-button-cancel-register"href="register.php"><?php echo REGISTER; ?></a>
-					<input class="submit-button-register" type="submit" name="login_submitter" value="<?php echo LOGIN; ?>">
+					<a class="submit-button-cancel-register" href="login.php"><?php echo BACK_TO_LOGIN; ?></a>
+					<input class="submit-button-register" type="submit" name="login_submitter" value="<?php echo REGISTER; ?>">
 				</form>
 			</div>
 		</div>

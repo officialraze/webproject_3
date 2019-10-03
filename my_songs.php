@@ -27,7 +27,7 @@ $saved_song_query = "SELECT saved_songs.user_id_link, songs.*, artists.artist_fi
 		<?php include 'includes/meta_data.php'; ?>
 	</head>
 
-	<body class="dark">
+	<body class="<?php echo $body_class; ?>">
 		<?php include 'includes/navigation_left.php'; ?>
 		<?php include 'includes/playbar.php'; ?>
 

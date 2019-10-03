@@ -39,4 +39,12 @@ else {
 	$user_id = $_SESSION['user']['id'];
 }
 
+// set class for body (darkmode)
+if (isset($_SESSION['darkmode']) && $_SESSION['darkmode'] == 1) {
+	$body_class = 'dark';
+}
+else {
+	$body_class = '';
+}
+
 ?>

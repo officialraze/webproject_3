@@ -91,7 +91,7 @@ $_SESSION['active'] = 'settings';
 	</body>
 	<script type="text/javascript">
 		$('.darkmode').click(function() {
-			$('body').addClass('dark');
+			$('body').toggleClass('dark');
 		});
 	</script>
 </html>

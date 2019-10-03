@@ -32,6 +32,7 @@ define('MONTH', 'Monat');
 define('PLEASE_LOGIN', 'Bitte einloggen');
 define('NEW_REGISTER', 'Neue Registrierung');
 define('LOGIN', 'Anmelden');
+define('BACK_TO_LOGIN', 'Zurück zum Anmelden');
 define('REGISTER', 'Registrieren');
 define('USERNAME', 'Benutzername');
 define('PASSWORD', 'Passwort');
