@@ -18,7 +18,6 @@ include 'includes/start.php';
 		<?php include 'includes/meta_data.php'; ?>
 	</head>
 	<body>
-		<?php include 'includes/cookie_banner.php'; ?>
 		<div id="login_form_wrapper">
 			<div class="login_form_inner">
 				<h1 class="title_login"><?php echo PLEASE_LOGIN; ?></h1>
