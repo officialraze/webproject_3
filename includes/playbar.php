@@ -11,7 +11,7 @@
 	<div id="play-btn"></div>
 	<div class="audio-wrapper" id="player-container" href="javascript:;">
 		<audio id="player" ontimeupdate="initProgressBar();">
-			<source src="http://www.lukeduncan.me/oslo.mp3" type="audio/mp3">
+			<source src="music/music_1.wav" type="audio/wav">
 		</audio>
 	</div>
 	<div class="player-controls scrubber">
@@ -27,58 +27,63 @@
 </div>
 
 <script type="text/javascript">
-$(function() {
-	function calculateTotalValue(length) {
-	  var minutes = Math.floor(length / 60),
-		seconds_int = length - minutes * 60,
-		seconds_str = seconds_int.toString(),
-		seconds = seconds_str.substr(0, 2),
-		time = minutes + ':' + seconds
 
-	  return time;
-  };
 
-	function calculateCurrentValue(currentTime) {
-	  var current_hour = parseInt(currentTime / 3600) % 24,
-		current_minute = parseInt(currentTime / 60) % 60,
-		current_seconds_long = currentTime % 60,
-		current_seconds = current_seconds_long.toFixed(),
-		current_time = (current_minute < 10 ? "0" + current_minute : current_minute) + ":" + (current_seconds < 10 ? "0" + current_seconds : current_seconds);
+function initProgressBar() {
+	var player = document.getElementById('player');
+	var length = player.duration
+	var current_time = player.currentTime;
 
-	  return current_time;
-	  };
+	// calculate total length of value
+	var totalLength = calculateTotalValue(length)
+	jQuery(".end-time").html(totalLength);
 
-	function initProgressBar() {
-	  var player = document.getElementById('player');
-	  var length = player.duration
-	  var current_time = player.currentTime;
+	// calculate current value time
+	var currentTime = calculateCurrentValue(current_time);
+	jQuery(".start-time").html(currentTime);
 
-	  // calculate total length of value
-	  var totalLength = calculateTotalValue(length)
-	  jQuery(".end-time").html(totalLength);
+	var progressbar = document.getElementById('seekObj');
+	progressbar.value = (player.currentTime / player.duration);
+	progressbar.addEventListener("click", seek);
 
-	  // calculate current value time
-	  var currentTime = calculateCurrentValue(current_time);
-	  jQuery(".start-time").html(currentTime);
-
-	  var progressbar = document.getElementById('seekObj');
-	  progressbar.value = (player.currentTime / player.duration);
-	  progressbar.addEventListener("click", seek);
-
-	  if (player.currentTime == player.duration) {
+	if (player.currentTime == player.duration) {
 		$('#play-btn').removeClass('pause');
-	  }
+	}
 
-	  function seek(evt) {
+	function seek(evt) {
 		var percent = evt.offsetX / this.offsetWidth;
 		player.currentTime = percent * player.duration;
 		progressbar.value = percent / 100;
-	  }
-	};
+	}
+};
 
+
+function calculateTotalValue(length) {
+	var minutes = Math.floor(length / 60),
+	seconds_int = length - minutes * 60,
+	seconds_str = seconds_int.toString(),
+	seconds = seconds_str.substr(0, 2),
+	time = minutes + ':' + seconds
+
+	return time;
+};
+
+
+function calculateCurrentValue(currentTime) {
+	var current_hour = parseInt(currentTime / 3600) % 24,
+	current_minute = parseInt(currentTime / 60) % 60,
+	current_seconds_long = currentTime % 60,
+	current_seconds = current_seconds_long.toFixed(),
+	current_time = (current_minute < 10 ? "0" + current_minute : current_minute) + ":" + (current_seconds < 10 ? "0" + current_seconds : current_seconds);
+
+	return current_time;
+};
+
+
+// init playbar
+$(function() {
 	function initPlayers(num) {
 	  // pass num in if there are multiple audio players e.g 'player' + i
-
 	  for (var i = 0; i < num; i++) {
 		(function() {
 
@@ -115,7 +120,6 @@ $(function() {
 		}());
 	  }
   };
-
 	initPlayers(jQuery('#player-container').length);
 });
 

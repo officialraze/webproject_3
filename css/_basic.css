@@ -185,7 +185,7 @@ ul {
 	height: 26px;
 }
 .audio-player #play-btn.pause {
-	background-image: url("http://www.lukeduncan.me/images/pause-button.png");
+	background-image: url("../img/assets/pause.svg");
 }
 
 /* @end */
