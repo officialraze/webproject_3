@@ -12,7 +12,6 @@ if(isset($_SESSION['active'])) {
 }
 
 $query = "SELECT * FROM `users` WHERE `id` = ".$user_id;
-
 $playlist_query = "SELECT * FROM `playlist` WHERE `user_id` = ".$user_id;
 
 ?>

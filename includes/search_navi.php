@@ -5,6 +5,12 @@
 // Copyright Melvin Lauber & David Clausen
 // --------------------------
 */
+
+// get active element from session
+if(isset($_SESSION['active_meta_nav'])) {
+	$active_class_meta = $_SESSION['active_meta_nav'];
+}
+
 ?>
 <div id="search_navigation_wrap">
 	<div class="search">
@@ -15,10 +21,10 @@
 	</div>
 	<div id="navigation">
 		<ul>
-			<li class="main_navigation_element active"><a href="index.php"><?php echo HOME; ?></a></li>
-			<li class="main_navigation_element"><a href="genres.php"><?php echo GENRES; ?></a></li>
-			<li class="main_navigation_element"><a href="playlists.php"><?php echo PLAYLISTS; ?></a></li>
-			<li class="main_navigation_element"><a href="radio.php"><?php echo RADIO; ?></a></li>
+			<li class="main_navigation_element <?php if($active_class_meta === 'discover') { echo 'active'; } ?>"><a href="index.php"><?php echo HOME; ?></a></li>
+			<li class="main_navigation_element <?php if($active_class_meta === 'genres') { echo 'active'; } ?>"><a href="genres.php"><?php echo GENRES; ?></a></li>
+			<li class="main_navigation_element <?php if($active_class_meta === 'playlists') { echo 'active'; } ?>"><a href="playlists.php"><?php echo PLAYLISTS; ?></a></li>
+			<li class="main_navigation_element <?php if($active_class_meta === 'radio') { echo 'active'; } ?>"><a href="radio.php"><?php echo RADIO; ?></a></li>
 		</ul>
 	</div>
 	<div class="cf"></div>

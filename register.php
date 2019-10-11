@@ -8,6 +8,8 @@
 
 include 'includes/start.php';
 
+$required = '*';
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -23,25 +25,27 @@ include 'includes/start.php';
 				<h1 class="title_register"><?php echo NEW_REGISTER; ?></h1>
 				<form class="form_login" action="" method="post">
 					<div class="login_form_element">
-						<input type="text" name="FIRSTNAME" placeholder="<?php echo FIRSTNAME; ?>">
+						<input type="text" name="firstname" placeholder="<?php echo FIRSTNAME.$required; ?>">
 					</div>
 					<div class="login_form_element">
-						<input type="text" name="LASTNAME" placeholder="<?php echo LASTNAME; ?>">
+						<input type="text" name="lastname" placeholder="<?php echo LASTNAME.$required; ?>">
 					</div>
 					<div class="login_form_element">
-						<input type="text" name="mail" placeholder="<?php echo MAIL; ?>">
+						<input type="text" name="mail" placeholder="<?php echo MAIL.$required; ?>">
 					</div>
 					<div class="login_form_element">
-						<input type="text" name="username" placeholder="<?php echo USERNAME; ?>">
+						<input type="text" name="username" placeholder="<?php echo USERNAME.$required; ?>">
 					</div>
 					<div class="login_form_element">
-						<input type="text" name="password" placeholder="<?php echo PASSWORD; ?>">
+						<input type="text" name="password" placeholder="<?php echo PASSWORD.$required; ?>">
 					</div>
 					<div class="login_form_element">
-						<input type="text" name="retype_password" placeholder="<?php echo RETYPE_PASSWORD; ?>">
+						<input type="text" name="retype_password" placeholder="<?php echo RETYPE_PASSWORD.$required; ?>">
 					</div>
-					<a class="submit-button-cancel-register" href="login.php"><?php echo BACK_TO_LOGIN; ?></a>
-					<input class="submit-button-register" type="submit" name="login_submitter" value="<?php echo REGISTER; ?>">
+					<div class="button_wrap">
+						<input class="submit-button-register" type="submit" name="login_submitter" value="<?php echo REGISTER; ?>">
+						<a class="submit-button-cancel-register" href="login.php"><?php echo BACK_TO_LOGIN; ?></a>
+					</div>
 				</form>
 			</div>
 		</div>

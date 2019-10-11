@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*
 // --------------------------
 // Webprojekt 3.0
@@ -7,6 +8,11 @@
 */
 
 include 'includes/start.php';
+
+// check if logged in
+if(isset($_SESSION['user']['id'])) {
+	header('Location: index.php');
+}
 
 ?>
 <!DOCTYPE html>
@@ -21,16 +27,18 @@ include 'includes/start.php';
 		<div id="login_form_wrapper">
 			<div class="login_form_inner">
 				<h1 class="title_login"><?php echo PLEASE_LOGIN; ?></h1>
-				<form class="form_login" action="" method="post">
+				<form class="form_login" action="classes/class.user.php" method="post">
 					<div class="login_form_element">
 						<input type="text" name="username" placeholder="<?php echo USERNAME_MAIL; ?>">
 					</div>
 					<div class="login_form_element">
-						<input type="text" name="password" placeholder="<?php echo PASSWORD; ?>">
+						<input type="password" name="password" placeholder="<?php echo PASSWORD; ?>">
 					</div>
-
-					<input class="submit-button" type="submit" name="login_submitter" value="<?php echo LOGIN; ?>">
-					<a class="submit-button-cancel"href="register.php"><?php echo REGISTER; ?></a>
+					<input type="hidden" name="login_form" value="true">
+					<div class="button_wrap login">
+						<input class="submit-button" type="submit" name="login_submitter" value="<?php echo LOGIN; ?>">
+						<a class="submit-button-cancel"href="register.php"><?php echo REGISTER; ?></a>
+					</div>
 				</form>
 			</div>
 		</div>

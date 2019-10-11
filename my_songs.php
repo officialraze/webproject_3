@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*
 // --------------------------
 // Webprojekt 3.0

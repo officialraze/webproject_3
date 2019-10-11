@@ -41,7 +41,7 @@ $album_query = "SELECT * FROM `album` album
 
 		<?php include 'includes/meta_data.php'; ?>
 	</head>
-	<body class="artist_detail">
+	<body class="artist_detail <?php echo $body_class; ?>">
 		<?php include 'includes/navigation_left.php'; ?>
 		<?php include 'includes/playbar.php'; ?>
 

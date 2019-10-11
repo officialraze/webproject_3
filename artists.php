@@ -1,4 +1,12 @@
 <?php
+session_start();
+/*
+// --------------------------
+// Webprojekt 3.0
+// Copyright Melvin Lauber & David Clausen
+// --------------------------
+*/
+
 include 'includes/start.php';
 
 // unset session and set new active element
@@ -15,7 +23,7 @@ $_SESSION['active'] = 'artists';
 		<?php include 'includes/meta_data.php'; ?>
 	</head>
 
-	<body>
+	<body class="<?php echo $body_class; ?>">
 		<!-- navigation left -->
 		<?php include 'includes/navigation_left.php'; ?>
 

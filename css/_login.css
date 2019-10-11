@@ -47,61 +47,58 @@
 
 }
 
-input {
-  width: 381px;
-  height: auto;
-  border-radius: 23px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.3);
-  background-color: #ffffff;
-  margin-bottom: 40px;
-  border: none;
-  padding: 8px 12px;
+.login_form_element input {
+	font-size: 12px;
+    line-height: 16px;
+    color: var(--light_text);
+    width: 100%;
+    padding: 15px 20px;
+    border: none;
+    -webkit-border-radius: 23px;
+    -moz-border-radius: 23px;
+    -o-border-radius: 23px;
+    border-radius: 23px;
+    box-shadow: 0 0 26px rgba(0,0,0,0.3);
+    box-sizing: border-box;
+	margin-bottom: 25px;
 }
 
+input.submit-button-register,
+.submit-button-cancel-register,
+.submit-button-cancel,
 input.submit-button {
-  display: inline-block;
-  width: auto;
-  border-radius: 15px;
-  font-size: 14px;
-  color: #636afd;
-  text-align: center;
-  margin-left: 25%;
-
+	display: inline-block;
+    font-size: 14px;
+    background: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    padding: 8px 12px;
+    text-align: center;
+    box-sizing: border-box;
+	box-shadow: none;
+	border: none;
 }
+
+.submit-button-cancel-register,
 .submit-button-cancel {
-  display: inline-block;
-  width: auto;
-  background: #dddddd;
-  border-radius: 15px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.3);
-  font-size: 14px;
-  color: #6b6b6b;
-  text-align: center;
-  text-decoration: none;
-  margin-left: 20px;
-  padding: 8px 12px;
+    background: var(--button);
+    color: var(--text);
 }
 
-input.submit-button-register {
-  display: inline-block;
-  width: auto;
-  border-radius: 15px;
-  font-size: 14px;
-  color: #636afd;
-  text-align: center;
-  margin-left: 20px;
-
+.button_wrap {
+	max-width: 272px;
+	margin: 0 auto;
 }
-.submit-button-cancel-register {
-  display: inline-block;
-  width: auto;
-  background: #dddddd;
-  border-radius: 15px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.3);
-  font-size: 14px;
-  color: #6b6b6b;
-  text-align: center;
-  text-decoration: none;
-  margin-left: 25%;
-  padding: 8px 12px;
+
+.button_wrap.login {
+	max-width: 192px;
+}
+
+input.submit-button-register:hover,
+.submit-button-cancel-register:hover,
+.submit-button-cancel:hover,
+input.submit-button:hover {
+	opacity: 0.6;
+	cursor: pointer;
 }

@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*
 // --------------------------
 // Webprojekt 3.0
@@ -21,7 +22,7 @@ $_SESSION['active'] = 'settings';
 
 		<?php include 'includes/meta_data.php'; ?>
 	</head>
-	<body>
+	<body class="<?php echo $body_class; ?>">
 		<?php include 'includes/navigation_left.php'; ?>
 		<?php include 'includes/playbar.php'; ?>
 
@@ -37,7 +38,7 @@ $_SESSION['active'] = 'settings';
             <div class="choose_colours">
               <h3 class="settings"><?php echo CHANGE_COLOURS; ?></h3>
               <label class="switch">
-                <input type="checkbox">
+                <input type="checkbox" <?php echo ($_SESSION['user']['has_darkmode'] == 1) ? 'checked' : ''; ?>>
                 <span class="slider round darkmode"></span>
               </label>
             </div>

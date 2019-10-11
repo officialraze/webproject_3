@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*
 // --------------------------
 // Webprojekt 3.0
@@ -33,7 +34,7 @@ $album_query = "SELECT * FROM `album` album
 
 		<?php include 'includes/meta_data.php'; ?>
 	</head>
-	<body>
+	<body class="<?php echo $body_class; ?>">
 		<?php include 'includes/navigation_left.php'; ?>
 		<?php include 'includes/playbar.php'; ?>
 

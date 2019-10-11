@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*
 // --------------------------
 // Webprojekt 3.0
@@ -7,10 +8,11 @@
 */
 
 include 'includes/start.php';
+include 'includes/check_login.php';
 
 // unset session and set new active element
-unset($_SESSION['active']);
-$_SESSION['active'] = 'discover';
+$_SESSION['active']				= 'discover';
+$_SESSION['active_meta_nav']	= 'discover';
 
 ?>
 <!DOCTYPE html>

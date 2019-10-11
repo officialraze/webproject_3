@@ -1,9 +1,18 @@
 <?php
+session_start();
+/*
+// --------------------------
+// Webprojekt 3.0
+// Copyright Melvin Lauber & David Clausen
+// --------------------------
+*/
+
 include 'includes/start.php';
+include 'includes/check_login.php';
 
 // unset session and set new active element
-unset($_SESSION['active']);
-$_SESSION['active'] = 'discover';
+$_SESSION['active']				= 'discover';
+$_SESSION['active_meta_nav']	= 'genres';
 
 ?>
 <!DOCTYPE html>
@@ -14,7 +23,7 @@ $_SESSION['active'] = 'discover';
 
 		<?php include 'includes/meta_data.php'; ?>
 	</head>
-	<body>
+	<body class="<?php echo $body_class; ?>">
 		<?php include 'includes/navigation_left.php'; ?>
 
 		<div class="main_content_wrapper">

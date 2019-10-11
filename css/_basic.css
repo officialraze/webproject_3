@@ -174,10 +174,22 @@ ul {
 .audio-player .player-controls progress::-webkit-progress-value {
   background-color: var(--primary-color);
 }
-.audio-player .player-controls p {
-  font-size: 1.6rem;
+.audio-player .player-controls p,
+.audio-player .player-controls p a {
+  font-size: 24px;
+  line-height: 32px;
+  text-decoration: none;
+  color: var(--text);
+  margin: 0;
+  margin-top: 25px;
+}
+.audio-player .player-controls p a:hover {
+	color: var(--primary-color);
 }
 .audio-player #play-btn {
+	position: relative;
+	top: 45px;
+	left: 40px;
 	background-image: url("../img/assets/play.svg");
 	background-size: 100%;
 	width: 20px;
@@ -186,6 +198,15 @@ ul {
 }
 .audio-player #play-btn.pause {
 	background-image: url("../img/assets/pause.svg");
+	position: relative;
+	top: 45px;
+	left: 40px;
+	background-size: 200%;
+	width: 20px;
+	overflow: hidden;
+	height: 26px;
+	background-position-x: center;
+    background-position-y: center;
 }
 
 /* @end */
