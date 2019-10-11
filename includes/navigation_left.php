@@ -11,8 +11,8 @@ if(isset($_SESSION['active'])) {
 	$active_class = $_SESSION['active'];
 }
 
-$query = "SELECT * FROM `users` WHERE `id` = ".$user_id;
-$playlist_query = "SELECT * FROM `playlist` WHERE `user_id` = ".$user_id;
+$query = "SELECT * FROM `users` WHERE `id` = ".$_SESSION['user']['id'];
+$playlist_query = "SELECT * FROM `playlist` WHERE `user_id` = ".$_SESSION['user']['id'];
 
 ?>
 <div class="navigation_left">
