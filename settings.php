@@ -38,7 +38,7 @@ $_SESSION['active'] = 'settings';
             <div class="choose_colours">
               <h3 class="settings"><?php echo CHANGE_COLOURS; ?></h3>
               <label class="switch">
-                <input type="checkbox" <?php echo ($_SESSION['user']['has_darkmode'] == 1) ? 'checked' : ''; ?>>
+                <input name="switch" type="checkbox" <?php echo ($_SESSION['user']['has_darkmode'] == 1) ? 'checked' : ''; ?>>
                 <span class="slider round darkmode"></span>
               </label>
             </div>
@@ -54,15 +54,15 @@ $_SESSION['active'] = 'settings';
             <!-- Passwort -->
             <div class="change_pw">
               <div class="settings_change_pw">
-    						<input type="text" name="change_pw" placeholder="<?php echo PASSWORD; ?>">
-    					</div>
+					<input type="text" name="change_pw" placeholder="<?php echo PASSWORD; ?>">
+				</div>
             </div>
 
             <!-- Email -->
             <div class="change_email">
               <div class="settings_change_mail">
-    						<input type="text" name="change_mail" placeholder="<?php echo MAIL; ?>">
-    					</div>
+					<input type="text" name="change_mail" placeholder="<?php echo MAIL; ?>">
+				</div>
             </div>
         </div>
         <div class="language">
@@ -81,7 +81,7 @@ $_SESSION['active'] = 'settings';
           <h2 class="settings"><?php echo LOGOUT; ?></h2>
           <!-- logout Button -->
           <div class="logout_button">
-            <a class="submit-button-logout"href="login.php"><?php echo LOGOUT; ?></a>
+            <a class="submit-button-logout" href="logout.php"><?php echo LOGOUT; ?></a>
           </div>
 
         </div>
@@ -91,8 +91,29 @@ $_SESSION['active'] = 'settings';
 
 	</body>
 	<script type="text/javascript">
+
+
 		$('.darkmode').click(function() {
 			$('body').toggleClass('dark');
+
+			if ($('input[name="switch"]:checked').length) {
+				var switch_value = 0;
+			}
+			else {
+				var switch_value = 1;
+			}
+
+			$.ajax({
+				url: 'classes/class.user.php',
+				type: "POST",
+				data: {
+					switch: switch_value,
+				},
+				success: function(response) {
+					console.log(response);
+				}
+			});
 		});
+
 	</script>
 </html>

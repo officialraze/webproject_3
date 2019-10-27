@@ -27,6 +27,18 @@ if (isset($post['login_form'])) {
 }
 
 
+if (isset($post['switch'])) {
+	switch_darkmode($post['switch']);
+}
+
+
+
+/**
+ * login user
+ *
+ * @param string $username
+ * @param string $password
+*/
 function login_user($username, $password) {
 
 	// includes
@@ -49,6 +61,26 @@ function login_user($username, $password) {
 		header("Location: ../login.php");
 		die();
 	}
+}
+
+
+
+/**
+ * set setting darkmode
+ *
+ * @param string $username
+ * @param string $password
+*/
+function switch_darkmode($switch) {
+
+	// includes
+	include '../config.php';
+	include '../includes/db.php';
+
+	// update darkmode settings
+	$statement = $pdo->prepare("UPDATE users SET has_darkmode = ? WHERE id = ?");
+	$statement->execute(array($switch, $_SESSION['user']['id']));
+
 }
 
 ?>
