@@ -14,6 +14,8 @@ include 'includes/check_login.php';
 $_SESSION['active']				= 'discover';
 $_SESSION['active_meta_nav']	= 'playlists';
 
+$playlists_overview = "SELECT * FROM `playlist`";
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -25,13 +27,25 @@ $_SESSION['active_meta_nav']	= 'playlists';
 	</head>
 	<body class="<?php echo $body_class; ?>">
 		<?php include 'includes/navigation_left.php'; ?>
+		<?php include 'includes/playbar.php'; ?>
 
 		<div class="main_content_wrapper">
 			<div class="main_content_inner">
 				<!-- search and main nav -->
 				<?php include 'includes/search_navi.php'; ?>
+
 				<div id="genres_wrapper">
-					<h3 class="short_title"><?php echo PLAYLISTS; ?></h3>
+					<h3 class="short_title"><?php echo GENRES; ?></h3>
+					<div class="genres_overview">
+						<?php foreach ($pdo->query($playlists_overview) as $playlist) { ?>
+							<div class="genre_box">
+								<div class="genre_box_inner">
+									<a href="playlist_detail.php?playlist_id=<?php echo $playlist['playlist_id']; ?>"><h3><?php echo $playlist['playlist_name']; ?></h3></a>
+								</div>
+							</div>
+						<?php } ?>
+						<div class="cf"></div>
+					</div>
 				</div>
 			</div>
 		</div>
