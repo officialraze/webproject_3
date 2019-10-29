@@ -35,7 +35,7 @@ $playlists_overview = "SELECT * FROM `playlist`";
 				<?php include 'includes/search_navi.php'; ?>
 
 				<div id="genres_wrapper">
-					<h3 class="short_title"><?php echo GENRES; ?></h3>
+					<h3 class="short_title"><?php echo PLAYLISTS; ?></h3>
 					<div class="genres_overview">
 						<?php foreach ($pdo->query($playlists_overview) as $playlist) { ?>
 							<div class="genre_box">
