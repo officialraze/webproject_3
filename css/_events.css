@@ -1,0 +1,24 @@
+/*
+// --------------------------
+// Webprojekt 3.0
+// Copyright Melvin Lauber & David Clausen
+// --------------------------
+*/
+
+@import "_config.css";
+
+tr {
+	width: 100%;
+}
+
+.artist_name_concert {
+width: 20%
+}
+
+.concert_when {
+width: 40%
+}
+
+.concert_where {
+ width: 40%
+}

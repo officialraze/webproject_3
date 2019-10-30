@@ -17,10 +17,6 @@ body.dark input.search_field {
   background-color: var(--dark_mode_input);
 }
 
-body.dark div.song_information {
-  background-color: var(--dark_mode_input);
-}
-
 body.dark .navigation_left .main_navigation ul li a {
   color: var(--dark_mode_light);
 }
@@ -50,19 +46,33 @@ body.dark #new_songs .currency .currency_button{
 }
 
 body.dark .saved_songs_list tr{
-  border-bottom: 1px solid var();
+  border-bottom: 1px solid var(--dark_mode_light);
 }
 
 body.dark .saved_songs_list tr td.song_name,
 .saved_songs_list tr td.artist_name a,
 .saved_songs_list tr td.artist_name a:hover {
-  color: var();
+  color: var(--dark_mode_light);
 }
 
 body.dark .saved_songs_list tr td.artist_name a {
-  color: var();
+  color: var(--dark_mode_light);
 }
 
 body.dark .saved_songs_list tr td.length {
-  color: var();
+  color: var(--dark_mode_light);
+}
+
+body.dark #new_songs .currency .currency_button {
+  color: var(--dark_mode_light);
+}
+
+body.dark #new_songs .currency .currency_button:hover,
+body.dark #new_songs .currency .currency_button.current {
+	color: var(--primary-color);
+}
+
+body.dark .genres_overview .genre_box .genre_box_inner a,
+body.dark .genres_overview .genre_box .genre_box_inner a h3 {
+  color: var(--dark_mode_border) !important;
 }
