@@ -21,4 +21,5 @@
 	--dark_mode_light: #DDDDDD;
 	--standard_shadow: 0 3px 27px rgba(0,0,0,0.39);
 	--standard_radius: 13px;
+	--standard_transition: all 0.3s ease;
 }

@@ -17,10 +17,6 @@ body.dark input.search_field {
   background-color: var(--dark_mode_input);
 }
 
-body.dark div.song_information {
-  background-color: var(--dark_mode_input);
-}
-
 body.dark .navigation_left .main_navigation ul li a {
   color: var(--dark_mode_light);
 }

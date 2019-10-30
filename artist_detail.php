@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*
 // --------------------------
 // Webprojekt 3.0
@@ -7,12 +8,12 @@
 */
 
 include 'includes/start.php';
+include 'includes/check_login.php';
 
 // unset session and set new active element
-unset($_SESSION['active']);
 $_SESSION['active'] = 'artists';
 
-$artist_id = $user_id;
+$artist_id = $_SESSION['user']['id'];
 $get_artist_id = $_GET['artist_id'];
 
 // check if artist id is same -> if TRUE -> admin settings visible

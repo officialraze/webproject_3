@@ -45,8 +45,11 @@ $_SESSION['active_meta_nav']	= 'discover';
 				<div id="artists_u_like_new_songs_wrapper">
 					<div id="artists_u_like">
 						<h3 class="short_title"><?php echo ARTISTS_U_MIGHT_LIKE; ?></h3>
-						<div class="artists_u_like_element">
-							<img src="img/artists/tokyomachine.jpg" alt="Tokyo Machine">
+						<div class="artists_u_like_elements">
+							<div class="artist_box">
+								<img src="img/artists/tokyomachine.jpg" alt="Tokyo Machine">
+							</div>
+							<div class="cf"></div>
 						</div>
 					</div>
 
@@ -58,19 +61,57 @@ $_SESSION['active_meta_nav']	= 'discover';
 							<a class="currency_button month"><?php echo MONTH; ?></a>
 						</div>
 						<div class="new_songs_wrapper">
-							<div class="new_song_element">
-								<img class="play_button" src="img/assets/play.svg" alt="Abspielen">
-								<img class="cover" src="img/covers/breakitdown.jpg" alt="Album-Cover">
-								<div class="song_information">
-									<h4 class="song_title">Break It Down</h4>
-									<h5 class="new_song_artist_name">Ray Volpe</h5>
+							<div class="popular_song">
+								<div class="popular_song_inner">
+									<img src="img/assets/play.svg" alt="Play" class="svg play_song">
+									<img src="img/covers/breakitdown.jpg" class="cover_img" alt="Cover" width="49px">
+									<div class="song_information">
+										<h4 class="song_name">Break It Down</h4>
+										<h4 class="artist_name">Ray Volpe</h4>
+									</div>
+									<div class="song_options">
+										<span class="time">04:35</span>
+										<img src="img/assets/like.svg" alt="Like" class="svg like_song">
+										<img src="img/assets/show_more.svg" alt="More" class="svg more_song">
+									</div>
+									<div class="cf"></div>
 								</div>
-								<span class="length">04:35</span>
-								<img class="like_button" src="img/assets/like.svg" alt="Liken">
-								<img class="show_more" src="img/assets/show_more.svg" alt="Mehr">
+							</div>
+							<div class="popular_song">
+								<div class="popular_song_inner">
+									<img src="img/assets/play.svg" alt="Play" class="svg play_song">
+									<img src="img/covers/breakitdown.jpg" class="cover_img" alt="Cover" width="49px">
+									<div class="song_information">
+										<h4 class="song_name">Break It Down</h4>
+										<h4 class="artist_name">Ray Volpe</h4>
+									</div>
+									<div class="song_options">
+										<span class="time">04:35</span>
+										<img src="img/assets/like.svg" alt="Like" class="svg like_song">
+										<img src="img/assets/show_more.svg" alt="More" class="svg more_song">
+									</div>
+									<div class="cf"></div>
+								</div>
+							</div>
+							<div class="popular_song">
+								<div class="popular_song_inner">
+									<img src="img/assets/play.svg" alt="Play" class="svg play_song">
+									<img src="img/covers/breakitdown.jpg" class="cover_img" alt="Cover" width="49px">
+									<div class="song_information">
+										<h4 class="song_name">Break It Down</h4>
+										<h4 class="artist_name">Ray Volpe</h4>
+									</div>
+									<div class="song_options">
+										<span class="time">04:35</span>
+										<img src="img/assets/like.svg" alt="Like" class="svg like_song">
+										<img src="img/assets/show_more.svg" alt="More" class="svg more_song">
+									</div>
+									<div class="cf"></div>
+								</div>
 							</div>
 						</div>
 					</div>
+					<div class="cf"></div>
 				</div>
 			</div>
 		</div>

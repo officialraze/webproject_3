@@ -40,13 +40,13 @@ ul {
 .cf,
 .clear {
 	float: none;
-    clear: both;
-    line-height: 0;
-    width: 1px;
-    margin: 0;
-    padding: 0;
-    font-size: 0;
-    height: 0;
+	clear: both;
+	line-height: 0;
+	width: 1px;
+	margin: 0;
+	padding: 0;
+	font-size: 0;
+	height: 0;
 }
 .back_link {
 	display: inline-block;
@@ -141,47 +141,66 @@ ul {
 /* @group new one */
 
 .audio-player {
-  text-align: center;
-  display: flex;
-  flex-flow: row;
+	text-align: center;
+	display: flex;
+	flex-flow: row;
 }
 .audio-player .album-image {
-  min-height: 100px;
-  width: 110px;
-  background-size: cover;
+	min-height: 100px;
+	width: 110px;
+	background-size: cover;
 }
 .audio-player .player-controls {
-  align-items: center;
-  justify-content: center;
-  flex: 3;
+	align-items: center;
+	justify-content: center;
+	flex: 3;
 }
 .audio-player .player-controls progress {
-  width: 90%;
+	width: 90%;
 }
 .audio-player .player-controls progress[value] {
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: var(--border);
-  color: red;
-  height: 5px;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: var(--border);
+	color: red;
+	height: 10px;
+	border-radius: 45px;
+	overflow: hidden;
 }
 .audio-player .player-controls progress[value]::-webkit-progress-bar {
-  background-color: var(--border);
-  border-radius: 2px;
-  border: 1px solid #dfdfdf;
-  color: blue;
+	background-color: var(--border);
+	border-radius: 2px;
+	border: 1px solid #dfdfdf;
+	color: blue;
+	border-radius: 45px;
+	overflow: hidden;
 }
 .audio-player .player-controls progress::-webkit-progress-value {
-  background-color: var(--primary-color);
+	background-color: var(--primary-color);
+	position: relative;
+	border-radius: 45px;
+	overflow: hidden;
+}
+.audio-player .player-controls progress[value]::-webkit-progress-bar:hover {
+	cursor: pointer;
+}
+.audio-player .player-controls progress[value]::-webkit-progress-value:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	width: 10px;
+	height: 10px;
+	background: #000;
+	border-radius: 50px;
 }
 .audio-player .player-controls p,
 .audio-player .player-controls p a {
-  font-size: 24px;
-  line-height: 32px;
-  text-decoration: none;
-  color: var(--text);
-  margin: 0;
-  margin-top: 25px;
+	font-size: 24px;
+	line-height: 32px;
+	text-decoration: none;
+	color: var(--text);
+	margin: 0;
+	margin-top: 25px;
 }
 .audio-player .player-controls p a:hover {
 	color: var(--primary-color);
@@ -206,7 +225,10 @@ ul {
 	overflow: hidden;
 	height: 26px;
 	background-position-x: center;
-    background-position-y: center;
+	background-position-y: center;
+}
+.audio-player #play-btn:hover {
+	cursor: pointer;
 }
 
 /* @end */

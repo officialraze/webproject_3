@@ -18,5 +18,6 @@ if ($config['testing'] == TRUE) {
 	$user_id = 1;
 }
 else {
+	$_SESSION = $_SESSION; 
 	$user_id = $_SESSION['user']['id'];
 }

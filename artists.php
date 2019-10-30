@@ -8,6 +8,7 @@ session_start();
 */
 
 include 'includes/start.php';
+include 'includes/check_login.php';
 
 // unset session and set new active element
 unset($_SESSION['active']);
@@ -41,14 +42,16 @@ $following_artists = "SELECT artists.* FROM `following_artist` following_artist
 				<div class="artists_overview">
 						<?php foreach ($pdo->query($following_artists) as $artist) {
 						?>
-						<div class="artist">
-							<div class="artist_image_overview">
-								<img src="img/artists/artist_<?php echo $artist['artist_id'];?>.jpg">
+						<a href="artist_detail.php?artist_id=<?php echo $artist['artist_id']; ?>">
+							<div class="artist">
+								<div class="artist_image_overview">
+									<img src="img/artists/artist_<?php echo $artist['artist_id'];?>.jpg">
+								</div>
+								<div class="artist_content_overview">
+									<h3><?php echo $artist['artist_firstname'].' '.$artist['artist_lastname']; ?></h3>
+								</div>
 							</div>
-							<div class="artist_content_overview">
-								<h3><?php echo $artist['artist_firstname'].' '.$artist['artist_lastname']; ?></h3>
-							</div>
-						</div>
+						</a>
 						<?php } ?>
 			</div>
 		</div>
