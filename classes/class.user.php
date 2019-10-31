@@ -1,11 +1,11 @@
 <?php
+session_start();
 /*
 // --------------------------
 // Webprojekt 3.0
 // Copyright Melvin Lauber
 // --------------------------
 */
-session_start();
 
 // includes
 include '../config.php';
@@ -26,9 +26,14 @@ if (isset($post['login_form'])) {
 	}
 }
 
-
+// check if darkmode is triggered
 if (isset($post['switch'])) {
 	switch_darkmode($post['switch']);
+}
+
+// check if darkmode is triggered
+if (isset($post['basic_settings_save'])) {
+	save_user_settings();
 }
 
 
@@ -80,6 +85,52 @@ function switch_darkmode($switch) {
 	// update darkmode settings
 	$statement = $pdo->prepare("UPDATE users SET has_darkmode = ? WHERE id = ?");
 	$statement->execute(array($switch, $_SESSION['user']['id']));
+
+}
+
+
+
+/**
+ * save user settings
+ *
+ * @param string $username
+ * @param string $password
+*/
+function save_user_settings() {
+
+	// globalize post data
+	global $post;
+
+	// includes
+	include '../config.php';
+	include '../includes/db.php';
+
+	// TODO:
+	// check if username or email already exists
+
+	// get new username
+	if (isset($post['change_username']) && !empty($post['change_username'])) {
+		$username = $post['change_username'];
+		$statement = $pdo->prepare("UPDATE `users` SET `username` = :username WHERE id = ".$_SESSION['user']['id']);
+		$statement->execute(array('username' => $username));
+	}
+
+	// get new mail
+	if (isset($post['change_username']) && !empty($post['change_mail'])) {
+		$mail = $post['change_mail'];
+		$statement = $pdo->prepare("UPDATE `users` SET `email` = :email WHERE id = ".$_SESSION['user']['id']);
+		$statement->execute(array('email' => $mail));
+	}
+
+	// get new password
+	if (isset($post['change_pw']) && !empty($post['change_pw'])) {
+		$password = $post['change_pw'];
+		$password_hash = password_hash($password, PASSWORD_DEFAULT);
+		$statement = $pdo->prepare("UPDATE `users` SET password_hash = :password WHERE id = ".$_SESSION['user']['id']);
+		$statement->execute(array('password' => $password_hash));
+	}
+
+	header("Location: ../settings.php");
 
 }
 

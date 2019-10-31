@@ -15,7 +15,7 @@ $_SESSION['active'] = 'my_songs';
 
 $saved_song_query = "SELECT saved_songs.user_id_link, songs.*, artists.artist_firstname, artists.artist_lastname FROM `saved_songs` saved_songs
 					INNER JOIN `song` songs ON songs.song_id = saved_songs.song_id
-					LEFT JOIN `artist` artists ON artists.artist_id = songs.artist_id
+					LEFT JOIN `artist` artists ON artists.artist_id = songs.artist_id_link
 					WHERE `user_id_link` = ".$_SESSION['user']['id'];
 
 ?>
@@ -31,6 +31,7 @@ $saved_song_query = "SELECT saved_songs.user_id_link, songs.*, artists.artist_fi
 	<body class="<?php echo $body_class; ?>">
 		<?php include 'includes/navigation_left.php'; ?>
 		<?php include 'includes/playbar.php'; ?>
+		<?php include 'includes/cookie_banner.php'; ?>
 
 		<div class="main_content_wrapper">
 			<div class="main_content_inner">

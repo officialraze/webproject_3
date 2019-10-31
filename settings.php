@@ -25,67 +25,64 @@ $_SESSION['active'] = 'settings';
 	<body class="<?php echo $body_class; ?>">
 		<?php include 'includes/navigation_left.php'; ?>
 		<?php include 'includes/playbar.php'; ?>
+		<?php include 'includes/cookie_banner.php'; ?>
 
 		<div class="main_content_wrapper">
 			<div class="main_content_inner">
-				<!-- search and main nav -->
 				<?php include 'includes/search_navi.php'; ?>
 
-        <div class="settings_change">
-          <h2 class="settings"><?php echo SETTINGS_CHANGE; ?></h2>
+				<div class="settings_change">
+					<h2 class="settings"><?php echo SETTINGS_CHANGE; ?></h2>
 
-            <!-- Vordefinierte Farben -->
-            <div class="choose_colours">
-              <h3 class="settings"><?php echo CHANGE_COLOURS; ?></h3>
-              <label class="switch">
-                <input name="switch" type="checkbox" <?php echo ($_SESSION['user']['has_darkmode'] == 1) ? 'checked' : ''; ?>>
-                <span class="slider round darkmode"></span>
-              </label>
-            </div>
+					<div class="choose_colours">
+						<h3 class="settings"><?php echo SWITCH_DARKMODE; ?></h3>
+						<label class="switch">
+						<input name="switch" type="checkbox" <?php echo ($_SESSION['user']['has_darkmode'] == 1) ? 'checked' : ''; ?>>
+						<span class="slider round darkmode"></span>
+						</label>
+					</div>
 
-              <h3 class="settings"><?php echo CHANGE_BASICS; ?></h3>
-            <!-- Benutzername -->
-            <div class="change_username">
-            	<div class="settings_change_username">
-					<input type="text" name="change_username" placeholder="<?php echo USERNAME; ?>">
+					<form class="settings_form" action="classes/class.user.php" method="post">
+						<h3 class="settings"><?php echo CHANGE_BASICS; ?></h3>
+						<div class="change_username">
+							<div class="settings_change_username">
+								<input type="text" name="change_username" placeholder="<?php echo USERNAME; ?>">
+							</div>
+						</div>
+
+						<div class="change_pw">
+							<div class="settings_change_pw">
+								<input type="password" name="change_pw" placeholder="<?php echo PASSWORD; ?>">
+							</div>
+						</div>
+
+						<div class="change_email">
+							<div class="settings_change_mail">
+								<input type="text" name="change_mail" placeholder="<?php echo MAIL; ?>">
+							</div>
+						</div>
+
+						<input class="button" type="submit" name="basic_settings_save" value="Speichern">
+					</form>
 				</div>
-            </div>
 
-            <!-- Passwort -->
-            <div class="change_pw">
-              <div class="settings_change_pw">
-					<input type="text" name="change_pw" placeholder="<?php echo PASSWORD; ?>">
-				</div>
-            </div>
-
-            <!-- Email -->
-            <div class="change_email">
-              <div class="settings_change_mail">
-					<input type="text" name="change_mail" placeholder="<?php echo MAIL; ?>">
-				</div>
-            </div>
-        </div>
-        <div class="language">
-          <h2 class="settings"><?php echo LANGUAGE; ?></h2>
-
-          <!-- Language -->
-          <div class="choose_language">
+				<!-- todo in next version -->
+				<!-- <div class="language">
+					<h2 class="settings"><?php echo LANGUAGE; ?></h2>
+					<div class="choose_language">
 						<select name="change_language">
-							<option value="deutsch"><?php echo DEUTSCH; ?></option>
-							<option value="english"><?php echo ENGLISH; ?></option>
+						<option value="deutsch"><?php echo DEUTSCH; ?></option>
+						<option value="english"><?php echo ENGLISH; ?></option>
 						</select>
-          </div>
-        </div>
-        <div class="logout">
+					</div>
+				</div> -->
 
-          <h2 class="settings"><?php echo LOGOUT; ?></h2>
-          <!-- logout Button -->
-          <div class="logout_button">
-            <a class="submit-button-logout" href="logout.php"><?php echo LOGOUT; ?></a>
-          </div>
-
-        </div>
-
+				<div class="logout">
+					<h2 class="settings"><?php echo LOGOUT; ?></h2>
+					<div class="logout_button">
+					<a class="submit-button-logout" href="logout.php"><?php echo LOGOUT; ?></a>
+					</div>
+				</div>
 			</div>
 		</div>
 

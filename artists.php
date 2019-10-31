@@ -29,9 +29,9 @@ $following_artists = "SELECT artists.* FROM `following_artist` following_artist
 	</head>
 
 	<body class="<?php echo $body_class; ?>">
-		<!-- navigation left -->
 		<?php include 'includes/navigation_left.php'; ?>
 		<?php include 'includes/playbar.php'; ?>
+		<?php include 'includes/cookie_banner.php'; ?>
 
 		<div class="main_content_wrapper">
 			<div class="main_content_inner">

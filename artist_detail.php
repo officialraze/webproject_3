@@ -27,8 +27,9 @@ else {
 $artist_query = "SELECT * FROM `artist` artist
 				WHERE `artist_id` = ".$get_artist_id;
 
-$song_query = "SELECT * FROM `song` song
-				WHERE `artist_id` = ".$get_artist_id;
+$song_query = "SELECT * FROM `song`
+				INNER JOIN `album` album ON album.album_id = song.album_id
+				WHERE `artist_id_link` = ".$get_artist_id;
 
 $album_query = "SELECT * FROM `album` album
 				WHERE `artist_id` = ".$get_artist_id;
@@ -45,10 +46,10 @@ $album_query = "SELECT * FROM `album` album
 	<body class="artist_detail <?php echo $body_class; ?>">
 		<?php include 'includes/navigation_left.php'; ?>
 		<?php include 'includes/playbar.php'; ?>
+		<?php include 'includes/cookie_banner.php'; ?>
 
 		<div class="main_content_wrapper">
 			<div class="main_content_inner">
-				<!-- search and main nav -->
 				<?php include 'includes/search_navi.php'; ?>
 
 				<div id="artist_detail">
@@ -69,7 +70,7 @@ $album_query = "SELECT * FROM `album` album
 
 						<?php
 						if ($artist_admin == 1) { ?>
-							<a href="#" class="follow_button"><?php echo ADD_NEW_ALBUM; ?></a>
+							<a href="add_new_album.php?artist_id=<?php echo $get_artist_id; ?>" class="follow_button"><?php echo ADD_NEW_ALBUM; ?></a>
 							<a href="#" class="follow_button"><?php echo MANAGE_SONGS_ABLUMS; ?></a>
 						<?php }
 						else { ?>
@@ -86,7 +87,7 @@ $album_query = "SELECT * FROM `album` album
 										<div class="popular_song">
 											<div class="popular_song_inner">
 												<img src="img/assets/play.svg" alt="Play" class="svg play_song">
-												<img src="img/covers/album_<?php echo $song_data['album_id']?>.jpg" class="cover_img" alt="Cover" width="49px">
+												<img src="img/covers/<?php echo $song_data['path_to_image']?>" class="cover_img" alt="Cover" width="49px">
 												<div class="song_information">
 													<h4 class="song_name"><?php echo $song_data['song_name'];?></h4>
 													<h4 class="artist_name"><?php echo $artist_data['artist_firstname'].' '.$artist_data['artist_lastname']; ?></h4>
@@ -139,13 +140,12 @@ $album_query = "SELECT * FROM `album` album
 									$limit_album = 0;
 									foreach ($pdo->query($album_query) as $album_data) { ?>
 										<div class="album_item">
-											<a href="album_overview.php?album_id=<?php echo $album_data['album_id']?>"><img src="img/covers/album_<?php echo $album_data['album_id']?>.jpg" alt="Album" width="175"></a>
+											<a href="album_overview.php?album_id=<?php echo $album_data['album_id']?>&artist_id=<?php echo $get_artist_id; ?>"><img src="img/covers/<?php echo $album_data['path_to_image']?>" alt="Album" width="175"></a>
 										</div>
 									<?php if (++$limit_album == 6) break; } ?>
 							</div>
 							<div class="cf"></div>
 						</div>
-
 
 						<div id="songs_overview">
 							<h3 class="short_title popular_title"><?php echo SONGS; ?></h3>

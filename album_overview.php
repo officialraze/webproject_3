@@ -14,12 +14,14 @@ unset($_SESSION['active']);
 $_SESSION['active'] = 'artists';
 
 // set album id
-if (isset($_GET['album_id']) && !empty($_GET['album_id']) && $_GET['album_id'] > 0) {
+if (isset($_GET['album_id']) && !empty($_GET['album_id']) && $_GET['album_id'] > 0 && isset($_GET['artist_id']) && !empty($_GET['artist_id']) && $_GET['artist_id'] > 0) {
 	$album_id = $_GET['album_id'];
+	$artist_id = $_GET['$artist_id'];
 }
 
 $song_query = "SELECT * FROM `song` song
-				WHERE `album_id` = ".$album_id;
+				INNER JOIN `album` album ON album.album_id = song.album_id_link
+				WHERE `album_id_link` = ".$album_id;
 
 $album_query = "SELECT * FROM `album` album
 				INNER JOIN `artist` artist ON artist.artist_id = album.artist_id
@@ -48,7 +50,7 @@ $album_query = "SELECT * FROM `album` album
 					<h3 class="short_title"><?php echo OVERVIEW; ?></h3>
 					<div id="album_informations">
 						<?php foreach ($pdo->query($album_query) as $album_data) { ?>
-							<img class="album" src="img/covers/album_<?php echo $album_data['album_id']; ?>.jpg" width="381" alt="Cover">
+							<img class="album" src="img/covers/<?php echo $album_data['path_to_image']; ?>" width="381" alt="Cover">
 							<h2 class="album_title"><?php echo $album_data['album_name']; ?></h2>
 							<ul class="album_details">
 								<li><?php echo $album_data['artist_firstname'].' '.$album_data['artist_lastname']; ?></li>

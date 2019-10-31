@@ -51,6 +51,12 @@ define('SONGS', 'Songs');
 define('SHOW_ALL', 'Alle anzeigen');
 define('ADD_NEW_ALBUM', 'Neues Album hinzufügen');
 define('MANAGE_SONGS_ABLUMS', 'Alben und Songs verwalten');
+define('ALBUM_PROPERTIES', 'Album Eigenschaften');
+define('ALBUM_NAME', 'Name des Albums');
+define('ALBUM_YEAR', 'Erscheinungsjahr');
+define('ALBUM_UPLOAD_COVER', 'Cover hochladen');
+define('ALBUM_ADD_SONGS', 'Songs hinzufügen');
+define('ALBUM_SONG_NAME', 'Name des Songs');
 
 // album overview
 define('OVERVIEW', 'Übersicht');
@@ -60,12 +66,14 @@ define('RADIO_AND_LIVESTREAMS', 'Radio und Livestreams');
 
 // misc
 define('BACK', 'Zurück');
+define('MAX_SONGS_UPLOAD', 'Maximale Anzahl an Songs pro Album');
+define('PLEASE_CHOOSE', 'Bitte wählen');
 
 // SETTINGS
 define('LOGOUT', 'Logout');
 define('LANGUAGE', 'Sprache');
 define('SETTINGS_CHANGE', 'Einstellungen ändern');
-define('CHANGE_COLOURS', 'Darkmode');
+define('SWITCH_DARKMODE', 'Darkmode');
 define('CHANGE_BASICS', 'Benutzerangaben ändern');
 define('ENGLISH', 'English');
 define('DEUTSCH', 'Deutsch');

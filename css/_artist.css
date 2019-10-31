@@ -45,7 +45,7 @@ h3.popular_title {
 	left: 290px;
 	z-index: 0;
 	width: calc(100% - 290px);
-	max-height: 560px;
+	max-height: 520px;
 	overflow: hidden;
 }
 .artist_image img {
