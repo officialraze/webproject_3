@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 29. Okt 2019 um 22:11
+-- Erstellungszeit: 31. Okt 2019 um 22:57
 -- Server-Version: 5.6.34-log
 -- PHP-Version: 7.1.5
 
@@ -36,17 +36,19 @@ CREATE TABLE IF NOT EXISTS `album` (
   `album_name` varchar(255) NOT NULL,
   `album_year` int(4) NOT NULL,
   `artist_id` int(11) NOT NULL,
+  `path_to_image` varchar(255) NOT NULL,
   PRIMARY KEY (`album_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Daten für Tabelle `album`
 --
 
-INSERT INTO `album` (`album_id`, `album_name`, `album_year`, `artist_id`) VALUES
-(1, 'Lost - Single', 2019, 1),
-(2, 'Digital World', 2018, 1),
-(3, 'We Could Be - Single', 2019, 1);
+INSERT INTO `album` (`album_id`, `album_name`, `album_year`, `artist_id`, `path_to_image`) VALUES
+(1, 'Lost - Single', 2019, 1, 'album_1.jpg'),
+(2, 'Digital World', 2018, 1, 'album_2.jpg'),
+(3, 'We Could Be - Single', 2019, 1, 'album_3.jpg'),
+(4, 'Coffee', 2018, 1, 'coffee_3000.jpg');
 
 -- --------------------------------------------------------
 
@@ -196,14 +198,14 @@ INSERT INTO `saved_songs` (`user_id_link`, `song_id`) VALUES
 
 CREATE TABLE IF NOT EXISTS `song` (
   `song_id` int(11) NOT NULL AUTO_INCREMENT,
-  `artist_id` int(11) NOT NULL,
+  `artist_id_link` int(11) NOT NULL,
   `song_name` varchar(255) NOT NULL,
-  `album_id` int(11) NOT NULL,
+  `album_id_link` int(11) NOT NULL,
   `length` varchar(255) NOT NULL,
   `genre_id` int(11) NOT NULL,
   PRIMARY KEY (`song_id`),
-  KEY `song_fk0` (`artist_id`),
-  KEY `song_fk1` (`album_id`),
+  KEY `song_fk0` (`artist_id_link`),
+  KEY `song_fk1` (`album_id_link`),
   KEY `song_fk2` (`genre_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
@@ -211,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `song` (
 -- Daten für Tabelle `song`
 --
 
-INSERT INTO `song` (`song_id`, `artist_id`, `song_name`, `album_id`, `length`, `genre_id`) VALUES
+INSERT INTO `song` (`song_id`, `artist_id_link`, `song_name`, `album_id_link`, `length`, `genre_id`) VALUES
 (1, 1, 'Lost', 1, '03:18', 1),
 (2, 1, 'Ocean', 2, '02:14', 1),
 (5, 1, 'Ambient', 2, '02:37', 1),
@@ -289,8 +291,8 @@ ALTER TABLE `saved_songs`
 -- Constraints der Tabelle `song`
 --
 ALTER TABLE `song`
-  ADD CONSTRAINT `song_fk0` FOREIGN KEY (`artist_id`) REFERENCES `artist` (`artist_id`),
-  ADD CONSTRAINT `song_fk1` FOREIGN KEY (`album_id`) REFERENCES `album` (`album_id`),
+  ADD CONSTRAINT `song_fk0` FOREIGN KEY (`artist_id_link`) REFERENCES `artist` (`artist_id`),
+  ADD CONSTRAINT `song_fk1` FOREIGN KEY (`album_id_link`) REFERENCES `album` (`album_id`),
   ADD CONSTRAINT `song_fk2` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`genre_id`);
 COMMIT;
 

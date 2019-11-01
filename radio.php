@@ -24,10 +24,11 @@ $_SESSION['active_meta_nav']	= 'radio';
 	</head>
 	<body class="<?php echo $body_class; ?>">
 		<?php include 'includes/navigation_left.php'; ?>
+		<?php include 'includes/playbar.php'; ?>
+		<?php include 'includes/cookie_banner.php'; ?>
 
 		<div class="main_content_wrapper">
 			<div class="main_content_inner">
-				<!-- search and main nav -->
 				<?php include 'includes/search_navi.php'; ?>
 
 				<div id="stream_wrapper">

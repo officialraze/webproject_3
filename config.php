@@ -12,6 +12,7 @@ $config = array(
 	'testing' => FALSE,
 	'home' => FALSE,
 	'school' => FALSE,
+	'limit_upload_songs' => 20
 );
 
 // define genres
