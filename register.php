@@ -37,10 +37,10 @@ $required = '*';
 						<input type="text" name="username" placeholder="<?php echo USERNAME.$required; ?>">
 					</div>
 					<div class="login_form_element">
-						<input type="text" name="password" placeholder="<?php echo PASSWORD.$required; ?>">
+						<input type="password" name="password" placeholder="<?php echo PASSWORD.$required; ?>">
 					</div>
 					<div class="login_form_element">
-						<input type="text" name="retype_password" placeholder="<?php echo RETYPE_PASSWORD.$required; ?>">
+						<input type="password" name="retype_password" placeholder="<?php echo RETYPE_PASSWORD.$required; ?>">
 					</div>
 					<div class="login_form_element">
 						<label for="is_artist"><?php echo IS_ARTIST; ?></label>

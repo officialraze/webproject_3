@@ -46,8 +46,12 @@
   box-sizing: border-box;
 
 }
-
-.login_form_element input {
+.login_form_element {
+	margin-bottom: 25px;
+}
+.login_form_element input[type="text"],
+.login_form_element input[type="password"],
+.login_form_element textarea {
 	font-size: 12px;
     line-height: 16px;
     color: var(--light_text);
@@ -60,8 +64,14 @@
     border-radius: 23px;
     box-shadow: 0 0 26px rgba(0,0,0,0.3);
     box-sizing: border-box;
-	margin-bottom: 25px;
 }
+.login_form_element input[type="text"]:hover::placeholder,
+.login_form_element input[type="text"]:focus::placeholder,
+.login_form_element textarea:hover::placeholder,
+.login_form_element textarea:focus::placeholder {
+	color: var(--primary-color);
+}
+
 
 input.submit-button-register,
 .submit-button-cancel-register,
