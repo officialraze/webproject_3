@@ -23,7 +23,7 @@
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   width: 632px;
-  height: 475px;
+  height: auto;
   border-radius: 18px;
   box-shadow: 0px 3px 41px rgba(0,0,0,0.35);
   background-color: #ffffff;
@@ -35,7 +35,7 @@
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   width: 632px;
-  height: 680px;
+  height: auto;
   border-radius: 18px;
   box-shadow: 0px 3px 41px rgba(0,0,0,0.35);
   background-color: #ffffff;
@@ -101,4 +101,8 @@ input.submit-button-register:hover,
 input.submit-button:hover {
 	opacity: 0.6;
 	cursor: pointer;
+}
+
+.add_new_artist_form {
+	display: none;
 }

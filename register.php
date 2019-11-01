@@ -42,6 +42,22 @@ $required = '*';
 					<div class="login_form_element">
 						<input type="text" name="retype_password" placeholder="<?php echo RETYPE_PASSWORD.$required; ?>">
 					</div>
+					<div class="login_form_element">
+						<label for="is_artist"><?php echo IS_ARTIST; ?></label>
+						<input type="checkbox" name="is_artist" id="is_artist_checker">
+					</div>
+					<div class="add_new_artist_form">
+						<h2><?php echo ADD_ARTIST_PROFILE; ?></h2>
+						<div class="login_form_element">
+							<input type="text" name="artist_firstname" placeholder="<?php echo ARTIST_FIRSTNAME.$required; ?>">
+						</div>
+						<div class="login_form_element">
+							<input type="text" name="artist_lastname" placeholder="<?php echo ARTIST_LASTNAME; ?>">
+						</div>
+						<div class="login_form_element">
+							<textarea name="biography" rows="8" cols="80" placeholder="<?php echo BIOGRAPHY; ?>"></textarea>
+						</div>
+					</div>
 					<div class="button_wrap">
 						<input class="submit-button-register" type="submit" name="login_submitter" value="<?php echo REGISTER; ?>">
 						<a class="submit-button-cancel-register" href="login.php"><?php echo BACK_TO_LOGIN; ?></a>

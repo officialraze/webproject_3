@@ -41,6 +41,11 @@ define('MAIL', 'E-Mail');
 define('USERNAME_MAIL', 'Benutzername oder E-Mail');
 define('LASTNAME', 'Nachname');
 define('FIRSTNAME', 'Vorname');
+define('IS_ARTIST', 'Künstler-Profil erstellen?');
+define('ADD_ARTIST_PROFILE', 'Künstler-Profil erstellen');
+define('ARTIST_FIRSTNAME', 'Vorname des Künstler');
+define('ARTIST_LASTNAME', 'Nachname des Künstler (Falls vorhanden)');
+define('BIOGRAPHY', 'Biographie des Künstler');
 
 // artist
 define('IS_FOLLOW', 'Folge ich');

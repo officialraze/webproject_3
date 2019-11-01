@@ -28,7 +28,7 @@ $artist_query = "SELECT * FROM `artist` artist
 				WHERE `artist_id` = ".$get_artist_id;
 
 $song_query = "SELECT * FROM `song`
-				INNER JOIN `album` album ON album.album_id = song.album_id
+				INNER JOIN `album` album ON album.album_id = song.album_id_link
 				WHERE `artist_id_link` = ".$get_artist_id;
 
 $album_query = "SELECT * FROM `album` album
