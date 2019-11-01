@@ -23,7 +23,7 @@ $required = '*';
 		<div id="register_form_wrapper">
 			<div class="login_form_inner">
 				<h1 class="title_register"><?php echo NEW_REGISTER; ?></h1>
-				<form class="form_login" action="" method="post">
+				<form class="form_login" action="classes/class.user.php" method="post">
 					<div class="login_form_element">
 						<input type="text" name="firstname" placeholder="<?php echo FIRSTNAME.$required; ?>">
 					</div>
@@ -58,6 +58,7 @@ $required = '*';
 							<textarea name="biography" rows="8" cols="80" placeholder="<?php echo BIOGRAPHY; ?>"></textarea>
 						</div>
 					</div>
+					<input type="hidden" name="register_form" value="true">
 					<div class="button_wrap">
 						<input class="submit-button-register" type="submit" name="login_submitter" value="<?php echo REGISTER; ?>">
 						<a class="submit-button-cancel-register" href="login.php"><?php echo BACK_TO_LOGIN; ?></a>

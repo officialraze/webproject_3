@@ -22,7 +22,17 @@ if (isset($post['login_form'])) {
 		login_user($username_mail, $user_password);
 	}
 	else {
-		echo 'false';
+		header("Location: login.php");
+	}
+}
+
+// check if register form is sent
+if (isset($post['register_form'])) {
+	if (!empty($post['firstname']) && !empty($post['lastname']) && !empty($post['mail']) && !empty($post['username']) && !empty($post['password']) && !empty($post['retype_password'])) {
+		register_save();
+	}
+	else {
+		header("Location: ../register.php");
 	}
 }
 
@@ -66,6 +76,59 @@ function login_user($username, $password) {
 		header("Location: ../login.php");
 		die();
 	}
+}
+
+
+
+/**
+ * save register user data
+*/
+function register_save() {
+
+	// globalize post data
+	global $post;
+
+	include '../config.php';
+	include '../includes/db.php';
+
+	// check if username exists
+	$statement_username = $pdo->prepare("SELECT `username` FROM `users` WHERE `username` = :name");
+	$statement_username->bindParam(':name', $post['username']);
+	$statement_username->execute();
+
+	// check if mail exists
+	$statement_username = $pdo->prepare("SELECT `email` FROM `users` WHERE `username` = :email");
+	$statement_username->bindParam(':email', $post['mail']);
+	$statement_username->execute();
+
+	// if everything is ok -> insert into db
+	if($statement_username->rowCount() > 0 && ($post['password'] == $post['retype_password'])) {
+	    echo "exists! cannot insert";
+	}
+	else {
+
+		// prepare data
+		$username = $post['username'];
+		$firstname = $post['firstname'];
+		$lastname = $post['lastname'];
+		$mail = $post['mail'];
+		$password_hash = password_hash($post['password'], PASSWORD_DEFAULT);
+		$password_token = md5(uniqid(rand(), true));
+
+		// check if user has an artist account
+		if (!isset($post['is_artist']) && empty($post['is_artist'])) {
+			$is_artist = 0;
+		}
+
+		// insert user into db
+		$statement = $pdo->prepare("INSERT INTO `users` (username, email, firstname, lastname, password_hash, password_token, is_artist, has_darkmode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+		$statement->execute(array($username, $mail, $firstname, $lastname, $password_hash, $password_token, $is_artist, 0));
+
+		header("Location: ../login.php?message=register_successfull");
+
+	}
+
+
 }
 
 
