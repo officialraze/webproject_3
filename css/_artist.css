@@ -89,7 +89,9 @@ h3.popular_title {
 	top: 13px;
 }
 .popular_song .popular_song_inner .play_song:hover path,
-.popular_song .popular_song_inner .like_song:hover path {
+.popular_song .popular_song_inner .like_song:hover path,
+.popular_song .popular_song_inner .more_song:hover,
+.popular_song .popular_song_inner .more_song:hover g circle {
 	fill: var(--primary-color);
 	cursor: pointer;
 }
@@ -215,4 +217,51 @@ h3.popular_title {
 .album_details li:first-child:before {
 	display: none;
 }
+
 /* end */
+
+
+
+/* @group artist overview */
+
+.artists_overview {
+	margin-left: -25px;
+}
+.artists_overview .artist_box {
+	position: relative;
+}
+.artists_overview .artist_box:after {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 25px;
+	content: '';
+	display: block;
+	background: rgba(0,0,0,0.6);
+	width: calc(100% - 25px);
+	height: calc(100% - 5px);
+	border-radius: var(--standard_radius);
+	transition: var(--standard_transition);
+	z-index: 9;
+}
+.artists_overview .artist_box:hover:after {
+	opacity: 1;
+	transition: var(--standard_transition);
+}
+.artists_overview .artist_box:hover .artist_name {
+	opacity: 1;
+	transition: var(--standard_transition);
+}
+.artists_overview .artist_name {
+	position: absolute;
+	opacity: 0;
+	top: 50%;
+	left: calc(50% + 12px);
+	transform: translateX(-50%) translateY(-50%);
+	text-align: center;
+	color: #fff;
+	transition: var(--standard_transition);
+	z-index: 10;
+}
+
+/* @end */

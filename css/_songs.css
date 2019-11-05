@@ -42,6 +42,13 @@
 .saved_songs_list tr td.length {
 	float: right;
 }
+.saved_songs_list tr td.actions .like:hover path,
+.saved_songs_list tr td.play:hover path,
+.saved_songs_list tr td.actions .more:hover,
+.saved_songs_list tr td.actions .more:hover g circle {
+	fill: var(--primary-color);
+	cursor: pointer;
+}
 .saved_songs_list tr td.length {
 	position: relative;
 	top: 5px;

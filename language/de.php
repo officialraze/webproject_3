@@ -74,6 +74,7 @@ define('BACK', 'Zurück');
 define('MAX_SONGS_UPLOAD', 'Maximale Anzahl an Songs pro Album');
 define('PLEASE_CHOOSE', 'Bitte wählen');
 define('REGISTER_SUCCESSFULL', 'Erfolgreich registriert. Sie können sich nun anmelden');
+define('NO_DATA', 'Keine Daten vorhanden');
 
 // SETTINGS
 define('LOGOUT', 'Logout');

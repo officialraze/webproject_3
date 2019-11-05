@@ -106,7 +106,7 @@
 #artists_u_like .artists_u_like_elements {
 	margin-left: -25px;
 }
-#artists_u_like .artists_u_like_elements .artist_box {
+.artist_box {
 	width: 25%;
 	margin-left: 0;
 	margin-right: 0;
@@ -119,12 +119,12 @@
 	text-align: center;
 	transition: var(--standard_transition);
 }
-#artists_u_like .artists_u_like_elements .artist_box:hover {
+.artist_box:hover {
 	transform: scale(1.1);
 	cursor: pointer;
 	transition: var(--standard_transition);
 }
-#artists_u_like .artists_u_like_elements .artist_box img {
+.artist_box img {
 	width: 100%;
 	height: auto;
 	border-radius: var(--standard_radius);

@@ -43,13 +43,9 @@ $following_artists = "SELECT artists.* FROM `following_artist` following_artist
 						<?php foreach ($pdo->query($following_artists) as $artist) {
 						?>
 						<a href="artist_detail.php?artist_id=<?php echo $artist['artist_id']; ?>">
-							<div class="artist">
-								<div class="artist_image_overview">
-									<img src="img/artists/artist_<?php echo $artist['artist_id'];?>.jpg">
-								</div>
-								<div class="artist_content_overview">
-									<h3><?php echo $artist['artist_firstname'].' '.$artist['artist_lastname']; ?></h3>
-								</div>
+							<div class="artist_box">
+								<img src="img/artists/artist_<?php echo $artist['artist_id'];?>.jpg">
+								<h3 class="artist_name"><?php echo $artist['artist_firstname'].' '.$artist['artist_lastname']; ?></h3>
 							</div>
 						</a>
 						<?php } ?>
