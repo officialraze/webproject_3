@@ -85,7 +85,7 @@ if (isset($_GET['artist_id']) && !empty($_GET['artist_id'])) {
 							<?php } ?>
 						</fieldset>
 						<input type="hidden" name="artist_id" value="<?php echo $artist_id; ?>">
-						<input class="button" type="submit" name="save_new_album" value="Speichern">
+						<input class="submit-button" type="submit" name="save_new_album" value="Speichern">
 					</form>
 				</div>
 			</div>

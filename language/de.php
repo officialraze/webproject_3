@@ -46,6 +46,8 @@ define('ADD_ARTIST_PROFILE', 'Künstler-Profil erstellen');
 define('ARTIST_FIRSTNAME', 'Vorname des Künstler');
 define('ARTIST_LASTNAME', 'Nachname des Künstler (Falls vorhanden)');
 define('BIOGRAPHY', 'Biographie des Künstler');
+define('PASSWORD_FORGOT', 'Passwort vergessen');
+define('CHANGE_PASSWORD', 'Passwort ändern');
 
 // artist
 define('IS_FOLLOW', 'Folge ich');

@@ -8,8 +8,8 @@
 @import "_config.css";
 
 .title_login {
-  font-size: 50px;
-  line-height: 62px;
+  font-size: 46px;
+  line-height: 58px;
 }
 
 .title_register {
@@ -104,6 +104,9 @@ input.submit-button {
 .button_wrap.login {
 	max-width: 192px;
 }
+.button_wrap.password_reset {
+	max-width: 302px;
+}
 
 input.submit-button-register:hover,
 .submit-button-cancel-register:hover,
@@ -115,4 +118,16 @@ input.submit-button:hover {
 
 .add_new_artist_form {
 	display: none;
+}
+
+.password_reset {
+	display: block;
+	text-align: center;
+}
+.password_reset a {
+	color: var(--primary-color);
+	text-decoration: none;
+}
+.password_reset a:hover {
+	color: var(--text);
 }

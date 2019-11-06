@@ -8,6 +8,7 @@ session_start();
 */
 
 include 'includes/start.php';
+include 'includes/check_login.php';
 
 // unset session and set new active element
 unset($_SESSION['active']);

@@ -55,6 +55,9 @@ switch ($message) {
 					<div class="login_form_element">
 						<input type="password" name="password" placeholder="<?php echo PASSWORD; ?>">
 					</div>
+					<div class="login_form_element password_reset">
+						<a href="password_reset.php"><?php echo PASSWORD_FORGOT; ?></a>
+					</div>
 					<input type="hidden" name="login_form" value="true">
 					<div class="button_wrap login">
 						<input class="submit-button" type="submit" name="login_submitter" value="<?php echo LOGIN; ?>">
