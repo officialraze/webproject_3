@@ -119,10 +119,44 @@ function register_save() {
 		if (!isset($post['is_artist']) && empty($post['is_artist'])) {
 			$is_artist = 0;
 		}
+		else {
+			$is_artist = 1;
+		}
 
 		// insert user into db
 		$statement = $pdo->prepare("INSERT INTO `users` (username, email, firstname, lastname, password_hash, password_token, is_artist, has_darkmode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 		$statement->execute(array($username, $mail, $firstname, $lastname, $password_hash, $password_token, $is_artist, 0));
+
+		if ($is_artist == 1) {
+
+			// get artist firstname
+			if (!empty($post['artist_firstname']) && isset($post['artist_firstname'])) {
+				$artist_firstname = $post['artist_firstname'];
+			}
+			else {
+				header("Location: ../register.php?message=register_not_successfull");
+			}
+
+			// get artist lastname
+			$artist_lastname = '';
+			if (!empty($post['artist_lastname']) && isset($post['artist_lastname'])) {
+				$artist_lastname = $post['artist_lastname'];
+			}
+
+			// get artist biography
+			$biography = '';
+			if (!empty($post['biography']) && isset($post['biography'])) {
+				$biography = $post['biography'];
+			}
+
+			// get last id (user_id)
+			$stmt = $pdo->query("SELECT LAST_INSERT_ID()");
+			$last_id = $stmt->fetchColumn();
+
+			// create artist profile
+			$statement_artist = $pdo->prepare("INSERT INTO `artist` (user_id, artist_firstname, artist_lastname, biography) VALUES (?, ?, ?, ?)");
+			$statement_artist->execute(array($last_id, $artist_firstname, $artist_lastname, $biography));
+		}
 
 		header("Location: ../login.php?message=register_successfull");
 

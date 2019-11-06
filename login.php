@@ -14,6 +14,8 @@ if(isset($_SESSION['user']['id'])) {
 	header('Location: index.php');
 }
 
+// get message
+$message = '';
 if (isset($_GET['message']) && !empty($_GET['message'])) {
 	$message = $_GET['message'];
 }
