@@ -76,3 +76,15 @@ body.dark .genres_overview .genre_box .genre_box_inner a,
 body.dark .genres_overview .genre_box .genre_box_inner a h3 {
   color: var(--dark_mode_border) !important;
 }
+
+body.dark table.concerts_near_you {
+  color: var(--dark_mode_light);
+}
+
+body.dark div.audio-player {
+  background: var(--dark_mode_input) !important;
+}
+
+body.dark div.audio-player p a {
+  color: var(--dark_mode_light);
+}

@@ -7,18 +7,36 @@
 
 @import "_config.css";
 
-tr {
+table.concerts_near_you {
+	text-align: left;
 	width: 100%;
 }
 
+tr.event_table  {
+	width: 100%;
+	border-bottom: 1px solid var(--border-bottom);
+	display: inline-block;
+}
+
+td.event_table,
+.event_table th {
+	padding: 18px 0px;
+	box-sizing: border-box;
+	display: inline-block;
+}
+
 .artist_name_concert {
-width: 20%
+width: 20%;
 }
 
 .concert_when {
-width: 40%
+width: 40%;
 }
 
 .concert_where {
- width: 40%
+ width: 30%;
+}
+
+#events_table {
+	width: 100%;
 }
