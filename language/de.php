@@ -86,3 +86,8 @@ define('SWITCH_DARKMODE', 'Darkmode');
 define('CHANGE_BASICS', 'Benutzerangaben ändern');
 define('ENGLISH', 'English');
 define('DEUTSCH', 'Deutsch');
+
+// EventSslContext
+define('NEAR_CONCERTS', 'Konzerte in der Nähe');
+define('WHERE', 'Ort');
+define('DATE', 'Datum');
