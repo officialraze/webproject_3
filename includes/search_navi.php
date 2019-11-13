@@ -14,7 +14,7 @@ if(isset($_SESSION['active_meta_nav'])) {
 ?>
 <div id="search_navigation_wrap">
 	<div class="search">
-		<form class="search_form" action="" method="post">
+		<form class="search_form" action="search.php" method="post">
 			<input class="search_field" type="text" name="search" placeholder="Suchen nach Künstler, Songs oder Alben">
 			<img class="search_icon" src="img/assets/search.svg" alt="Suchen">
 		</form>

@@ -91,3 +91,7 @@ define('DEUTSCH', 'Deutsch');
 define('NEAR_CONCERTS', 'Konzerte in der Nähe');
 define('WHERE', 'Ort');
 define('DATE', 'Datum');
+
+// SEARCH
+define('SEARCH', 'Suche');
+define('SEARCH_ARTISTS', 'Gefundene Artisten');
