@@ -36,6 +36,7 @@ if (isset($post['register_form'])) {
 	}
 }
 
+
 // reset password function
 if (isset($post['password_reset_form'])) {
 	if(!empty($post['username']) && isset($post['username'])) {
@@ -43,6 +44,16 @@ if (isset($post['password_reset_form'])) {
 	}
 	else {
 		header("Location: ../password_reset.php");
+	}
+}
+
+// check if reset password form is filled out
+if (isset($post['password_reset_form_validate'])) {
+	if ($post['password1'] == $post['password2'] && !empty($post['password1']) && !empty($post['password2'])) {
+		reset_password($post['password1'], $post['password_token']);
+	}
+	else {
+		header("Location: ../password_reset_form.php?token=".post['password_token']);
 	}
 }
 
@@ -198,6 +209,46 @@ function switch_darkmode($switch) {
 
 
 /**
+ * reset password
+ *
+ * @param string $password1
+ * @param string $password2
+ * @param string $token
+*/
+function reset_password($password, $token) {
+
+	// includes
+	include '../config.php';
+	include '../includes/db.php';
+
+	// check if token exists
+	$statement_token = $pdo->prepare("SELECT `password_token` FROM `users` WHERE `password_token` = :password_token");
+	$statement_token->bindParam(':password_token', $token);
+	$statement_token->execute();
+
+	if ($statement_token->rowCount() > 0) {
+
+		// set new password & new token
+		$new_password = password_hash($password, PASSWORD_DEFAULT);
+		$new_password_token = md5(uniqid(rand(), true));
+
+		// update password & token
+		$statement = $pdo->prepare("UPDATE users SET password_hash = ?, password_token = ? WHERE password_token = ?");
+		$statement->execute(array($new_password, $new_password_token, $token));
+
+		header("Location: ../login.php?message=reset_password_successfull");
+	}
+	else {
+		header("Location: ../password_reset_form.php?token=".$token);
+	}
+	exit;
+
+
+}
+
+
+
+/**
  * send mail with password reset link
  *
  * @param string $username
@@ -217,10 +268,10 @@ function send_password_reset_link($username) {
 	// if user exists send mail with password reset form
 	if ($user) {
 		$mailto = $user['email'];
-		$subject = 'Passwort zurücksetzen';
+		$subject = RESET_PASSWORD;
 
 		$message = sprintf($format, $user['firstname'], $user['lastname']);
-		$message = .$user['password_token'];
+		$message = $user['password_token'];
 
 		// send mail
 		mail($mailto, $subject, $message);
