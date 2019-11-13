@@ -64,7 +64,21 @@ $album_query = "SELECT * FROM `album` album
 					<div id="song_list">
 						<h3 class="short_title"><?php echo SONGS; ?></h3>
 						<?php
-							foreach ($pdo->query($song_query) as $song_data) { ?>
+							foreach ($pdo->query($song_query) as $song_data) {
+
+								// check if song is liked
+								$statement_song = $pdo->prepare("SELECT `song_id` FROM `saved_songs` WHERE `song_id` = :song_id");
+								$statement_song->bindParam(':song_id', $song_data['song_id']);
+								$statement_song->execute();
+
+								if ($statement_song->rowCount() > 0) {
+									$like_class = 'liked';
+								}
+								else {
+									$like_class = '';
+								}
+
+								?>
 								<div class="popular_song">
 									<div class="popular_song_inner">
 										<img src="img/assets/play.svg" alt="Play" class="svg play_song">
@@ -75,7 +89,7 @@ $album_query = "SELECT * FROM `album` album
 										</div>
 										<div class="song_options">
 											<span class="time"><?php echo $song_data['length']; ?></span>
-											<img src="img/assets/like.svg" alt="Like" class="svg like_song">
+											<span class="like_wrapper like_song <?php echo $like_class; ?>" data-song=<?php echo $song_data['song_id']; ?>><img src="img/assets/like.svg" alt="Like" class="svg"></span>
 											<img src="img/assets/show_more.svg" alt="More" class="svg more_song">
 										</div>
 										<div class="cf"></div>

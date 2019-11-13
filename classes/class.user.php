@@ -63,6 +63,11 @@ if (isset($post['switch'])) {
 }
 
 // check if darkmode is triggered
+if (isset($post['save_song']) && isset($post['song_id'])) {
+	like_song($post['save_song'], $post['song_id']);
+}
+
+// check if darkmode is triggered
 if (isset($post['basic_settings_save'])) {
 	save_user_settings();
 }
@@ -189,7 +194,7 @@ function register_save() {
 
 
 /**
- * set setting darkmode
+ * set setting darkmode // AJAX
  *
  * @param string $username
  * @param string $password
@@ -203,6 +208,33 @@ function switch_darkmode($switch) {
 	// update darkmode settings
 	$statement = $pdo->prepare("UPDATE users SET has_darkmode = ? WHERE id = ?");
 	$statement->execute(array($switch, $_SESSION['user']['id']));
+
+}
+
+
+
+/**
+ * like songs (add/remove) // AJAX
+ *
+ * @param string $username
+ * @param string $password
+*/
+function like_song($save_song, $song_id) {
+
+	// includes
+	include '../config.php';
+	include '../includes/db.php';
+
+	if ($save_song == 'like') {
+		// add saved song
+		$statement = $pdo->prepare("INSERT INTO saved_songs (user_id_link, song_id) VALUES (?, ?)");
+		$statement->execute(array($_SESSION['user']['id'], $song_id));
+	}
+	else {
+		// remove saved song
+		$statement = $pdo->prepare("DELETE FROM saved_songs WHERE user_id_link = :user_id AND song_id = :song_id");
+		$statement->execute(array('user_id' => $_SESSION['user']['id'], 'song_id' => $song_id));
+	}
 
 }
 

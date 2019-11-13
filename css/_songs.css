@@ -45,7 +45,8 @@
 .saved_songs_list tr td.actions .like:hover path,
 .saved_songs_list tr td.play:hover path,
 .saved_songs_list tr td.actions .more:hover,
-.saved_songs_list tr td.actions .more:hover g circle {
+.saved_songs_list tr td.actions .more:hover g circle,
+.like_wrapper.liked path {
 	fill: var(--primary-color);
 	cursor: pointer;
 }
