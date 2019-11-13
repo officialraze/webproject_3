@@ -36,6 +36,16 @@ if (isset($post['register_form'])) {
 	}
 }
 
+// reset password function
+if (isset($post['password_reset_form'])) {
+	if(!empty($post['username']) && isset($post['username'])) {
+		send_password_reset_link($post['username']);
+	}
+	else {
+		header("Location: ../password_reset.php");
+	}
+}
+
 // check if darkmode is triggered
 if (isset($post['switch'])) {
 	switch_darkmode($post['switch']);
@@ -182,6 +192,41 @@ function switch_darkmode($switch) {
 	// update darkmode settings
 	$statement = $pdo->prepare("UPDATE users SET has_darkmode = ? WHERE id = ?");
 	$statement->execute(array($switch, $_SESSION['user']['id']));
+
+}
+
+
+
+/**
+ * send mail with password reset link
+ *
+ * @param string $username
+*/
+function send_password_reset_link($username) {
+
+	// includes
+	include '../config.php';
+	include '../includes/db.php';
+
+	// check if user exists
+	$statement = $pdo->prepare("SELECT * FROM `users` WHERE `username` = :username");
+	$result = $statement->execute(array('username' => $username));
+	$user = $statement->fetch();
+
+
+	// if user exists send mail with password reset form
+	if ($user) {
+		$mailto = $user['email'];
+		$subject = 'Passwort zurücksetzen';
+
+		$message = sprintf($format, $user['firstname'], $user['lastname']);
+		$message = .$user['password_token'];
+
+		// send mail
+		mail($mailto, $subject, $message);
+
+		header("Location: ../login.php?message=mail_sent");
+	}
 
 }
 
