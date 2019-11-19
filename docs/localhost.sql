@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 31. Okt 2019 um 22:57
+-- Erstellungszeit: 19. Nov 2019 um 19:29
 -- Server-Version: 5.6.34-log
 -- PHP-Version: 7.1.5
 
@@ -38,17 +38,17 @@ CREATE TABLE IF NOT EXISTS `album` (
   `artist_id` int(11) NOT NULL,
   `path_to_image` varchar(255) NOT NULL,
   PRIMARY KEY (`album_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 --
 -- Daten für Tabelle `album`
 --
 
 INSERT INTO `album` (`album_id`, `album_name`, `album_year`, `artist_id`, `path_to_image`) VALUES
-(1, 'Lost - Single', 2019, 1, 'album_1.jpg'),
-(2, 'Digital World', 2018, 1, 'album_2.jpg'),
-(3, 'We Could Be - Single', 2019, 1, 'album_3.jpg'),
-(4, 'Coffee', 2018, 1, 'coffee_3000.jpg');
+(1, 'Lost - Single', 2019, 1, 'lost.jpg'),
+(2, 'Digital World', 2018, 1, 'digital_world.jpg'),
+(3, 'We Could Be - Single', 2019, 1, 'we_could_be.jpg'),
+(17, 'Dragon - Single', 2018, 1, 'dragon.jpg');
 
 -- --------------------------------------------------------
 
@@ -104,13 +104,6 @@ CREATE TABLE IF NOT EXISTS `genre` (
   `genre_name` varchar(255) NOT NULL,
   PRIMARY KEY (`genre_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
---
--- Daten für Tabelle `genre`
---
-
-INSERT INTO `genre` (`genre_id`, `genre_name`) VALUES
-(1, 'Future Bass');
 
 -- --------------------------------------------------------
 
@@ -187,8 +180,9 @@ CREATE TABLE IF NOT EXISTS `saved_songs` (
 --
 
 INSERT INTO `saved_songs` (`user_id_link`, `song_id`) VALUES
-(1, 1),
-(1, 2);
+(1, 18),
+(1, 9),
+(1, 8);
 
 -- --------------------------------------------------------
 
@@ -207,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `song` (
   KEY `song_fk0` (`artist_id_link`),
   KEY `song_fk1` (`album_id_link`),
   KEY `song_fk2` (`genre_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- Daten für Tabelle `song`
@@ -220,7 +214,8 @@ INSERT INTO `song` (`song_id`, `artist_id_link`, `song_name`, `album_id_link`, `
 (6, 1, 'Bells', 2, '02:18', 1),
 (7, 1, 'We Could Be', 3, '02:07', 1),
 (8, 1, 'Claws', 2, '02:48', 1),
-(9, 1, 'Goodbye', 2, '01:50', 1);
+(9, 1, 'Goodbye', 2, '01:50', 1),
+(18, 1, 'Dragon', 17, '00:01:02', 3);
 
 -- --------------------------------------------------------
 
@@ -241,14 +236,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Daten für Tabelle `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `firstname`, `lastname`, `password_hash`, `password_token`, `is_artist`, `has_darkmode`) VALUES
-(1, 'molvin95', 'molvinlauber@gmail.com', 'Melvin', 'Lauber', '$2y$10$kTzuINN0JEYWwZCH2cJfHO4nbtXuYyp0VGROPtVMlgX/U/W1O0dpa', '1234', 1, 0);
+(1, 'molvin95', 'molvinlauber@gmail.com', 'Melvin', 'Lauber', '$2y$10$PGceo51mz2ukP88ypW2HXu9VH9W87TPcINRZIzoM7nzU3dkYZlHOi', '1d7622dc2d2bcfc8de531e31790b049d', 1, 1),
+(2, 'david.clausen', 'davidclausen2@lernende.bfo-vs.ch', 'David', 'Clausen', '$2y$10$h51xi20m3d6MvY8O16Y1A.6FB5vOV5R1uq9e.OWQ4KIXX.PftMUEu', 'e8bac3df99be1fb31c13a79f7a5bea04', 0, 0);
 
 --
 -- Constraints der exportierten Tabellen
@@ -292,8 +288,7 @@ ALTER TABLE `saved_songs`
 --
 ALTER TABLE `song`
   ADD CONSTRAINT `song_fk0` FOREIGN KEY (`artist_id_link`) REFERENCES `artist` (`artist_id`),
-  ADD CONSTRAINT `song_fk1` FOREIGN KEY (`album_id_link`) REFERENCES `album` (`album_id`),
-  ADD CONSTRAINT `song_fk2` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`genre_id`);
+  ADD CONSTRAINT `song_fk1` FOREIGN KEY (`album_id_link`) REFERENCES `album` (`album_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
