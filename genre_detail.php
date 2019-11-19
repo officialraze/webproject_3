@@ -50,13 +50,28 @@ $genre_song_query = "SELECT * FROM `song` songs
 					<tbody>
 						<?php
 						$no_data = TRUE;
+
 						foreach ($pdo->query($genre_song_query) as $genre_songs_data) {
-							if (!empty($genre_songs_data)) { ?>
+							if (!empty($genre_songs_data)) {
+
+								// check if song is liked
+								$statement_song = $pdo->prepare("SELECT `song_id` FROM `saved_songs` WHERE `song_id` = :song_id");
+								$statement_song->bindParam(':song_id', $genre_songs_data['song_id']);
+								$statement_song->execute();
+
+								if ($statement_song->rowCount() > 0) {
+									$like_class = 'liked';
+								}
+								else {
+									$like_class = '';
+								}
+
+								?>
 								<tr>
 									<td class="play"><img src="img/assets/play.svg" class="svg" alt="play"></td>
 									<td class="song_name"><?php echo $genre_songs_data['song_name']; ?></td>
 									<td class="artist_name"><a href="artist_detail.php?artist_id=<?php echo $genre_songs_data['artist_id']; ?>"><?php echo $genre_songs_data['artist_firstname'].' '.$genre_songs_data['artist_lastname']; ?></a></td>
-									<td class="actions"><img src="img/assets/like.svg" class="svg like" alt="Like"><img src="img/assets/show_more.svg" class="svg more" alt="show_more"></td>
+									<td class="actions"><span class="like_wrapper like_song like <?php echo $like_class; ?>" data-song=<?php echo $genre_songs_data['song_id']; ?>><img src="img/assets/like.svg" alt="Like" class="svg"></span><img src="img/assets/show_more.svg" class="svg more" alt="show_more"></td>
 									<td class="length"><?php echo $genre_songs_data['length']; ?></td>
 								</tr>
 						<?php

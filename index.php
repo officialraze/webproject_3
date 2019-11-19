@@ -14,6 +14,11 @@ include 'includes/check_login.php';
 $_SESSION['active']				= 'discover';
 $_SESSION['active_meta_nav']	= 'discover';
 
+$song_query = "SELECT * FROM `song`
+				INNER JOIN `album` album ON album.album_id = song.album_id_link
+				INNER JOIN `artist` artist ON artist.artist_id = album.artist_id
+				ORDER BY `song_id` DESC LIMIT 3";
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -55,60 +60,41 @@ $_SESSION['active_meta_nav']	= 'discover';
 
 					<div id="new_songs">
 						<h3 class="short_title"><?php echo NEW_SONGS; ?></h3>
-						<div class="currency">
-							<a class="currency_button today current"><?php echo TODAY; ?></a>
-							<a class="currency_button week"><?php echo WEEK; ?></a>
-							<a class="currency_button month"><?php echo MONTH; ?></a>
-						</div>
 						<div class="new_songs_wrapper">
-							<div class="popular_song">
-								<div class="popular_song_inner">
-									<img src="img/assets/play.svg" alt="Play" class="svg play_song">
-									<img src="img/covers/breakitdown.jpg" class="cover_img" alt="Cover" width="49px">
-									<div class="song_information">
-										<h4 class="song_name">Break It Down</h4>
-										<h4 class="artist_name">Ray Volpe</h4>
+							<?php
+								$limit_left = 0;
+								foreach ($pdo->query($song_query) as $song_data) {
+
+									// check if song is liked
+									$statement_song = $pdo->prepare("SELECT `song_id` FROM `saved_songs` WHERE `song_id` = :song_id");
+									$statement_song->bindParam(':song_id', $song_data['song_id']);
+									$statement_song->execute();
+
+									if ($statement_song->rowCount() > 0) {
+										$like_class = 'liked';
+									}
+									else {
+										$like_class = '';
+									}
+
+									?>
+									<div class="popular_song">
+										<div class="popular_song_inner">
+											<img src="img/assets/play.svg" alt="Play" class="svg play_song">
+											<img src="img/covers/<?php echo $song_data['path_to_image']?>" class="cover_img" alt="Cover" width="49px">
+											<div class="song_information">
+												<h4 class="song_name"><?php echo $song_data['song_name'];?></h4>
+												<h4 class="artist_name"><?php echo $song_data['artist_firstname'].' '.$song_data['artist_lastname']; ?></h4>
+											</div>
+											<div class="song_options">
+												<span class="time"><?php echo $song_data['length']; ?></span>
+												<span class="like_wrapper like_song <?php echo $like_class; ?>" data-song=<?php echo $song_data['song_id']; ?>><img src="img/assets/like.svg" alt="Like" class="svg"></span>
+												<img src="img/assets/show_more.svg" alt="More" class="svg more_song">
+											</div>
+											<div class="cf"></div>
+										</div>
 									</div>
-									<div class="song_options">
-										<span class="time">04:35</span>
-										<img src="img/assets/like.svg" alt="Like" class="svg like_song">
-										<img src="img/assets/show_more.svg" alt="More" class="svg more_song">
-									</div>
-									<div class="cf"></div>
-								</div>
-							</div>
-							<div class="popular_song">
-								<div class="popular_song_inner">
-									<img src="img/assets/play.svg" alt="Play" class="svg play_song">
-									<img src="img/covers/breakitdown.jpg" class="cover_img" alt="Cover" width="49px">
-									<div class="song_information">
-										<h4 class="song_name">Break It Down</h4>
-										<h4 class="artist_name">Ray Volpe</h4>
-									</div>
-									<div class="song_options">
-										<span class="time">04:35</span>
-										<img src="img/assets/like.svg" alt="Like" class="svg like_song">
-										<img src="img/assets/show_more.svg" alt="More" class="svg more_song">
-									</div>
-									<div class="cf"></div>
-								</div>
-							</div>
-							<div class="popular_song">
-								<div class="popular_song_inner">
-									<img src="img/assets/play.svg" alt="Play" class="svg play_song">
-									<img src="img/covers/breakitdown.jpg" class="cover_img" alt="Cover" width="49px">
-									<div class="song_information">
-										<h4 class="song_name">Break It Down</h4>
-										<h4 class="artist_name">Ray Volpe</h4>
-									</div>
-									<div class="song_options">
-										<span class="time">04:35</span>
-										<img src="img/assets/like.svg" alt="Like" class="svg like_song">
-										<img src="img/assets/show_more.svg" alt="More" class="svg more_song">
-									</div>
-									<div class="cf"></div>
-								</div>
-							</div>
+							<?php if (++$limit_left == 3) break; } ?>
 						</div>
 					</div>
 					<div class="cf"></div>

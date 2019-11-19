@@ -82,7 +82,7 @@ $album_query = "SELECT * FROM `album` album
 								<div class="popular_song">
 									<div class="popular_song_inner">
 										<img src="img/assets/play.svg" alt="Play" class="svg play_song">
-										<img src="img/covers/album_<?php echo $song_data['album_id']?>.jpg" class="cover_img" alt="Cover" width="49px">
+										<img src="img/covers/<?php echo $album_data['path_to_image']; ?>" class="cover_img" alt="Cover" width="49px">
 										<div class="song_information">
 											<h4 class="song_name"><?php echo $song_data['song_name'];?></h4>
 											<h4 class="artist_name"><?php echo $album_data['artist_firstname'].' '.$album_data['artist_lastname']; ?></h4>

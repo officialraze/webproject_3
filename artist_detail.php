@@ -71,7 +71,7 @@ $album_query = "SELECT * FROM `album` album
 						<?php
 						if ($artist_admin == 1) { ?>
 							<a href="add_new_album.php?artist_id=<?php echo $get_artist_id; ?>" class="follow_button"><?php echo ADD_NEW_ALBUM; ?></a>
-							<a href="#" class="follow_button"><?php echo MANAGE_SONGS_ABLUMS; ?></a>
+							<a href="manage_songs?artist_id=<?php echo $get_artist_id; ?>" class="follow_button"><?php echo MANAGE_SONGS_ABLUMS; ?></a>
 						<?php }
 						else { ?>
 							<a href="#" class="follow_button is_following"><?php echo IS_FOLLOW; ?></a>
@@ -83,7 +83,21 @@ $album_query = "SELECT * FROM `album` album
 							<div class="left_wrapper">
 								<?php
 									$limit_left = 0;
-									foreach ($pdo->query($song_query) as $song_data) { ?>
+									foreach ($pdo->query($song_query) as $song_data) {
+
+										// check if song is liked
+										$statement_song = $pdo->prepare("SELECT `song_id` FROM `saved_songs` WHERE `song_id` = :song_id");
+										$statement_song->bindParam(':song_id', $song_data['song_id']);
+										$statement_song->execute();
+
+										if ($statement_song->rowCount() > 0) {
+											$like_class = 'liked';
+										}
+										else {
+											$like_class = '';
+										}
+
+										?>
 										<div class="popular_song">
 											<div class="popular_song_inner">
 												<img src="img/assets/play.svg" alt="Play" class="svg play_song">
@@ -94,7 +108,7 @@ $album_query = "SELECT * FROM `album` album
 												</div>
 												<div class="song_options">
 													<span class="time"><?php echo $song_data['length']; ?></span>
-													<img src="img/assets/like.svg" alt="Like" class="svg like_song">
+													<span class="like_wrapper like_song <?php echo $like_class; ?>" data-song=<?php echo $song_data['song_id']; ?>><img src="img/assets/like.svg" alt="Like" class="svg"></span>
 													<img src="img/assets/show_more.svg" alt="More" class="svg more_song">
 												</div>
 												<div class="cf"></div>
@@ -113,7 +127,7 @@ $album_query = "SELECT * FROM `album` album
 										<div class="popular_song">
 											<div class="popular_song_inner">
 												<img src="img/assets/play.svg" alt="Play" class="svg play_song">
-												<img src="img/covers/album_<?php echo $song_data['album_id']?>.jpg" class="cover_img" alt="Cover" width="49px">
+												<img src="img/covers/<?php echo $song_data['path_to_image']; ?>" class="cover_img" alt="Cover" width="49px">
 												<div class="song_information">
 													<h4 class="song_name"><?php echo $song_data['song_name'];?></h4>
 													<h4 class="artist_name"><?php echo $artist_data['artist_firstname'].' '.$artist_data['artist_lastname']; ?></h4>
@@ -155,7 +169,7 @@ $album_query = "SELECT * FROM `album` album
 									$limit_songs = 0;
 									foreach ($pdo->query($song_query) as $song_data) { ?>
 											<div class="song_item">
-												<img src="img/covers/album_<?php echo $song_data['album_id']?>.jpg" alt="Album" width="175">
+												<img src="img/covers/<?php echo $song_data['path_to_image']; ?>" alt="Album" width="175">
 											</div>
 									<?php if (++$limit_songs == 6) break; } ?>
 							</div>

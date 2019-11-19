@@ -73,7 +73,7 @@ if (isset($_GET['artist_id']) && !empty($_GET['artist_id'])) {
 
 								<div class="song_upload_element">
 									<input class="song_name_field" type="text" name="song_title[]" placeholder="<?php echo ALBUM_SONG_NAME; ?>">
-									<input accept=".mp3" name="song_file[]" type="file" class="upload_song_field">
+									<input accept=".mp3, .wav" name="song_file[]" type="file" class="upload_song_field">
 									<select class="genre_selection_field" name="genre_selection[]">
 										<option value="0" selected><?php echo PLEASE_CHOOSE; ?></option>
 										<?php foreach ($config['genres'] as $genre_id => $genre) { ?>
