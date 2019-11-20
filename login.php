@@ -49,13 +49,13 @@ switch ($message) {
 						</div>
 				<?php } ?>
 				<form class="form_login" action="classes/class.user.php" method="post">
-					<div class="login_form_element">
+					<div class="form_element">
 						<input type="text" name="username" placeholder="<?php echo USERNAME_MAIL; ?>">
 					</div>
-					<div class="login_form_element">
+					<div class="form_element">
 						<input type="password" name="password" placeholder="<?php echo PASSWORD; ?>">
 					</div>
-					<div class="login_form_element password_reset">
+					<div class="form_element password_reset">
 						<a href="password_reset.php"><?php echo PASSWORD_FORGOT; ?></a>
 					</div>
 					<input type="hidden" name="login_form" value="true">

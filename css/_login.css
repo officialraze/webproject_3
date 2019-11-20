@@ -46,12 +46,14 @@
   box-sizing: border-box;
 
 }
-.login_form_element {
+.form_element {
+    position: relative;
 	margin-bottom: 25px;
 }
-.login_form_element input[type="text"],
-.login_form_element input[type="password"],
-.login_form_element textarea {
+input[type="text"],
+input[type="password"],
+input[type="number"],
+textarea {
 	font-size: 12px;
     line-height: 16px;
     color: var(--light_text);

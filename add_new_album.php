@@ -55,9 +55,11 @@ if (isset($_GET['artist_id']) && !empty($_GET['artist_id'])) {
 							</div>
 
 							<div class="artwork_uploader">
-								<h3><?php echo ALBUM_UPLOAD_COVER; ?></h3>
 								<div class="form_element">
-									<input accept="image/*" name="artwork" type="file" class="upload_cover">
+									<div class="upload-btn-wrapper">
+										<input accept="image/*" name="artwork" type="file" class="upload_cover">
+										<button class="btn"><?php echo ALBUM_UPLOAD_COVER; ?></button>
+									</div>
 								</div>
 							</div>
 
@@ -71,9 +73,14 @@ if (isset($_GET['artist_id']) && !empty($_GET['artist_id'])) {
 							<?php
 							for ($song_counter = 1; $song_counter <= $config['limit_upload_songs']; $song_counter++) { ?>
 
-								<div class="song_upload_element">
+								<div class="song_upload_element form_element">
 									<input class="song_name_field" type="text" name="song_title[]" placeholder="<?php echo ALBUM_SONG_NAME; ?>">
-									<input accept=".mp3, .wav" name="song_file[]" type="file" class="upload_song_field">
+									<div class="upload_absolute_wrap">
+										<div class="upload-btn-wrapper">
+											<input accept=".mp3, .wav" name="song_file[]" type="file" class="upload_song_field">
+											<button class="btn with_icon"><img src="img/assets/music_upload.svg" class="music_icon svg" alt="<?php echo ALBUM_ADD_SONGS; ?>"></button>
+										</div>
+									</div>
 									<select class="genre_selection_field" name="genre_selection[]">
 										<option value="0" selected><?php echo PLEASE_CHOOSE; ?></option>
 										<?php foreach ($config['genres'] as $genre_id => $genre) { ?>
@@ -83,9 +90,9 @@ if (isset($_GET['artist_id']) && !empty($_GET['artist_id'])) {
 								</div>
 
 							<?php } ?>
+							<input type="hidden" name="artist_id" value="<?php echo $artist_id; ?>">
+							<input class="submit-button" type="submit" name="save_new_album" value="Speichern" style="margin-top: 30px;">
 						</fieldset>
-						<input type="hidden" name="artist_id" value="<?php echo $artist_id; ?>">
-						<input class="submit-button" type="submit" name="save_new_album" value="Speichern">
 					</form>
 				</div>
 			</div>

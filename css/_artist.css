@@ -265,3 +265,71 @@ h3.popular_title {
 }
 
 /* @end */
+
+
+/* @group add new album styles */
+
+.add_new_album_form fieldset {
+	max-width: 500px;
+	margin: 0 auto;
+	margin-top: 50px;
+	border: none;
+	box-shadow: var(--standard_shadow);
+	border-radius: var(--standard_radius);
+	padding: 30px 60px;
+	box-sizing: border-box;
+	text-align: center;
+}
+.add_new_album_form fieldset h2 {
+	margin-top: 0;
+}
+.add_new_album_form fieldset:first-child {
+	margin-top: 0;
+}
+.add_new_album_form fieldset .form_element:last-child {
+	margin-bottom: 0;
+}
+.upload_absolute_wrap {
+	position: absolute;
+	top: 3px;
+	right: 10px;
+}
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+.btn {
+	display: inline-block;
+	font-size: 14px;
+	background: var(--primary-color);
+	color: #fff;
+	text-decoration: none;
+	border-radius: 50px;
+	padding: 8px 12px;
+	text-align: center;
+	box-sizing: border-box;
+	border: none;
+}
+.btn.with_icon {
+	width: 40px;
+	height: 40px;
+	padding: 7px;
+}
+.with_icon svg path {
+	fill: #fff;
+}
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.upload-btn-wrapper input[type=file],
+.upload-btn-wrapper input[type=file]:hover ~ .btn {
+	cursor: pointer;
+}
+
+/* @end */
