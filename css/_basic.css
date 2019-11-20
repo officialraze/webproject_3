@@ -231,4 +231,10 @@ ul {
 	cursor: pointer;
 }
 
+.wrapper_search {
+	width: 100%;
+	height: auto;
+	float: left;
+}
+
 /* @end */
