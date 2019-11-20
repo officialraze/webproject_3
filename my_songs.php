@@ -12,7 +12,8 @@ include 'includes/check_login.php';
 
 // unset session and set new active element
 unset($_SESSION['active']);
-$_SESSION['active'] = 'my_songs';
+$_SESSION['active'] 			= 'my_songs';
+$_SESSION['active_meta_nav']	= 'discover';
 
 $saved_song_query = "SELECT saved_songs.user_id_link, songs.*, artists.artist_firstname, artists.artist_lastname FROM `saved_songs` saved_songs
 					INNER JOIN `song` songs ON songs.song_id = saved_songs.song_id

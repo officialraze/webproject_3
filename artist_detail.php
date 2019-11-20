@@ -11,7 +11,8 @@ include 'includes/start.php';
 include 'includes/check_login.php';
 
 // unset session and set new active element
-$_SESSION['active'] = 'artists';
+$_SESSION['active'] 			= 'artists';
+$_SESSION['active_meta_nav']	= 'discover';
 
 $artist_id = $_SESSION['user']['id'];
 $get_artist_id = $_GET['artist_id'];

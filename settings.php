@@ -12,7 +12,8 @@ include 'includes/check_login.php';
 
 // unset session and set new active element
 unset($_SESSION['active']);
-$_SESSION['active'] = 'settings';
+$_SESSION['active'] 			= 'settings';
+$_SESSION['active_meta_nav']	= 'discover';
 
 ?>
 <!DOCTYPE html>

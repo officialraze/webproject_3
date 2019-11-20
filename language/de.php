@@ -18,7 +18,7 @@ define('MY_PLAYLISTS', 'Meine Playlists');
 define('HOME', 'Home');
 define('GENRES', 'Genres');
 define('PLAYLISTS', 'Playlists');
-define('RADIO', 'Radio');
+define('ALL_ARTISTS', 'Alle Künstler');
 
 // content home
 define('RECENTLY_LISTENED', 'Zuletzt gehört');

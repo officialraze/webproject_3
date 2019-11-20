@@ -232,9 +232,9 @@ ul {
 }
 
 .wrapper_search {
+	clear: both;
 	width: 100%;
 	height: auto;
-	float: left;
 }
 
 /* @end */

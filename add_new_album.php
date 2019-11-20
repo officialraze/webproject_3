@@ -12,6 +12,7 @@ include 'includes/check_login.php';
 
 // unset session and set new active element
 $_SESSION['active']				= 'artist';
+$_SESSION['active_meta_nav']	= 'discover';
 
 // get artist id
 if (isset($_GET['artist_id']) && !empty($_GET['artist_id'])) {

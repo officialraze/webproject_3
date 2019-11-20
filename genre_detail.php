@@ -12,7 +12,8 @@ include 'includes/check_login.php';
 
 // unset session and set new active element
 unset($_SESSION['active']);
-$_SESSION['active'] = 'my_songs';
+$_SESSION['active'] 			= 'my_songs';
+$_SESSION['active_meta_nav']	= 'discover';
 
 if (isset($_GET['genre_id']) && $_GET['genre_id'] != 0) {
 	$genre_id = $_GET['genre_id'];

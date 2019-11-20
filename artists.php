@@ -12,7 +12,8 @@ include 'includes/check_login.php';
 
 // unset session and set new active element
 unset($_SESSION['active']);
-$_SESSION['active'] = 'artists';
+$_SESSION['active'] 			= 'artists';
+$_SESSION['active_meta_nav']	= 'discover';
 
 $following_artists = "SELECT artists.* FROM `following_artist` following_artist
 						LEFT JOIN `artist` artists ON artists.artist_id = following_artist.artist_id

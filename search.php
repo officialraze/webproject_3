@@ -24,7 +24,7 @@ if(isset($_POST['search'])) {
 <html lang="de">
 	<head>
 		<meta charset="utf-8">
-		<title>Web Player | <?php echo PLAYLISTS; ?></title>
+		<title>Web Player | <?php echo SEARCH; ?></title>
 
 		<?php include 'includes/meta_data.php'; ?>
 	</head>
