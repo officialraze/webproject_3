@@ -62,7 +62,7 @@ if (isset($post['switch'])) {
 	switch_darkmode($post['switch']);
 }
 
-// check if darkmode is triggered
+// check if like / delike song
 if (isset($post['save_song']) && isset($post['song_id'])) {
 	like_song($post['save_song'], $post['song_id']);
 }
@@ -216,8 +216,8 @@ function switch_darkmode($switch) {
 /**
  * like songs (add/remove) // AJAX
  *
- * @param string $username
- * @param string $password
+ * @param string $save_song
+ * @param integer $song_id
 */
 function like_song($save_song, $song_id) {
 

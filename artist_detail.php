@@ -35,6 +35,19 @@ $song_query = "SELECT * FROM `song`
 $album_query = "SELECT * FROM `album` album
 				WHERE `artist_id` = ".$get_artist_id;
 
+// check if user is following the artist
+$statement_is_following = $pdo->prepare("SELECT * FROM `following_artist` WHERE (`user_id_link` = :user_id_link) AND (`artist_id` = :artist_id)");
+$statement_is_following->execute(array(':user_id_link' => $artist_id, ':artist_id' => $get_artist_id));
+
+if ($statement_is_following->rowCount() > 0) {
+	$following_class 	= 'is_following';
+	$follow_text 		= IS_FOLLOW;
+}
+else {
+	$following_class = '';
+	$follow_text 		= FOLLOW;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -71,6 +84,7 @@ $album_query = "SELECT * FROM `album` album
 
 						<?php
 						if ($artist_admin == 1) { ?>
+							<a data-artist="<?php echo $get_artist_id; ?>" class="follow_button change_follow_state <?php echo $following_class; ?>"><?php echo $follow_text; ?></a>
 							<a href="add_new_album.php?artist_id=<?php echo $get_artist_id; ?>" class="follow_button"><?php echo ADD_NEW_ALBUM; ?></a>
 							<a href="manage_songs?artist_id=<?php echo $get_artist_id; ?>" class="follow_button"><?php echo MANAGE_SONGS_ABLUMS; ?></a>
 								<div class="upload-btn-wrapper" style="top: 15px; left: 10px;">
@@ -84,7 +98,7 @@ $album_query = "SELECT * FROM `album` album
 							</form>
 						<?php }
 						else { ?>
-							<a href="#" class="follow_button is_following"><?php echo IS_FOLLOW; ?></a>
+							<a href="#" class="follow_button <?php echo $following_class; ?>"><?php echo $follow_text; ?></a>
 						<?php } ?>
 
 						<div id="popular_wrapper">

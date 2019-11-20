@@ -20,10 +20,15 @@ if (isset($post['save_new_album'])) {
 	save_new_album();
 }
 
+// check if image upload form exists
 if (isset($post['upload_artist_image_form'])) {
 	upload_artist_image();
 }
 
+// check if follow / unfollow artist
+if (isset($post['follow_unfollow']) && isset($post['artist'])) {
+	follow_artist($post['follow_unfollow'], $post['artist']);
+}
 
 /**
  * Save new album into db
@@ -165,6 +170,33 @@ function upload_artist_image() {
 			header("Location: ../artist_detail.php?artist_id=".$artist."&message=upload_artist_image_false_file_format");
 		}
 	}
+}
+
+
+
+/**
+ * follow or unfollow artist // AJAX
+ *
+ * @param string $follow_unfollow
+ * @param integer $artist
+*/
+function follow_artist($follow_unfollow, $artist) {
+
+	// includes
+	include '../config.php';
+	include '../includes/db.php';
+
+	if ($follow_unfollow == 'follow_artist') {
+		// follow artist
+		$statement = $pdo->prepare("INSERT INTO following_artist (user_id_link, artist_id) VALUES (?, ?)");
+		$statement->execute(array($_SESSION['user']['id'], $artist));
+	}
+	else {
+		// unfollow artist
+		$statement = $pdo->prepare("DELETE FROM following_artist WHERE user_id_link = :user_id AND artist_id = :artist_id");
+		$statement->execute(array('user_id' => $_SESSION['user']['id'], 'artist_id' => $artist));
+	}
+
 }
 
 ?>

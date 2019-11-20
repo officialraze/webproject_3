@@ -41,15 +41,26 @@ $following_artists = "SELECT artists.* FROM `following_artist` following_artist
 				<h3 class="short_title"><?php echo ARTISTS; ?></h3>
 
 				<div class="artists_overview">
-						<?php foreach ($pdo->query($following_artists) as $artist) {
-						?>
-						<a href="artist_detail.php?artist_id=<?php echo $artist['artist_id']; ?>">
-							<div class="artist_box">
-								<img src="img/artists/artist_<?php echo $artist['artist_id'];?>.jpg">
-								<h3 class="artist_name"><?php echo $artist['artist_firstname'].' '.$artist['artist_lastname']; ?></h3>
-							</div>
-						</a>
-						<?php } ?>
+						<?php
+						$no_data = TRUE;
+
+						foreach ($pdo->query($following_artists) as $artist) {
+							if (!empty($artist)) { ?>
+								<a href="artist_detail.php?artist_id=<?php echo $artist['artist_id']; ?>">
+									<div class="artist_box">
+										<img src="img/artists/artist_<?php echo $artist['artist_id'];?>.jpg">
+										<h3 class="artist_name"><?php echo $artist['artist_firstname'].' '.$artist['artist_lastname']; ?></h3>
+									</div>
+								</a>
+							<?php }
+							$no_data = FALSE;
+						} ?>
+				</div>
+				<?php
+				if ($no_data == TRUE) {
+					echo NO_DATA;
+				}
+				?>
 			</div>
-		</div>
-	</body>
+		</body>
+</html>
