@@ -15,10 +15,13 @@ include 'class.music.php';
 // get post data
 $post = $_POST;
 
-
 // check if album information are set
 if (isset($post['save_new_album'])) {
 	save_new_album();
+}
+
+if (isset($post['upload_artist_image_form'])) {
+	upload_artist_image();
 }
 
 
@@ -117,6 +120,49 @@ function save_new_album() {
 					$error['upload_song'] = TRUE;
 				}
 			}
+		}
+	}
+}
+
+
+
+/**
+ * Upload artist image
+ *
+ * @param string
+ * @param string
+*/
+function upload_artist_image() {
+
+	// globalize post data
+	global $post;
+	$error = array();
+	$error['missing_fields'] = array();
+	$artist = $post['artist_id'];
+
+	// includes
+	include '../config.php';
+	include '../includes/db.php';
+
+	$allow_image = array("jpg");
+	if ($_FILES['artist_image']['tmp_name']) {
+
+		// prepare data
+		$info = explode('.', strtolower($_FILES['artist_image']['name']));
+		$old_path = $_FILES['artist_image']['tmp_name'];
+		$new_path = '../img/artists/artist_'.$artist.'.'.end($info);
+
+		if (in_array(end($info), $allow_image)) {
+			if (move_uploaded_file($old_path, $new_path)) {
+				$error['upload_artist_image'] = '';
+				header("Location: ../artist_detail.php?artist_id=".$artist."&message=upload_artist_image_successfull");
+			}
+			else {
+				$error['upload_artist_image'] = TRUE;
+			}
+		}
+		else {
+			header("Location: ../artist_detail.php?artist_id=".$artist."&message=upload_artist_image_false_file_format");
 		}
 	}
 }

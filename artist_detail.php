@@ -73,6 +73,15 @@ $album_query = "SELECT * FROM `album` album
 						if ($artist_admin == 1) { ?>
 							<a href="add_new_album.php?artist_id=<?php echo $get_artist_id; ?>" class="follow_button"><?php echo ADD_NEW_ALBUM; ?></a>
 							<a href="manage_songs?artist_id=<?php echo $get_artist_id; ?>" class="follow_button"><?php echo MANAGE_SONGS_ABLUMS; ?></a>
+								<div class="upload-btn-wrapper" style="top: 15px; left: 10px;">
+									<form class="" action="classes/class.artist.php" method="post" enctype="multipart/form-data">
+										<input accept="image/*" name="artist_image" type="file" class="upload_artist_image" id="artist_image">
+										<button class="btn with_icon"><img src="img/assets/image_upload.svg" class="music_icon svg" alt="<?php echo ALBUM_ADD_SONGS; ?>"></button>
+										<input type="hidden" value="true" name="upload_artist_image_form"/>
+										<input type="hidden" name="artist_id" value="<?php echo $artist_id; ?>">
+								</div>
+								<input class="submit-button" type="submit" value="<?php echo SAVE; ?>" name="submit" id="submit"/>
+							</form>
 						<?php }
 						else { ?>
 							<a href="#" class="follow_button is_following"><?php echo IS_FOLLOW; ?></a>
@@ -178,8 +187,13 @@ $album_query = "SELECT * FROM `album` album
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
+		<script type="text/javascript">
+			$("#submit").hide();
+			$("#artist_image").on("change", function(){
+				$("#submit").show();
+			});
+		</script>
 	</body>
 </html>
