@@ -12,7 +12,7 @@ include 'includes/check_login.php';
 
 // unset session and set new active element
 unset($_SESSION['active']);
-$_SESSION['active'] 			= 'artist';
+$_SESSION['active'] 			= 'artists';
 $_SESSION['active_meta_nav']	= 'discover';
 
 // check if user isset in url
