@@ -19,6 +19,9 @@ $song_query = "SELECT * FROM `song`
 				INNER JOIN `artist` artist ON artist.artist_id = album.artist_id
 				ORDER BY `song_id` DESC LIMIT 3";
 
+$artist_query = "SELECT * FROM `artist` ORDER BY RAND() LIMIT 8";
+
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -51,9 +54,11 @@ $song_query = "SELECT * FROM `song`
 					<div id="artists_u_like">
 						<h3 class="short_title"><?php echo ARTISTS_U_MIGHT_LIKE; ?></h3>
 						<div class="artists_u_like_elements">
-							<div class="artist_box">
-								<img src="img/artists/tokyomachine.jpg" alt="Tokyo Machine">
-							</div>
+							<?php foreach ($pdo->query($artist_query) as $artist) { ?>
+								<div class="artist_box">
+									<a href="artist_detail.php?artist_id=<?php echo $artist['artist_id']; ?>"><img src="img/artists/artist_<?php echo $artist['artist_id']; ?>.jpg" alt="<?php echo $artist['artist_firstname'].' '.$artist['artist_lastname']; ?>"></a>
+								</div>
+							<?php } ?>
 							<div class="cf"></div>
 						</div>
 					</div>

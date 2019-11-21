@@ -103,15 +103,32 @@
 	max-width: 450px;
 	float: left;
 }
-#artists_u_like .artists_u_like_elements {
-	margin-left: -25px;
+#artists_u_like .artists_u_like_elements .artist_box {
+	width: 93px;
+	height: 93px;
+	overflow: hidden;
+	position: relative;
+	border-radius: var(--standard_radius);
+	box-shadow: var(--standard_shadow);
+	margin-left: 26px;
+}
+#artists_u_like .artists_u_like_elements .artist_box:first-child,
+#artists_u_like .artists_u_like_elements .artist_box:nth-child(4n + 1) {
+	margin-left: 0;
+}
+#artists_u_like .artists_u_like_elements .artist_box img {
+	height: 100%;
+	width: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
 }
 .artist_box {
 	width: 25%;
 	margin-left: 0;
 	margin-right: 0;
 	padding-left: 25px;
-	box-sizing: border-box;
 	max-width: 100%;
 	margin-bottom: 25px;
 	float: left;
