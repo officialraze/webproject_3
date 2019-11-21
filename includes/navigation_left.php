@@ -18,7 +18,11 @@ $playlist_query = "SELECT * FROM `playlist` WHERE `user_id` = ".$_SESSION['user'
 <div class="navigation_left">
 	<div class="navigation_wrapper">
 		<div class="profile">
-			<div class="profile_picture" style="background-image: url('img/profiles/user_<?php echo $_SESSION['user']['id']; ?>.jpg');background-position: center; background-size: 250%;" alt="Profil-Bild"></div>
+			<?php if (file_exists('img/profiles/user_'.$_SESSION['user']['id'].'.jpg')) { ?>
+			<div class="profile_picture" style="background-image: url('img/profiles/user_<?php echo $_SESSION['user']['id']; ?>.jpg');background-position: center; background-size: 140%;" alt="user_image"></div>
+			<?php } else { ?>
+			<div class="profile_picture" style="background-image: url('img/profiles/no_user_image.png');background-position: center; background-size: 140%;" alt="user_image"></div>
+			<?php } ?>
 			<h3 class="profile_name">
 				<?php foreach ($pdo->query($query) as $user_data) {
 					echo $user_data['firstname'].' '.$user_data['lastname'];

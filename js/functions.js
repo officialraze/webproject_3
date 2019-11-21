@@ -45,6 +45,12 @@ $(function() {
 	$('#is_artist_checker').change(function() {
 		$('.add_new_artist_form').slideToggle();
 	});
+
+	// super cool image uploader
+	$("#submit").hide();
+	$("#artist_image, #user_image").on("change", function(){
+		$("#submit").show();
+	});
 });
 
 // like songs (add/remove)

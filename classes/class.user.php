@@ -72,6 +72,10 @@ if (isset($post['basic_settings_save'])) {
 	save_user_settings();
 }
 
+// check if image upload form exists
+if (isset($post['upload_user_image_form'])) {
+	upload_user_image();
+}
 
 
 /**
@@ -356,7 +360,49 @@ function save_user_settings() {
 	}
 
 	header("Location: ../settings.php");
+}
 
+
+
+/**
+ * Upload user image
+ *
+ * @param string
+ * @param string
+*/
+function upload_user_image() {
+
+	// globalize post data
+	global $post;
+	$error = array();
+	$error['missing_fields'] = array();
+	$user = $_SESSION['user']['id'];
+
+	// includes
+	include '../config.php';
+	include '../includes/db.php';
+
+	$allow_image = array("jpg");
+	if ($_FILES['user_image']['tmp_name']) {
+
+		// prepare data
+		$info = explode('.', strtolower($_FILES['user_image']['name']));
+		$old_path = $_FILES['user_image']['tmp_name'];
+		$new_path = '../img/profiles/user_'.$user.'.'.end($info);
+
+		if (in_array(end($info), $allow_image)) {
+			if (move_uploaded_file($old_path, $new_path)) {
+				$error['upload_user_image'] = '';
+				header("Location: ../settings.php?message=upload_user_image_successfull");
+			}
+			else {
+				$error['upload_user_image'] = TRUE;
+			}
+		}
+		else {
+			header("Location: ../settings.php?message=upload_user_image_not_successfull");
+		}
+	}
 }
 
 ?>

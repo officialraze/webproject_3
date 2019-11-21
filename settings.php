@@ -36,6 +36,25 @@ $_SESSION['active_meta_nav']	= 'discover';
 				<div class="settings_change">
 					<h2 class="settings"><?php echo SETTINGS_CHANGE; ?></h2>
 
+					<div class="change_profile_image">
+						<h3 class="settings"><?php echo CHANGE_IMAGE; ?></h3>
+						<div class="current_image">
+							<?php if (file_exists('img/profiles/user_'.$_SESSION['user']['id'].'.jpg')) { ?>
+								<img src="img/profiles/user_<?php echo $_SESSION['user']['id'];?>.jpg" alt="user_image">
+							<?php } else { ?>
+								<img src="img/profiles/no_user_image.png" alt="no_user_image">
+							<?php } ?>
+							<div class="upload-btn-wrapper" style="top: 15px; left: 10px;">
+								<form action="classes/class.user.php" method="post" enctype="multipart/form-data">
+									<input accept="image/*" name="user_image" type="file" class="upload_user_image" id="user_image">
+									<button class="btn with_icon"><img src="img/assets/image_upload.svg" class="music_icon svg" alt="<?php echo CHANGE_IMAGE; ?>"></button>
+									<input type="hidden" value="true" name="upload_user_image_form"/>
+							</div>
+						</div>
+						<input class="submit-button" type="submit" value="<?php echo SAVE; ?>" name="submit" id="submit"/>
+						</form>
+					</div>
+
 					<div class="choose_colours">
 						<h3 class="settings"><?php echo SWITCH_DARKMODE; ?></h3>
 						<label class="switch">

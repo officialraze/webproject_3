@@ -203,11 +203,5 @@ else {
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript">
-			$("#submit").hide();
-			$("#artist_image").on("change", function(){
-				$("#submit").show();
-			});
-		</script>
 	</body>
 </html>

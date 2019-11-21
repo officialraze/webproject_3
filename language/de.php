@@ -82,16 +82,15 @@ define('REGISTER_SUCCESSFULL', 'Erfolgreich registriert. Sie können sich nun an
 define('NO_DATA', 'Keine Daten vorhanden');
 define('SAVE', 'Speichern');
 
-// SETTINGS
+// settings
 define('LOGOUT', 'Logout');
 define('LANGUAGE', 'Sprache');
 define('SETTINGS_CHANGE', 'Einstellungen ändern');
 define('SWITCH_DARKMODE', 'Darkmode');
 define('CHANGE_BASICS', 'Benutzerangaben ändern');
-define('ENGLISH', 'English');
-define('DEUTSCH', 'Deutsch');
+define('CHANGE_IMAGE', 'Profilbild ändern');
 
-// EventSslContext
+// events
 define('NEAR_CONCERTS', 'Konzerte in der Nähe');
 define('WHERE', 'Ort');
 define('DATE', 'Datum');
