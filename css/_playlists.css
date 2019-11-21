@@ -1,0 +1,14 @@
+/*
+// --------------------------
+// Webprojekt 3.0
+// Copyright Melvin Lauber
+// --------------------------
+*/
+
+@import "_config.css";
+
+/* @group navigation_left */
+
+h4.short_title {
+  font-size: 20px;
+}
