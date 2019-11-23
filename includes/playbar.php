@@ -1,21 +1,24 @@
 <?php
+session_start();
 /*
 // --------------------------
 // Webprojekt 3.0
 // Copyright Melvin Lauber & David Clausen
 // --------------------------
 */
+
 ?>
 
 <div class="audio-player" style="position: fixed; bottom: 0; height: 111px; width: 100%; background: #fff; box-shadow: 0 -5px 14px rgba(0,0,0,0.16); z-index: 100;">
 	<div id="play-btn"></div>
 	<div class="audio-wrapper" id="player-container" href="javascript:;">
-		<audio id="player" ontimeupdate="initProgressBar();">
-			<source src="music/music_1.wav" type="audio/wav">
-		</audio>
+		<?php if ($no_song == FALSE) { ?>
+			<audio id="player" ontimeupdate="initProgressBar();">
+			</audio>
+		<?php } ?>
 	</div>
 	<div class="player-controls scrubber">
-		<p><a href="album_overview.php?album_id=1">Come With Me </a><small>von</small> <a href="artist_detail.php?artist_id=1">Virtual Riot</a></p>
+
 		<span id="seekObjContainer">
 			<progress id="seekObj" value="0" max="1"></progress>
 		</span>
@@ -27,6 +30,23 @@
 </div>
 
 <script type="text/javascript">
+
+$(function() {
+
+	// remove source before setting a new one
+	if (('.source_music_player').length) {
+		$('.source_music_player').remove();
+	}
+
+	if ($.session.get('song_id') && $.session.get('song_name') && $.session.get('artist_name')) {
+		var song_id 	= $.session.get('song_id');
+		var song_name 	= $.session.get('song_name');
+		var artist_name = $.session.get('artist_name');
+
+		$('<source class="source_music_player" src="music/song_'+song_id+'.mp3" type="audio/mp3">').appendTo('audio#player');
+		$('<p><a href="album_overview.php?album_id=1">'+song_name+' </a><small>von</small> <a href="artist_detail.php?artist_id=1">'+artist_name+'</a></p>').prependTo('.player-controls.scrubber');
+	}
+});
 
 
 function initProgressBar() {
@@ -99,7 +119,7 @@ $(function() {
 		  // ----------------------------------------------------------
 		  if (playBtn != null) {
 			playBtn.addEventListener('click', function() {
-			  togglePlay()
+			  togglePlay();
 			});
 		  }
 

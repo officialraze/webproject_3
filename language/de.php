@@ -27,6 +27,8 @@ define('NEW_SONGS', 'Neue Songs');
 define('TODAY', 'Heute');
 define('WEEK', 'Woche');
 define('MONTH', 'Monat');
+define('OVERVIEW', 'Übersicht');
+define('CURRENTLY_NO_PLAYING', 'Zurzeit wird kein Song abgespielt');
 
 // login
 define('PLEASE_LOGIN', 'Bitte einloggen');
@@ -67,12 +69,6 @@ define('ALBUM_YEAR', 'Erscheinungsjahr');
 define('ALBUM_UPLOAD_COVER', 'Cover hochladen');
 define('ALBUM_ADD_SONGS', 'Songs hinzufügen');
 define('ALBUM_SONG_NAME', 'Name des Songs');
-
-// album overview
-define('OVERVIEW', 'Übersicht');
-
-// radio
-define('RADIO_AND_LIVESTREAMS', 'Radio und Livestreams');
 
 // misc
 define('BACK', 'Zurück');

@@ -35,8 +35,8 @@ $genre_song_query = "SELECT * FROM `song` songs
 
 	<body class="<?php echo $body_class; ?>">
 		<?php include 'includes/navigation_left.php'; ?>
-		<?php include 'includes/playbar.php'; ?>
 		<?php include 'includes/cookie_banner.php'; ?>
+		<div id="playbar_wrapper_loader"></div>
 
 		<div class="main_content_wrapper">
 			<div class="main_content_inner">
@@ -69,7 +69,9 @@ $genre_song_query = "SELECT * FROM `song` songs
 
 								?>
 								<tr>
-									<td class="play"><img src="img/assets/play.svg" class="svg" alt="play"></td>
+									<td class="play"><span class="play_song_wrapper play_song_class" data-song=<?php echo $genre_songs_data['song_id']; ?> data-song_name="<?php echo $genre_songs_data['song_name'];?>" data-artist_name="<?php echo $genre_songs_data['artist_firstname'].' '.$genre_songs_data['artist_lastname']; ?>">
+										 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
+									 </span></td>
 									<td class="song_name"><?php echo $genre_songs_data['song_name']; ?></td>
 									<td class="artist_name"><a href="artist_detail.php?artist_id=<?php echo $genre_songs_data['artist_id']; ?>"><?php echo $genre_songs_data['artist_firstname'].' '.$genre_songs_data['artist_lastname']; ?></a></td>
 									<td class="actions"><span class="like_wrapper like_song like <?php echo $like_class; ?>" data-song=<?php echo $genre_songs_data['song_id']; ?>><img src="img/assets/like.svg" alt="Like" class="svg"></span><img src="img/assets/show_more.svg" class="svg more" alt="show_more"></td>

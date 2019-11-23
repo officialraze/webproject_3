@@ -31,10 +31,12 @@ $artist_query = "SELECT * FROM `artist` artist
 
 $song_query = "SELECT * FROM `song`
 				INNER JOIN `album` album ON album.album_id = song.album_id_link
-				WHERE `artist_id_link` = ".$get_artist_id;
+				WHERE `artist_id_link` = ".$get_artist_id."
+				ORDER BY `song_id` DESC";
 
 $album_query = "SELECT * FROM `album` album
-				WHERE `artist_id` = ".$get_artist_id;
+				WHERE `artist_id` = ".$get_artist_id."
+				ORDER BY `album_id` DESC";
 
 // check if user is following the artist
 $statement_is_following = $pdo->prepare("SELECT * FROM `following_artist` WHERE (`user_id_link` = :user_id_link) AND (`artist_id` = :artist_id)");
@@ -60,8 +62,8 @@ else {
 	</head>
 	<body class="artist_detail <?php echo $body_class; ?>">
 		<?php include 'includes/navigation_left.php'; ?>
-		<?php include 'includes/playbar.php'; ?>
 		<?php include 'includes/cookie_banner.php'; ?>
+		<div id="playbar_wrapper_loader"></div>
 
 		<div class="main_content_wrapper">
 			<div class="main_content_inner">
@@ -99,11 +101,11 @@ else {
 							</form>
 						<?php }
 						else { ?>
-							<a href="#" class="follow_button <?php echo $following_class; ?>"><?php echo $follow_text; ?></a>
+							<a data-artist="<?php echo $get_artist_id; ?>" class="follow_button change_follow_state <?php echo $following_class; ?>"><?php echo $follow_text; ?></a>
 						<?php } ?>
 
 						<div id="popular_wrapper">
-							<h3 class="short_title popular_title"><?php echo POPULAR; ?></h3>
+							<h3 class="short_title popular_title"><?php echo NEW_SONGS; ?></h3>
 
 							<div class="left_wrapper">
 								<?php
@@ -125,7 +127,9 @@ else {
 										?>
 										<div class="popular_song">
 											<div class="popular_song_inner">
-												<img src="img/assets/play.svg" alt="Play" class="svg play_song">
+												<span class="play_song_wrapper play_song_class" data-song=<?php echo $song_data['song_id']; ?> data-song_name="<?php echo $song_data['song_name'];?>" data-artist_name="<?php echo $artist_data['artist_firstname'].' '.$artist_data['artist_lastname']; ?>">
+													 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
+												 </span>
 												<img src="img/covers/<?php echo $song_data['path_to_image']?>" class="cover_img" alt="Cover" width="49px">
 												<div class="song_information">
 													<h4 class="song_name"><?php echo $song_data['song_name'];?></h4>
@@ -151,7 +155,9 @@ else {
 									foreach (array_slice($data, 3) as $song_data) { ?>
 										<div class="popular_song">
 											<div class="popular_song_inner">
-												<img src="img/assets/play.svg" alt="Play" class="svg play_song">
+												<span class="play_song_wrapper play_song_class" data-song=<?php echo $song_data['song_id']; ?> data-song_name="<?php echo $song_data['song_name'];?>" data-artist_name="<?php echo $artist_data['artist_firstname'].' '.$artist_data['artist_lastname']; ?>">
+													 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
+												 </span>
 												<img src="img/covers/<?php echo $song_data['path_to_image']; ?>" class="cover_img" alt="Cover" width="49px">
 												<div class="song_information">
 													<h4 class="song_name"><?php echo $song_data['song_name'];?></h4>

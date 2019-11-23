@@ -1,6 +1,7 @@
 <!-- load all styles -->
 <link rel="stylesheet" href="css/styles.css">
-<script src="js/jquery.min.js" charset="utf-8"></script>
+<script src="addons/jquery.min.js" charset="utf-8"></script>
+<script src="addons/jquerysession.js" charset="utf-8"></script>
 <script src="js/functions.js" charset="utf-8"></script>
 
 <?php // TODO: ADD THIS PLEASE IN FINAL VERSION FOR SHOWING THE CORRECT FONT --> LOCAL INSTALLED FONT LOADS FASTER :) ?>

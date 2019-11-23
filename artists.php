@@ -31,8 +31,8 @@ $following_artists = "SELECT artists.* FROM `following_artist` following_artist
 
 	<body class="<?php echo $body_class; ?>">
 		<?php include 'includes/navigation_left.php'; ?>
-		<?php include 'includes/playbar.php'; ?>
 		<?php include 'includes/cookie_banner.php'; ?>
+		<div id="playbar_wrapper_loader"></div>
 
 		<div class="main_content_wrapper">
 			<div class="main_content_inner">

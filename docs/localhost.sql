@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 19. Nov 2019 um 19:29
+-- Erstellungszeit: 23. Nov 2019 um 16:22
 -- Server-Version: 5.6.34-log
 -- PHP-Version: 7.1.5
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `album` (
   `artist_id` int(11) NOT NULL,
   `path_to_image` varchar(255) NOT NULL,
   PRIMARY KEY (`album_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Daten für Tabelle `album`
@@ -48,7 +48,9 @@ INSERT INTO `album` (`album_id`, `album_name`, `album_year`, `artist_id`, `path_
 (1, 'Lost - Single', 2019, 1, 'lost.jpg'),
 (2, 'Digital World', 2018, 1, 'digital_world.jpg'),
 (3, 'We Could Be - Single', 2019, 1, 'we_could_be.jpg'),
-(17, 'Dragon - Single', 2018, 1, 'dragon.jpg');
+(17, 'Dragon - Single', 2018, 1, 'dragon.jpg'),
+(19, 'test', 1234, 1, 'eyes.jpg'),
+(20, 'another test', 2019, 1, 'sphere.jpg');
 
 -- --------------------------------------------------------
 
@@ -103,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `genre` (
   `genre_id` int(11) NOT NULL AUTO_INCREMENT,
   `genre_name` varchar(255) NOT NULL,
   PRIMARY KEY (`genre_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -201,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `song` (
   KEY `song_fk0` (`artist_id_link`),
   KEY `song_fk1` (`album_id_link`),
   KEY `song_fk2` (`genre_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 --
 -- Daten für Tabelle `song`
@@ -215,7 +217,9 @@ INSERT INTO `song` (`song_id`, `artist_id_link`, `song_name`, `album_id_link`, `
 (7, 1, 'We Could Be', 3, '02:07', 1),
 (8, 1, 'Claws', 2, '02:48', 1),
 (9, 1, 'Goodbye', 2, '01:50', 1),
-(18, 1, 'Dragon', 17, '00:01:02', 3);
+(18, 1, 'Dragon', 17, '00:01:02', 3),
+(20, 1, 'test 1', 19, '00:02:22', 2),
+(21, 1, 'test 2', 20, '03:18', 2);
 
 -- --------------------------------------------------------
 
@@ -243,7 +247,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `firstname`, `lastname`, `password_hash`, `password_token`, `is_artist`, `has_darkmode`) VALUES
-(1, 'molvin95', 'molvinlauber@gmail.com', 'Melvin', 'Lauber', '$2y$10$PGceo51mz2ukP88ypW2HXu9VH9W87TPcINRZIzoM7nzU3dkYZlHOi', '1d7622dc2d2bcfc8de531e31790b049d', 1, 1),
+(1, 'molvin95', 'molvinlauber@gmail.com', 'Melvin', 'Lauber', '$2y$10$PGceo51mz2ukP88ypW2HXu9VH9W87TPcINRZIzoM7nzU3dkYZlHOi', '1d7622dc2d2bcfc8de531e31790b049d', 1, 0),
 (2, 'david.clausen', 'davidclausen2@lernende.bfo-vs.ch', 'David', 'Clausen', '$2y$10$h51xi20m3d6MvY8O16Y1A.6FB5vOV5R1uq9e.OWQ4KIXX.PftMUEu', 'e8bac3df99be1fb31c13a79f7a5bea04', 0, 0);
 
 --

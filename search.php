@@ -30,8 +30,8 @@ if(isset($_POST['search'])) {
 	</head>
 	<body class="<?php echo $body_class; ?>">
 		<?php include 'includes/navigation_left.php'; ?>
-		<?php include 'includes/playbar.php'; ?>
 		<?php include 'includes/cookie_banner.php'; ?>
+		<div id="playbar_wrapper_loader"></div>
 
 		<div class="main_content_wrapper">
 			<div class="main_content_inner">
@@ -78,7 +78,9 @@ if(isset($_POST['search'])) {
 	            if (is_array($song) && !empty($song)) {
 	            // give out grid item / all artists
 							echo "<tr>";
-								echo "<td class='play'><img src='img/assets/play.svg' class='svg' alt='play'></td>";
+								echo '<td class="play"><span class="play_song_wrapper play_song_class" data-song='.$song['song_id'].' data-song_name="'.$song['song_name'].'" data-artist_name="'.$artist['artist_firstname'].' '.$artist['artist_lastname'].'">
+									 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
+								 </span></td>';
 								echo "<td class='song_name'>".$song['song_name']."<td>";
 								echo "<td class='artist_name'><a href='artist_detail.php?artist_id= 1;'>".$artist['artist_firstname'].' '.$artist['artist_lastname']."</a></td>";
 								echo "<td class='actions'><img src='img/assets/like.svg' class='svg like' alt='Like'><img src='img/assets/show_more.svg' class='svg more' alt='show_more'></td>";

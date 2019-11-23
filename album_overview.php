@@ -40,8 +40,8 @@ $album_query = "SELECT * FROM `album` album
 	</head>
 	<body class="<?php echo $body_class; ?>">
 		<?php include 'includes/navigation_left.php'; ?>
-		<?php include 'includes/playbar.php'; ?>
 		<?php include 'includes/cookie_banner.php'; ?>
+		<div id="playbar_wrapper_loader"></div>
 
 		<div class="main_content_wrapper">
 			<div class="main_content_inner">
@@ -83,7 +83,9 @@ $album_query = "SELECT * FROM `album` album
 								?>
 								<div class="popular_song">
 									<div class="popular_song_inner">
-										<img src="img/assets/play.svg" alt="Play" class="svg play_song">
+										<span class="play_song_wrapper play_song_class" data-song=<?php echo $song_data['song_id']; ?> data-song_name="<?php echo $song_data['song_name'];?>" data-artist_name="<?php echo $album_data['artist_firstname'].' '.$album_data['artist_lastname']; ?>">
+											 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
+										 </span>
 										<img src="img/covers/<?php echo $album_data['path_to_image']; ?>" class="cover_img" alt="Cover" width="49px">
 										<div class="song_information">
 											<h4 class="song_name"><?php echo $song_data['song_name'];?></h4>

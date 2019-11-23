@@ -105,24 +105,30 @@ function save_new_album() {
 				$mp3file = new MP3File($_FILES['song_file']['tmp_name'][$song]);
 				$duration = $mp3file->getDurationEstimate();
 				$duration = MP3File::formatTime($duration);
+				$duration = substr($duration, 3);
 
 				$old_path_music = $_FILES['song_file']['tmp_name'][$song];
-				$new_path_music = '../music/'.$song_name;
+				$ending = explode('.', strtolower($song_name));
+				$ending = end($ending);
 
-				if (move_uploaded_file($old_path_music, $new_path_music)) {
+				if ($old_path_music) {
 					$error['upload_song'] = '';
 
 					$song_data = array($artist, ''.$post['song_title'][$song].'', $last_id, ''.$duration.'', $post['genre_selection'][$song]);
-
 					$statement_music = $pdo->prepare("INSERT INTO `song` (artist_id_link, song_name, album_id_link, length, genre_id) VALUES (?, ?, ?, ?, ?)");
 					$statement_music->execute($song_data);
 
-					if ($statement_music) {
+					$stmt_song_id = $pdo->query("SELECT LAST_INSERT_ID()");
+					$last_id_song = $stmt_song_id->fetchColumn();
+
+					$new_path_music = '../music/song_'.$last_id_song.'.'.$ending;
+
+					if ($statement_music && move_uploaded_file($old_path_music, $new_path_music)) {
 						header("Location: ../artist_detail.php?artist_id=".$artist."&message=upload_successfull");
 					}
-				}
-				else {
-					$error['upload_song'] = TRUE;
+					else {
+						$error['upload_song'] = TRUE;
+					}
 				}
 			}
 		}

@@ -73,7 +73,7 @@ h3.popular_title {
 	padding: 8px 25px;
 	box-sizing: border-box;
 }
-.popular_song .popular_song_inner .play_song,
+.popular_song .popular_song_inner .play_song_wrapper,
 .popular_song .popular_song_inner .like_song,
 .popular_song .popular_song_inner .more_song,
 .popular_song .popular_song_inner .song_options .time {
