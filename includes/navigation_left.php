@@ -49,7 +49,7 @@ $playlist_query = "SELECT * FROM `playlist` WHERE `user_id` = ".$_SESSION['user'
 			<h3 class="playlist_title"><?php echo MY_PLAYLISTS; ?></h3>
 			<ul>
 				<?php foreach ($pdo->query($playlist_query) as $playlist_data) { ?>
-					<li class="playlist_element"><a href="playlist_overview.php?playlist_id=<?php echo $playlist_data['playlist_id']; ?>"><?php echo $playlist_data['playlist_name']; ?></a></li>
+					<li class="playlist_element"><a href="playlist_detail.php?playlist_id=<?php echo $playlist_data['playlist_id']; ?>"><?php echo $playlist_data['playlist_name']; ?></a></li>
 				<?php } ?>
 			</ul>
 			<a class="create_playlist" href=""></a>
