@@ -21,6 +21,9 @@ $playlist_song_query = "SELECT playlist_song.playlist_id, songs.*, artists.artis
 					LEFT JOIN `artist` artists ON artists.artist_id = songs.artist_id_link
 					WHERE `playlist_id` = ".$_SESSION['playlist']['id'];
 
+$interact_with_songs_query = "SELECT playlist_song.playlist_id, playlist_song.song_id, songs.* FROM `playlist_song` playlist_song
+					INNER JOIN `song` songs ON songs.song_id = playlist_song.song_id";
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -62,8 +65,23 @@ $playlist_song_query = "SELECT playlist_song.playlist_id, songs.*, artists.artis
 								<tr>
 									<td class="play"><img src="img/assets/play.svg" class="svg" alt="play"></td>
 									<td class="song_name"><?php echo $playlist_songs_data['song_name']; ?></td>
-									<td class="artist_name"><a href="artist_detail.php?artist_id=<?php echo 1; ?>"><?php echo $playlist_songs_data['artist_firstname'].' '.$playlist_songs_data['artist_lastname']; ?></a></td>
-									<td class="actions"><span class="like_wrapper like_song like <?php echo $like_class; ?>" data-song=<?php echo $playlist_songs_data['song_id']; ?>><img src="img/assets/like.svg" alt="Like" class="svg"></span><img src="img/assets/show_more.svg" class="svg more" alt="show_more"></td>
+									<td class="artist_name"><a href="artist_detail.php?artist_id=<?php echo 1; ?>">
+										<?php echo $playlist_songs_data['artist_firstname'].' '.$playlist_songs_data['artist_lastname']; ?></a></td>
+									<td class="actions"><span class="like_wrapper like_song like <?php echo $like_class; ?>" data-song=<?php echo $playlist_songs_data['song_id']; ?>>
+										<img src="img/assets/like.svg" alt="Like" class="svg"></span>
+											<!-- more options for interaction with songs -->
+											<div class="dropdown_show_more">
+												<img src="img/assets/show_more.svg" class="svg_more_dropdown" alt="show_more">
+													<div class="dropdown_show_more_content">
+														<a href="#" <?php
+															$sql = "DELETE FROM playlist_song WHERE song_id=?";
+														?>>Lied löschen</a>
+    												<a href="#" <?php
+
+														?>>Lied einer Playlist hinzufügen</a>
+													</div>
+											</div>
+									</td>
 									<td class="length"><?php echo $playlist_songs_data['length']; ?></td>
 								</tr>
 							<?php } ?>
