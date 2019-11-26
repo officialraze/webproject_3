@@ -12,10 +12,8 @@ session_start();
 <div class="audio-player" style="position: fixed; bottom: 0; height: 111px; width: 100%; background: #fff; box-shadow: 0 -5px 14px rgba(0,0,0,0.16); z-index: 100;">
 	<div id="play-btn"></div>
 	<div class="audio-wrapper" id="player-container" href="javascript:;">
-		<?php if ($no_song == FALSE) { ?>
-			<audio id="player" ontimeupdate="initProgressBar();">
-			</audio>
-		<?php } ?>
+		<audio id="player" ontimeupdate="initProgressBar();">
+		</audio>
 	</div>
 	<div class="player-controls scrubber">
 
