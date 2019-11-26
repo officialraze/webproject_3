@@ -15,7 +15,7 @@ h4.short_title {
 
 /* Style The Dropdown Button */
 .svg_more_dropdown {
-  color: var(--dark_mode_light);;
+  color: var(--dark_mode_light);
   font-size: 16px;
   border: none;
   cursor: pointer;
@@ -31,10 +31,19 @@ h4.short_title {
 .dropdown_show_more_content {
   display: none;
   position: absolute;
-  background-color: var(--dark_mode_light);;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  background-color: var(--dark_mode_light);
+  width: auto;
+  box-shadow: 0px 8px 16px 0px var(--standard_shadow);
   z-index: 1;
+}
+
+/* Input-Fields inside dropdown */
+input.dropdown {
+  color: var(--text);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border: none;
 }
 
 /* Links inside the dropdown */

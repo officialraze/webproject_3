@@ -73,12 +73,25 @@ $interact_with_songs_query = "SELECT playlist_song.playlist_id, playlist_song.so
 											<div class="dropdown_show_more">
 												<img src="img/assets/show_more.svg" class="svg_more_dropdown" alt="show_more">
 													<div class="dropdown_show_more_content">
-														<a href="#" <?php
-															$sql = "DELETE FROM playlist_song WHERE song_id=?";
-														?>>Lied löschen</a>
-    												<a href="#" <?php
+														<div class="dropdown_menu_delete">
+															<form action="" method="post">
+															<input type="hidden" name="delete" value="yes">
+  														<input type="hidden" name="row" value="<?php $row['song_id'] ?>">
+															<input class="dropdown" type="submit" name="delete" value="Lösche Song" <?php
+															if (isset($_POST['delete']) && isset($_POST['row']))
+																{
+																	$current_id = $row['song_id'];
+																	$delete_song_playlist = "DELETE FROM playlist_song WHERE song_id = '$current_id'";
 
-														?>>Lied einer Playlist hinzufügen</a>
+																	$execute_delete_song = $pdo->query($delete_song_playlist);
+																}
+															?>></input></form>
+														</div>
+														<div class="dropdown_menu_add">
+    													<a href="#" <?php
+																// muss komplett geändert und angepasst werden - von a zu input
+															?>>Lied einer Playlist hinzufügen</a>
+														</div>
 													</div>
 											</div>
 									</td>
