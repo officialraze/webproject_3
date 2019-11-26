@@ -76,11 +76,13 @@ $interact_with_songs_query = "SELECT playlist_song.playlist_id, playlist_song.so
 														<div class="dropdown_menu_delete">
 															<form action="" method="post">
 															<input type="hidden" name="delete" value="yes">
-  														<input type="hidden" name="row" value="<?php $row['song_id'] ?>">
+  														<input type="hidden" name="row" value="<?php echo $playlist_songs_data['song_id']; ?>">
 															<input class="dropdown" type="submit" name="delete" value="Lösche Song" <?php
 															if (isset($_POST['delete']) && isset($_POST['row']))
 																{
-																	$current_id = $row['song_id'];
+																	// $current_id is the problem, it doesn't recognize the correct id and doesn't delete anything.
+																	// If $playlist_songs_data['song_id'] is directly $current_id, it deletes all the content of table playlist_song
+																	$current_id = $_POST['row'];
 																	$delete_song_playlist = "DELETE FROM playlist_song WHERE song_id = '$current_id'";
 
 																	$execute_delete_song = $pdo->query($delete_song_playlist);
