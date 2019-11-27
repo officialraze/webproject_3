@@ -18,7 +18,7 @@ $_SESSION['active_meta_nav']	= 'discover';
 // set album id
 if (isset($_GET['album_id']) && !empty($_GET['album_id']) && $_GET['album_id'] > 0 && isset($_GET['artist_id']) && !empty($_GET['artist_id']) && $_GET['artist_id'] > 0) {
 	$album_id = $_GET['album_id'];
-	$artist_id = $_GET['$artist_id'];
+	$artist_id = $_GET['artist_id'];
 }
 
 $song_query = "SELECT * FROM `song` song

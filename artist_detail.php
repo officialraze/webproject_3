@@ -200,7 +200,7 @@ else {
 									$limit_songs = 0;
 									foreach ($pdo->query($song_query) as $song_data) { ?>
 											<div class="song_item">
-												<img src="img/covers/<?php echo $song_data['path_to_image']; ?>" alt="Album" width="175">
+												<a href="album_overview.php?album_id=<?php echo $song_data['album_id']?>&artist_id=<?php echo $get_artist_id; ?>"><img src="img/covers/<?php echo $song_data['path_to_image']?>" alt="Album" width="175"></a>
 											</div>
 									<?php if (++$limit_songs == 6) break; } ?>
 							</div>
