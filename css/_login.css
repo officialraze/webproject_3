@@ -53,6 +53,7 @@
 input[type="text"],
 input[type="password"],
 input[type="number"],
+input[type="date"],
 textarea {
 	font-size: 12px;
     line-height: 16px;

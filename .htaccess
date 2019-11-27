@@ -13,3 +13,7 @@ ErrorDocument 404 /molvin_web/error.php
 
 #ErrorDocument 500 /500.php
 #Internal Server Error
+
+# Change max upload filesize & post max upload
+php_value upload_max_filesize 100M
+php_value post_max_size 100M

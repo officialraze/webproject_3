@@ -38,7 +38,7 @@ $following_artists = "SELECT artists.* FROM `following_artist` following_artist
 			<div class="main_content_inner">
 				<!-- search and main nav -->
 				<?php include 'includes/search_navi.php'; ?>
-				<h3 class="short_title"><?php echo ARTISTS; ?></h3>
+				<h3 class="short_title"><?php echo ARTISTS_FOLLOW; ?></h3>
 
 				<div class="artists_overview">
 						<?php

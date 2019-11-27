@@ -35,6 +35,7 @@ a.follow_button:hover,
 a.follow_button.is_following {
 	background: var(--primary-color_light);
 	color: var(--primary-color);
+	cursor: pointer;
 }
 h3.popular_title {
 	margin-bottom: 25px;
@@ -330,6 +331,39 @@ h3.popular_title {
 .upload-btn-wrapper input[type=file],
 .upload-btn-wrapper input[type=file]:hover ~ .btn {
 	cursor: pointer;
+}
+
+/* @end */
+
+
+/* @group manage events */
+
+.event_element {
+	position: relative;
+	margin-top: 20px;
+}
+.event_element:first-child {
+	margin-top: 0;
+}
+input.triplet {
+	float: left;
+	width: 30%;
+	margin-left: 20px;
+}
+input.triplet:first-child {
+	margin-left: 0;
+}
+.new_event_form {
+	position: relative;
+}
+.event_element .follow_button,
+.new_event_form .submit-button {
+	position: absolute;
+	right: -50px;
+	top: 10px;
+}
+.add_event_wrap {
+	margin-top: 80px;
 }
 
 /* @end */

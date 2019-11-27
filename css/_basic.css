@@ -18,6 +18,32 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.message {
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	top: 50px;
+	right: 50px;
+	padding: 20px 40px;
+	box-sizing: border-box;
+	border-radius: var(--standard_radius);
+	transition: var(--standard_transition);
+	text-align: center;
+}
+.message.visible {
+	visibility: visible;
+	opacity: 1;
+	transition: var(--standard_transition);
+}
+.message.true {
+	background: #3CB371;
+	color: #fff;
+}
+.message.false {
+	background: #b20000;
+	color: #fff;
+}
+
 h1 {
 	font-size: 48px;
 	line-height: 56px;

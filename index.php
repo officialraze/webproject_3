@@ -21,7 +21,6 @@ $song_query = "SELECT * FROM `song`
 
 $artist_query = "SELECT * FROM `artist` ORDER BY RAND() LIMIT 8";
 
-
 ?>
 <!DOCTYPE html>
 <html lang="de">

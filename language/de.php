@@ -63,12 +63,18 @@ define('SONGS', 'Songs');
 define('SHOW_ALL', 'Alle anzeigen');
 define('ADD_NEW_ALBUM', 'Neues Album hinzufügen');
 define('MANAGE_SONGS_ABLUMS', 'Alben und Songs verwalten');
+define('MANAGE_EVENTS', 'Konzerte verwalten');
 define('ALBUM_PROPERTIES', 'Album Eigenschaften');
 define('ALBUM_NAME', 'Name des Albums');
 define('ALBUM_YEAR', 'Erscheinungsjahr');
 define('ALBUM_UPLOAD_COVER', 'Cover hochladen');
 define('ALBUM_ADD_SONGS', 'Songs hinzufügen');
 define('ALBUM_SONG_NAME', 'Name des Songs');
+define('ARTISTS_FOLLOW', 'Künstler, denen du folgst');
+define('ADD_EVENT', 'Konzert hinzufügen');
+define('NAME_OF_EVENT', 'Name des Konzerts');
+define('PLACE_OF_EVENT', 'Ort des Konzerts');
+define('DATE_OF_EVENT', 'Datum des Konzerts');
 
 // misc
 define('BACK', 'Zurück');

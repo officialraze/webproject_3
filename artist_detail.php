@@ -90,6 +90,7 @@ else {
 							<a data-artist="<?php echo $get_artist_id; ?>" class="follow_button change_follow_state <?php echo $following_class; ?>"><?php echo $follow_text; ?></a>
 							<a href="add_new_album.php?artist_id=<?php echo $get_artist_id; ?>" class="follow_button"><?php echo ADD_NEW_ALBUM; ?></a>
 							<a href="manage_songs.php?artist_id=<?php echo $get_artist_id; ?>" class="follow_button"><?php echo MANAGE_SONGS_ABLUMS; ?></a>
+							<a href="manage_events.php?artist_id=<?php echo $get_artist_id; ?>" class="follow_button"><?php echo MANAGE_EVENTS; ?></a>
 								<div class="upload-btn-wrapper" style="top: 15px; left: 10px;">
 									<form class="" action="classes/class.artist.php" method="post" enctype="multipart/form-data">
 										<input accept="image/*" name="artist_image" type="file" class="upload_artist_image" id="artist_image">

@@ -30,6 +30,15 @@ if (isset($post['follow_unfollow']) && isset($post['artist'])) {
 	follow_artist($post['follow_unfollow'], $post['artist']);
 }
 
+// save event changes
+if (isset($post['event_name_val']) && isset($post['place_val']) && isset($post['event_date_val']) && isset($post['event_id_val'])) {
+	save_event_changes($post['event_name_val'], $post['place_val'], $post['event_date_val'], $post['event_id_val']);
+}
+
+if (isset($post['new_event_form']) && isset($post['new_event_name']) && isset($post['new_place']) && isset($post['new_event_date'])) {
+	add_event($post['new_event_name'], $post['new_place'], $post['new_event_date']);
+}
+
 /**
  * Save new album into db
  *
@@ -202,6 +211,53 @@ function follow_artist($follow_unfollow, $artist) {
 		$statement = $pdo->prepare("DELETE FROM following_artist WHERE user_id_link = :user_id AND artist_id = :artist_id");
 		$statement->execute(array('user_id' => $_SESSION['user']['id'], 'artist_id' => $artist));
 	}
+
+}
+
+
+
+/**
+ * save event changes // AJAX
+ *
+ * @param string $event_name
+ * @param string $place
+ * @param date $event_date
+ * @param integer $event_id
+*/
+function save_event_changes($event_name, $place, $event_date, $event_id) {
+
+	// includes
+	include '../config.php';
+	include '../includes/db.php';
+
+	$statement = $pdo->prepare("UPDATE `events` SET event_name = :event_name, place = :place, event_date = :event_date WHERE id = :id");
+	$statement->execute(array('id' => $event_id, 'event_name' => $event_name, 'place' => $place, 'event_date' => $event_date));
+
+}
+
+
+
+/**
+ * save new event
+ *
+ * @param string $follow_unfollow
+ * @param integer $artist
+*/
+function add_event($new_event_name, $new_place, $new_event_date) {
+
+	// set artist id
+	$artist = $_SESSION['user']['id'];
+
+	// includes
+	include '../config.php';
+	include '../includes/db.php';
+
+	// add new event
+	$statement = $pdo->prepare("INSERT INTO `events` (artist_id_link, event_name, place, event_date) VALUES (?, ?, ?, ?)");
+	$statement->execute(array($artist, $new_event_name, $new_place, $new_event_date));
+
+	// redirect to events management
+	header('Location: ../manage_events.php?artist_id='.$artist.'&message=true');
 
 }
 

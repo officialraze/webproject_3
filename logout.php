@@ -11,5 +11,5 @@ session_start();
 session_destroy();
 
 // redirect to index (call login form)
-header("Location: index.php");
+header("Location: login.php?message=logout_true");
 ?>

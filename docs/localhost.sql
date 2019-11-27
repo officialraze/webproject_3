@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 23. Nov 2019 um 16:22
+-- Erstellungszeit: 27. Nov 2019 um 22:25
 -- Server-Version: 5.6.34-log
 -- PHP-Version: 7.1.5
 
@@ -74,6 +74,31 @@ CREATE TABLE IF NOT EXISTS `artist` (
 
 INSERT INTO `artist` (`artist_id`, `user_id`, `artist_firstname`, `artist_lastname`, `biography`) VALUES
 (1, 1, 'raze.exe', '', 'raze.exe is a 19 year old swiss producer who started making music in 2012. Inspired from artists like Virtual Riot or Skrillex, he\'s now making similar EDM music. His main genre is Future Bass but is also known for his few Dubstep and Glitch Hop songs. His song \'Ocean\' starts to get known.');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `events`
+--
+
+CREATE TABLE IF NOT EXISTS `events` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `artist_id_link` int(11) NOT NULL,
+  `event_name` varchar(255) NOT NULL,
+  `place` varchar(255) NOT NULL,
+  `event_date` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `artist_id_link` (`artist_id_link`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `events`
+--
+
+INSERT INTO `events` (`id`, `artist_id_link`, `event_name`, `place`, `event_date`) VALUES
+(1, 1, 'EDM Party', 'Bern', '2019-12-20'),
+(2, 1, 'Rampage', 'Belgien', '2020-04-15'),
+(3, 1, 'test', 'test', '2020-02-20');
 
 -- --------------------------------------------------------
 
@@ -161,7 +186,6 @@ CREATE TABLE IF NOT EXISTS `playlist_song` (
 --
 
 INSERT INTO `playlist_song` (`playlist_id`, `song_id`) VALUES
-(1, 1),
 (1, 2);
 
 -- --------------------------------------------------------
@@ -259,6 +283,12 @@ INSERT INTO `users` (`id`, `username`, `email`, `firstname`, `lastname`, `passwo
 --
 ALTER TABLE `artist`
   ADD CONSTRAINT `artist_fk0` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints der Tabelle `events`
+--
+ALTER TABLE `events`
+  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`artist_id_link`) REFERENCES `artist` (`artist_id`);
 
 --
 -- Constraints der Tabelle `following_artist`

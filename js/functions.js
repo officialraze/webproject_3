@@ -11,6 +11,44 @@ $(function() {
 	// load playbar
 	$('#playbar_wrapper_loader').load('includes/playbar.php');
 
+	// check if message isset
+	if (window.location.href.indexOf("message=") > -1) {
+
+		if (window.location.href.indexOf("message=true") > -1) {
+			var message_value = "true";
+			var message_text = "Änderungen erfolgreich gespeichert!";
+		}
+		else if (window.location.href.indexOf("message=empty_fields") > -1) {
+			var message_value = "false";
+			var message_text = 'Bitte füllen Sie alle Felder aus!';
+		}
+		else if (window.location.href.indexOf("message=login_true") > -1) {
+			var message_value = "true";
+			var message_text = 'Erfolgreich eingeloggt!';
+		}
+		else if (window.location.href.indexOf("message=logout_true") > -1) {
+			var message_value = "true";
+			var message_text = 'Erfolgreich abgemeldet!';
+		}
+		else {
+			var message_value = "false";
+			var message_text = "Änderungen wurden nicht übernommen!";
+		}
+
+		// add message
+		$('<div class="message '+message_value+'">'+message_text+'</div>').prependTo('body');
+
+		// add for smoothing
+		setTimeout(function(){
+			$('.message').addClass('visible');
+		}, 300);
+
+		// remove message after certain time
+		setTimeout(function(){
+			$('.message').removeClass('visible');
+		}, 4000);
+    }
+
 	// change img tag with class svg into an svg
     activate('img[src*=".svg"]');
 

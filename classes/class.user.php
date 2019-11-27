@@ -22,7 +22,7 @@ if (isset($post['login_form'])) {
 		login_user($username_mail, $user_password);
 	}
 	else {
-		header("Location: login.php");
+		header("Location: ../login.php?message=empty_fields");
 	}
 }
 
@@ -43,7 +43,7 @@ if (isset($post['password_reset_form'])) {
 		send_password_reset_link($post['username']);
 	}
 	else {
-		header("Location: ../password_reset.php");
+		header("Location: ../password_reset.php?message=empty_fields");
 	}
 }
 
@@ -98,12 +98,11 @@ function login_user($username, $password) {
 	// check if password is correct
 	if ($user !== false && password_verify($password, $user['password_hash'])) {
 		$_SESSION['user'] = $user;
-		header("Location: ../index.php");
+		header("Location: ../index.php?message=login_true");
 		die();
 	}
 	else {
-		$errorMessage = "E-Mail oder Passwort war ungültig<br>";
-		header("Location: ../login.php");
+		header("Location: ../login.php?login=false");
 		die();
 	}
 }
@@ -337,29 +336,36 @@ function save_user_settings() {
 	// TODO:
 	// check if username or email already exists
 
-	// get new username
-	if (isset($post['change_username']) && !empty($post['change_username'])) {
-		$username = $post['change_username'];
-		$statement = $pdo->prepare("UPDATE `users` SET `username` = :username WHERE id = ".$_SESSION['user']['id']);
-		$statement->execute(array('username' => $username));
+	if (isset($post['change_username']) && !empty($post['change_username']) && isset($post['change_username']) && !empty($post['change_mail']) && isset($post['change_pw']) && !empty($post['change_pw'])) {
+
+		// get new username
+		if (isset($post['change_username']) && !empty($post['change_username'])) {
+			$username = $post['change_username'];
+			$statement = $pdo->prepare("UPDATE `users` SET `username` = :username WHERE id = ".$_SESSION['user']['id']);
+			$statement->execute(array('username' => $username));
+		}
+
+		// get new mail
+		if (isset($post['change_username']) && !empty($post['change_mail'])) {
+			$mail = $post['change_mail'];
+			$statement = $pdo->prepare("UPDATE `users` SET `email` = :email WHERE id = ".$_SESSION['user']['id']);
+			$statement->execute(array('email' => $mail));
+		}
+
+		// get new password
+		if (isset($post['change_pw']) && !empty($post['change_pw'])) {
+			$password = $post['change_pw'];
+			$password_hash = password_hash($password, PASSWORD_DEFAULT);
+			$statement = $pdo->prepare("UPDATE `users` SET password_hash = :password WHERE id = ".$_SESSION['user']['id']);
+			$statement->execute(array('password' => $password_hash));
+		}
+
+		header("Location: ../settings.php");
+	}
+	else {
+		header("Location: ../settings.php?message=false");
 	}
 
-	// get new mail
-	if (isset($post['change_username']) && !empty($post['change_mail'])) {
-		$mail = $post['change_mail'];
-		$statement = $pdo->prepare("UPDATE `users` SET `email` = :email WHERE id = ".$_SESSION['user']['id']);
-		$statement->execute(array('email' => $mail));
-	}
-
-	// get new password
-	if (isset($post['change_pw']) && !empty($post['change_pw'])) {
-		$password = $post['change_pw'];
-		$password_hash = password_hash($password, PASSWORD_DEFAULT);
-		$statement = $pdo->prepare("UPDATE `users` SET password_hash = :password WHERE id = ".$_SESSION['user']['id']);
-		$statement->execute(array('password' => $password_hash));
-	}
-
-	header("Location: ../settings.php");
 }
 
 
