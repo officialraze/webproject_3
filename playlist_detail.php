@@ -89,21 +89,17 @@ $interact_with_songs_query = "SELECT playlist_song.playlist_id, playlist_song.so
 															?>></input></form>
 														</div>
 														<div class="dropdown_menu_add">
-    													<form action="" method="post">
-																<input type="hidden" name="field1" value="">
-																<input type="hidden" name="row" value="<?php echo $playlist_songs_data['song_id']; ?>">
-																<input class="dropdown" type="submit" name="add" value="Lied einer Playlist hinzufügen" <?php
-																// function for adding current song to a specific playlist
-																if (isset($_POST['field1']) && isset($_POST['row']))
-																{
-																	$current_id = $_POST['row'];
+															<p class="add_to_playlist">zu Playlist hinzufügen</p>
+															<div class="subnavi">
+																<?php // TODO: foreach playlists ?>
+																<a href="classes/class.playlist.php?playlist_id=1&song_id=1">Top 50 EDM</a>
 
-																	// subnav coming out with the different playlists as buttons. One button creates another, new playlist.
-																	// you can click on the playlists to add it to them. The Fancybox closes automaticly.
-																	// adds an entry in the playlist_song table with the id of the playlist and the id of the song.
-
-																}
-															?>></input></form>
+																<form action="classes/class.playlist.php" method="post">
+																	<input class="add_to_playlist_input" type="text" name="new_playlist" value="" placeholder="Bitte Namen eingeben">
+																	<input type="hidden" name="new_playlist_form" value="true">
+																	<input type="submit" name="submit_new_playlist" value="<?php echo SAVE; ?>">
+																</form>
+															</div>
 														</div>
 													</div>
 											</div>

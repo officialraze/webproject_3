@@ -26,7 +26,7 @@ body.dark .navigation_left .main_navigation ul li.navigation_element a svg path 
 }
 
 body.dark p {
-  color: var(--dark_mode_light) !important;
+  color: var(--dark_mode_light);
 }
 
 body.dark h1 {
