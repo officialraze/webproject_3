@@ -98,7 +98,7 @@ $interact_with_songs_query = "SELECT playlist_song.playlist_id, playlist_song.so
 																{
 																	$current_id = $_POST['row'];
 
-																	// Fancybox coming out with the different playlists as buttons. One button creates another, new playlist.
+																	// subnav coming out with the different playlists as buttons. One button creates another, new playlist.
 																	// you can click on the playlists to add it to them. The Fancybox closes automaticly.
 																	// adds an entry in the playlist_song table with the id of the playlist and the id of the song.
 
