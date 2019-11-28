@@ -21,7 +21,7 @@ body {
 .message {
 	opacity: 0;
 	visibility: hidden;
-	position: absolute;
+	position: fixed;
 	top: 50px;
 	right: 50px;
 	padding: 20px 40px;
@@ -29,6 +29,7 @@ body {
 	border-radius: var(--standard_radius);
 	transition: var(--standard_transition);
 	text-align: center;
+	z-index: 100;
 }
 .message.visible {
 	visibility: visible;
@@ -40,7 +41,7 @@ body {
 	color: #fff;
 }
 .message.false {
-	background: #b20000;
+	background: var(--error_color);
 	color: #fff;
 }
 

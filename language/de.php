@@ -83,6 +83,7 @@ define('PLEASE_CHOOSE', 'Bitte wählen');
 define('REGISTER_SUCCESSFULL', 'Erfolgreich registriert. Sie können sich nun anmelden');
 define('NO_DATA', 'Keine Daten vorhanden');
 define('SAVE', 'Speichern');
+define('DELETE', 'Löschen');
 
 // settings
 define('LOGOUT', 'Logout');

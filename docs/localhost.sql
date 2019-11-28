@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 27. Nov 2019 um 22:25
+-- Erstellungszeit: 28. Nov 2019 um 21:33
 -- Server-Version: 5.6.34-log
 -- PHP-Version: 7.1.5
 
@@ -46,7 +46,6 @@ CREATE TABLE IF NOT EXISTS `album` (
 
 INSERT INTO `album` (`album_id`, `album_name`, `album_year`, `artist_id`, `path_to_image`) VALUES
 (1, 'Lost - Single', 2019, 1, 'lost.jpg'),
-(2, 'Digital World', 2018, 1, 'digital_world.jpg'),
 (3, 'We Could Be - Single', 2019, 1, 'we_could_be.jpg'),
 (17, 'Dragon - Single', 2018, 1, 'dragon.jpg'),
 (19, 'test', 1234, 1, 'eyes.jpg'),
@@ -181,13 +180,6 @@ CREATE TABLE IF NOT EXISTS `playlist_song` (
   KEY `playlist_song_fk1` (`song_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Daten für Tabelle `playlist_song`
---
-
-INSERT INTO `playlist_song` (`playlist_id`, `song_id`) VALUES
-(1, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -206,9 +198,7 @@ CREATE TABLE IF NOT EXISTS `saved_songs` (
 --
 
 INSERT INTO `saved_songs` (`user_id_link`, `song_id`) VALUES
-(1, 18),
-(1, 9),
-(1, 8);
+(1, 18);
 
 -- --------------------------------------------------------
 
@@ -225,8 +215,8 @@ CREATE TABLE IF NOT EXISTS `song` (
   `genre_id` int(11) NOT NULL,
   PRIMARY KEY (`song_id`),
   KEY `song_fk0` (`artist_id_link`),
-  KEY `song_fk1` (`album_id_link`),
-  KEY `song_fk2` (`genre_id`)
+  KEY `song_fk2` (`genre_id`),
+  KEY `song_fk1` (`album_id_link`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 --
@@ -234,13 +224,8 @@ CREATE TABLE IF NOT EXISTS `song` (
 --
 
 INSERT INTO `song` (`song_id`, `artist_id_link`, `song_name`, `album_id_link`, `length`, `genre_id`) VALUES
-(1, 1, 'Lost', 1, '03:18', 1),
-(2, 1, 'Ocean', 2, '02:14', 1),
-(5, 1, 'Ambient', 2, '02:37', 1),
-(6, 1, 'Bells', 2, '02:18', 1),
+(1, 1, 'Lost', 1, '03:18', 2),
 (7, 1, 'We Could Be', 3, '02:07', 1),
-(8, 1, 'Claws', 2, '02:48', 1),
-(9, 1, 'Goodbye', 2, '01:50', 1),
 (18, 1, 'Dragon', 17, '00:01:02', 3),
 (20, 1, 'test 1', 19, '00:02:22', 2),
 (21, 1, 'test 2', 20, '03:18', 2);
@@ -308,21 +293,21 @@ ALTER TABLE `playlist`
 --
 ALTER TABLE `playlist_song`
   ADD CONSTRAINT `playlist_song_fk0` FOREIGN KEY (`playlist_id`) REFERENCES `playlist` (`playlist_id`),
-  ADD CONSTRAINT `playlist_song_fk1` FOREIGN KEY (`song_id`) REFERENCES `song` (`song_id`);
+  ADD CONSTRAINT `playlist_song_fk1` FOREIGN KEY (`song_id`) REFERENCES `song` (`song_id`) ON DELETE CASCADE;
 
 --
 -- Constraints der Tabelle `saved_songs`
 --
 ALTER TABLE `saved_songs`
   ADD CONSTRAINT `saved_songs_fk0` FOREIGN KEY (`user_id_link`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `saved_songs_fk1` FOREIGN KEY (`song_id`) REFERENCES `song` (`song_id`);
+  ADD CONSTRAINT `saved_songs_fk1` FOREIGN KEY (`song_id`) REFERENCES `song` (`song_id`) ON DELETE CASCADE;
 
 --
 -- Constraints der Tabelle `song`
 --
 ALTER TABLE `song`
   ADD CONSTRAINT `song_fk0` FOREIGN KEY (`artist_id_link`) REFERENCES `artist` (`artist_id`),
-  ADD CONSTRAINT `song_fk1` FOREIGN KEY (`album_id_link`) REFERENCES `album` (`album_id`);
+  ADD CONSTRAINT `song_fk1` FOREIGN KEY (`album_id_link`) REFERENCES `album` (`album_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

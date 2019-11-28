@@ -31,6 +31,14 @@ a.follow_button.is_following:hover {
 	box-sizing: border-box;
 	margin-bottom: 20px;
 }
+a.follow_button.error_button {
+	background: var(--error_color);
+	color: #fff;
+}
+a.follow_button.error_button:hover {
+	background: var(--button);
+	color: var(--text);
+}
 a.follow_button:hover,
 a.follow_button.is_following {
 	background: var(--primary-color_light);
@@ -361,6 +369,9 @@ input.triplet:first-child {
 	position: absolute;
 	right: -50px;
 	top: 10px;
+}
+.event_element .follow_button.error_button {
+	right: -140px;
 }
 .add_event_wrap {
 	margin-top: 80px;

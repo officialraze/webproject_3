@@ -22,4 +22,5 @@
 	--standard_shadow: 0 3px 27px rgba(0,0,0,0.39);
 	--standard_radius: 13px;
 	--standard_transition: all 0.3s ease;
+	--error_color: #b20000;
 }

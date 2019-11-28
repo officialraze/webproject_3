@@ -30,13 +30,29 @@ if (isset($post['follow_unfollow']) && isset($post['artist'])) {
 	follow_artist($post['follow_unfollow'], $post['artist']);
 }
 
+// save song changes
+if (isset($post['song_name_val']) && isset($post['genre_val']) && isset($post['song_id_val'])) {
+	save_song_changes($post['song_name_val'], $post['genre_val'], $post['song_id_val']);
+}
+
+// save album changes
+if (isset($post['album_name_val']) && isset($post['album_year_val']) && isset($post['album_id_val'])) {
+	save_album_changes($post['album_name_val'], $post['album_year_val'], $post['album_id_val']);
+}
+
 // save event changes
 if (isset($post['event_name_val']) && isset($post['place_val']) && isset($post['event_date_val']) && isset($post['event_id_val'])) {
 	save_event_changes($post['event_name_val'], $post['place_val'], $post['event_date_val'], $post['event_id_val']);
 }
 
+// add event
 if (isset($post['new_event_form']) && isset($post['new_event_name']) && isset($post['new_place']) && isset($post['new_event_date'])) {
 	add_event($post['new_event_name'], $post['new_place'], $post['new_event_date']);
+}
+
+// delete from function
+if (isset($post['delete_from_val']) && isset($post['delete_id_val'])) {
+	delete_from($post['delete_from_val'], $post['delete_id_val']);
 }
 
 /**
@@ -217,6 +233,45 @@ function follow_artist($follow_unfollow, $artist) {
 
 
 /**
+ * save song changes // AJAX
+ *
+ * @param string $song_name
+ * @param integer $genre_id
+ * @param integer $song_id
+*/
+function save_song_changes($song_name, $genre_id, $song_id) {
+
+	// includes
+	include '../config.php';
+	include '../includes/db.php';
+
+	$statement = $pdo->prepare("UPDATE `song` SET song_name = :song_name, genre_id = :genre_id WHERE song_id = :song_id");
+	$statement->execute(array('song_id' => $song_id, 'song_name' => $song_name, 'genre_id' => $genre_id));
+
+}
+
+
+/**
+ * save album changes // AJAX
+ *
+ * @param string $album_name
+ * @param integer $album_year
+ * @param integer $album_id
+*/
+function save_album_changes($album_name, $album_year, $album_id) {
+
+	// includes
+	include '../config.php';
+	include '../includes/db.php';
+
+	$statement = $pdo->prepare("UPDATE `album` SET album_name = :album_name, album_year = :album_year WHERE album_id = :album_id");
+	$statement->execute(array('album_id' => $album_id, 'album_name' => $album_name, 'album_year' => $album_year));
+
+}
+
+
+
+/**
  * save event changes // AJAX
  *
  * @param string $event_name
@@ -258,6 +313,34 @@ function add_event($new_event_name, $new_place, $new_event_date) {
 
 	// redirect to events management
 	header('Location: ../manage_events.php?artist_id='.$artist.'&message=true');
+
+}
+
+
+
+/**
+ * delete entry out of db
+ *
+ * @param string $delete_from_table
+ * @param integer $delete_id
+*/
+function delete_from($delete_from_table, $delete_id) {
+
+	// includes
+	include '../config.php';
+	include '../includes/db.php';
+
+	if ($delete_from_table == 'song') {
+		// delete entry
+		$statement = $pdo->prepare("DELETE FROM `song` WHERE song_id = :song_id");
+		$statement->execute(array('song_id' => $delete_id));
+	}
+
+	if ($delete_from_table == 'album') {
+		// delete entry
+		$statement = $pdo->prepare("DELETE FROM `album` WHERE album_id = :album");
+		$statement->execute(array('song_id' => $delete_id));
+	}
 
 }
 
