@@ -100,3 +100,6 @@ define('DATE', 'Datum');
 define('SEARCH', 'Suche');
 define('SEARCH_ARTISTS', 'Gefundene Artisten');
 define('SEARCH_SONGS', 'Gefundene Lieder');
+
+// PLAYLISTS
+define('ENTER_NAME', 'Bitte Namen eingeben');

@@ -21,6 +21,9 @@ $playlist_song_query = "SELECT playlist_song.playlist_id, songs.*, artists.artis
 					LEFT JOIN `artist` artists ON artists.artist_id = songs.artist_id_link
 					WHERE `playlist_id` = ".$_SESSION['playlist']['id'];
 
+$playlist_list_query = "SELECT playlist_song.playlist_id, playlist.* FROM `playlist` playlist
+					INNER JOIN `playlist` playlist ON playlist_song.playlist_id = playlist.playlist_id";
+
 $interact_with_songs_query = "SELECT playlist_song.playlist_id, playlist_song.song_id, songs.* FROM `playlist_song` playlist_song
 					INNER JOIN `song` songs ON songs.song_id = playlist_song.song_id";
 
@@ -91,11 +94,17 @@ $interact_with_songs_query = "SELECT playlist_song.playlist_id, playlist_song.so
 														<div class="dropdown_menu_add">
 															<p class="add_to_playlist">zu Playlist hinzufügen</p>
 															<div class="subnavi">
-																<?php // TODO: foreach playlists ?>
-																<a href="classes/class.playlist.php?playlist_id=1&song_id=1">Top 50 EDM</a>
-
+																<!-- the playlists listed up -->
+																<?php foreach ($playlist_list_query as $playlist) { ?>
+																	<div class="playlist_list_box">
+																		<div class="playlist_list_inner">
+																			<a href="classes/class.playlist.php?playlist_id=<?php echo $playlist_data['playlist_id'] ?>">
+																				<h3><?php $playlist_songs_data['playlist_name']; ?></h3></a>
+																		</div>
+																	</div>
+																<?php } ?>
 																<form action="classes/class.playlist.php" method="post">
-																	<input class="add_to_playlist_input" type="text" name="new_playlist" value="" placeholder="Bitte Namen eingeben">
+																	<input class="add_to_playlist_input" type="text" name="new_playlist" value="" placeholder="<?php echo ENTER_NAME ?>">
 																	<input type="hidden" name="new_playlist_form" value="true">
 																	<input type="submit" name="submit_new_playlist" value="<?php echo SAVE; ?>">
 																</form>
@@ -109,7 +118,6 @@ $interact_with_songs_query = "SELECT playlist_song.playlist_id, playlist_song.so
 							<?php } ?>
 						</tbody>
 					</table>
-
 				</div>
 			</div>
 		</div>

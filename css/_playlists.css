@@ -32,9 +32,10 @@ h4.short_title {
   display: none;
   position: absolute;
   background-color: var(--dark_mode_light);
-  width: auto;
+  width: 115px;
   box-shadow: 0px 8px 16px 0px var(--standard_shadow);
   z-index: 1;
+  height: 110px;
 }
 
 /* Input-Fields inside dropdown */
@@ -45,6 +46,8 @@ input.dropdown {
   text-decoration: none;
   display: block;
   border: none;
+  outline: none;
+  width: 115px;
 }
 
 /* fields inside subnav (add to playlist) */
@@ -55,6 +58,7 @@ p.add_to_playlist {
   text-decoration: none;
   display: block;
   border: none;
+  width: 115px;
 }
 
 input.add_to_playlist_input {
@@ -63,13 +67,17 @@ input.add_to_playlist_input {
   padding: 12px 16px;
   border-radius: 0px;
   background-color: none;
+  width: 115px;
 }
 
 .subnavi {
   position: relative;
   float: left;
-  top: auto;
+  top: -70px;
+  left: 115px;
   display: none;
+  width: 115px;
+  background-color: var(--dark_mode_light);
 }
 
 div.dropdown_menu_add:hover .subnavi {

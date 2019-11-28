@@ -10,11 +10,8 @@ session_start();
 // includes
 include '../config.php';
 include '../includes/db.php';
-include 'class.music.php';
 
 // get post data
 $post = $_POST;
-
-
 
 ?>
