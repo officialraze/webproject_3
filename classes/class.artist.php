@@ -331,15 +331,16 @@ function delete_from($delete_from_table, $delete_id) {
 	include '../includes/db.php';
 
 	if ($delete_from_table == 'song') {
-		// delete entry
+		// delete song
 		$statement = $pdo->prepare("DELETE FROM `song` WHERE song_id = :song_id");
 		$statement->execute(array('song_id' => $delete_id));
 	}
 
 	if ($delete_from_table == 'album') {
-		// delete entry
-		$statement = $pdo->prepare("DELETE FROM `album` WHERE album_id = :album");
-		$statement->execute(array('song_id' => $delete_id));
+		// delete album
+		$query = $pdo->prepare('DELETE FROM '.$delete_from_table.' WHERE album_id = :album_id');
+		$query->bindValue(':album_id', $delete_id);
+		$query->execute();
 	}
 
 }
