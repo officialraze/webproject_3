@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 28. Nov 2019 um 21:33
+-- Erstellungszeit: 05. Dez 2019 um 22:57
 -- Server-Version: 5.6.34-log
 -- PHP-Version: 7.1.5
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `album` (
   `artist_id` int(11) NOT NULL,
   `path_to_image` varchar(255) NOT NULL,
   PRIMARY KEY (`album_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 --
 -- Daten für Tabelle `album`
@@ -46,10 +46,10 @@ CREATE TABLE IF NOT EXISTS `album` (
 
 INSERT INTO `album` (`album_id`, `album_name`, `album_year`, `artist_id`, `path_to_image`) VALUES
 (1, 'Lost - Single', 2019, 1, 'lost.jpg'),
-(3, 'We Could Be - Single', 2019, 1, 'we_could_be.jpg'),
-(17, 'Dragon - Single', 2018, 1, 'dragon.jpg'),
 (19, 'test', 1234, 1, 'eyes.jpg'),
-(20, 'another test', 2019, 1, 'sphere.jpg');
+(20, 'another test', 2019, 1, 'sphere.jpg'),
+(21, 'gravity', 2020, 1, 'gravity.jpg'),
+(22, 'homie', 2019, 1, 'homie.jpg');
 
 -- --------------------------------------------------------
 
@@ -180,6 +180,13 @@ CREATE TABLE IF NOT EXISTS `playlist_song` (
   KEY `playlist_song_fk1` (`song_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Daten für Tabelle `playlist_song`
+--
+
+INSERT INTO `playlist_song` (`playlist_id`, `song_id`) VALUES
+(1, 21);
+
 -- --------------------------------------------------------
 
 --
@@ -192,13 +199,6 @@ CREATE TABLE IF NOT EXISTS `saved_songs` (
   KEY `saved_songs_fk0` (`user_id_link`),
   KEY `saved_songs_fk1` (`song_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Daten für Tabelle `saved_songs`
---
-
-INSERT INTO `saved_songs` (`user_id_link`, `song_id`) VALUES
-(1, 18);
 
 -- --------------------------------------------------------
 
@@ -217,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `song` (
   KEY `song_fk0` (`artist_id_link`),
   KEY `song_fk2` (`genre_id`),
   KEY `song_fk1` (`album_id_link`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 --
 -- Daten für Tabelle `song`
@@ -225,10 +225,13 @@ CREATE TABLE IF NOT EXISTS `song` (
 
 INSERT INTO `song` (`song_id`, `artist_id_link`, `song_name`, `album_id_link`, `length`, `genre_id`) VALUES
 (1, 1, 'Lost', 1, '03:18', 2),
-(7, 1, 'We Could Be', 3, '02:07', 1),
-(18, 1, 'Dragon', 17, '00:01:02', 3),
 (20, 1, 'test 1', 19, '00:02:22', 2),
-(21, 1, 'test 2', 20, '03:18', 2);
+(21, 1, 'test 2', 20, '03:18', 2),
+(22, 1, 'gravity', 21, '00:24', 1),
+(23, 1, 'homie', 22, '00:51', 2),
+(24, 1, 'homie 2', 22, '00:29', 3),
+(25, 1, 'homie 3', 22, '00:37', 2),
+(26, 1, 'homie 4', 22, '00:26', 3);
 
 -- --------------------------------------------------------
 
@@ -256,7 +259,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `firstname`, `lastname`, `password_hash`, `password_token`, `is_artist`, `has_darkmode`) VALUES
-(1, 'molvin95', 'molvinlauber@gmail.com', 'Melvin', 'Lauber', '$2y$10$PGceo51mz2ukP88ypW2HXu9VH9W87TPcINRZIzoM7nzU3dkYZlHOi', '1d7622dc2d2bcfc8de531e31790b049d', 1, 0),
+(1, 'molvin95', 'molvinlauber@gmail.com', 'Melvin', 'Lauber', '$2y$10$PGceo51mz2ukP88ypW2HXu9VH9W87TPcINRZIzoM7nzU3dkYZlHOi', '1d7622dc2d2bcfc8de531e31790b049d', 1, 1),
 (2, 'david.clausen', 'davidclausen2@lernende.bfo-vs.ch', 'David', 'Clausen', '$2y$10$h51xi20m3d6MvY8O16Y1A.6FB5vOV5R1uq9e.OWQ4KIXX.PftMUEu', 'e8bac3df99be1fb31c13a79f7a5bea04', 0, 0);
 
 --
