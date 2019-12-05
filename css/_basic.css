@@ -9,6 +9,10 @@
 
 /* @group basics */
 
+/* .hidden {
+	display: none;
+} */
+
 body {
 	font-family: 'DM Sans', sans-serif;
 	margin: 0;

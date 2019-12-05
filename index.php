@@ -44,7 +44,6 @@ $artist_query = "SELECT * FROM `artist` ORDER BY RAND() LIMIT 8";
 					<h3 class="short_title"><?php echo RECENTLY_LISTENED; ?></h3>
 					<div id="profile_wrapper">
 						<div class="profile_recently">
-							<img src="img/artists/virtualriot.jpg" alt="Virtual Riot">
 						</div>
 					</div>
 				</div>
@@ -107,5 +106,12 @@ $artist_query = "SELECT * FROM `artist` ORDER BY RAND() LIMIT 8";
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+		// get last played artist id
+		if ($.session.get('song_id')) {
+			var artist_recently = $.session.get('artist_id');
+			$('<img src="img/artists/artist_'+artist_recently+'.jpg">').appendTo('.profile_recently');
+		}
+		</script>
 	</body>
 </html>

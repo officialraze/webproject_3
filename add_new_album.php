@@ -79,7 +79,7 @@ if (isset($_GET['artist_id']) && !empty($_GET['artist_id'])) {
 									<input class="song_name_field" type="text" name="song_title[]" placeholder="<?php echo ALBUM_SONG_NAME; ?>">
 									<div class="upload_absolute_wrap">
 										<div class="upload-btn-wrapper">
-											<input accept=".mp3, .wav" name="song_file[]" type="file" class="upload_song_field">
+											<input accept=".mp3" name="song_file[]" type="file" class="upload_song_field">
 											<button class="btn with_icon"><img src="img/assets/music_upload.svg" class="music_icon svg" alt="<?php echo ALBUM_ADD_SONGS; ?>"></button>
 										</div>
 									</div>

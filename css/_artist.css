@@ -176,6 +176,12 @@ h3.popular_title {
 	margin-top: 10px;
 }
 
+.more_songs {
+	float: left;
+	clear: both;
+	margin-top: 30px;
+}
+
 /* @end */
 
 

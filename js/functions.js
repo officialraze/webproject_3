@@ -30,6 +30,10 @@ $(function() {
 			var message_value = "true";
 			var message_text = 'Erfolgreich abgemeldet!';
 		}
+		else if (window.location.href.indexOf("message=upload_successfull") > -1) {
+			var message_value = "true";
+			var message_text = 'Album erfolgreich hinzugefügt!';
+		}
 		else if (window.location.href.indexOf("message=login_false") > -1) {
 			var message_value = "false";
 			var message_text = 'E-Mail oder Passwort ist nicht korrekt!';

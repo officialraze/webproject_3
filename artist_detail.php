@@ -34,9 +34,20 @@ $song_query = "SELECT * FROM `song`
 				WHERE `artist_id_link` = ".$get_artist_id."
 				ORDER BY `song_id` DESC";
 
+$song_query_more = "SELECT * FROM `song`
+				INNER JOIN `album` album ON album.album_id = song.album_id_link
+				WHERE `artist_id_link` = ".$get_artist_id."
+				ORDER BY `song_id` DESC
+				LIMIT 6,6";
+
 $album_query = "SELECT * FROM `album` album
 				WHERE `artist_id` = ".$get_artist_id."
 				ORDER BY `album_id` DESC";
+
+$album_query_more = "SELECT * FROM `album` album
+				WHERE `artist_id` = ".$get_artist_id."
+				ORDER BY `album_id` DESC
+				LIMIT 6,6";
 
 // check if user is following the artist
 $statement_is_following = $pdo->prepare("SELECT * FROM `following_artist` WHERE (`user_id_link` = :user_id_link) AND (`artist_id` = :artist_id)");
@@ -180,30 +191,52 @@ else {
 
 						<div id="albums_overview">
 							<h3 class="short_title popular_title"><?php echo ALBUM; ?></h3>
-							<a class="show_all"><?php echo SHOW_ALL; ?></a>
+							<?php $limit_album = 0; ?>
+							<?php if ($limit_album >= 6) {?>
+								<a class="show_all"><?php echo SHOW_ALL; ?></a>
+							<?php } ?>
 							<div class="album_wrapper">
 								<?php
-									$limit_album = 0;
 									foreach ($pdo->query($album_query) as $album_data) { ?>
 										<div class="album_item">
 											<a href="album_overview.php?album_id=<?php echo $album_data['album_id']?>&artist_id=<?php echo $get_artist_id; ?>"><img src="img/covers/<?php echo $album_data['path_to_image']?>" alt="Album" width="175"></a>
 										</div>
 									<?php if (++$limit_album == 6) break; } ?>
+
+									<div class="hidden more_songs">
+										<?php foreach ($pdo->query($album_query_more) as $album_data) { ?>
+											<div class="album_item">
+												<a href="album_overview.php?album_id=<?php echo $album_data['album_id']?>&artist_id=<?php echo $get_artist_id; ?>"><img src="img/covers/<?php echo $album_data['path_to_image']?>" alt="Album" width="175"></a>
+											</div>
+										<?php } ?>
+										<div class="cf"></div>
+									</div>
 							</div>
 							<div class="cf"></div>
 						</div>
 
 						<div id="songs_overview">
 							<h3 class="short_title popular_title"><?php echo SONGS; ?></h3>
-							<a class="show_all"><?php echo SHOW_ALL; ?></a>
+							<?php $limit_songs = 0; ?>
+							<?php if ($limit_songs >= 6) {?>
+								<a class="show_all"><?php echo SHOW_ALL; ?></a>
+							<?php } ?>
 							<div class="songs_wrapper">
 								<?php
-									$limit_songs = 0;
 									foreach ($pdo->query($song_query) as $song_data) { ?>
 											<div class="song_item">
 												<a href="album_overview.php?album_id=<?php echo $song_data['album_id']?>&artist_id=<?php echo $get_artist_id; ?>"><img src="img/covers/<?php echo $song_data['path_to_image']?>" alt="Album" width="175"></a>
 											</div>
 									<?php if (++$limit_songs == 6) break; } ?>
+
+									<div class="hidden more_songs">
+										<?php foreach ($pdo->query($song_query_more) as $song_data) { ?>
+												<div class="song_item">
+													<a href="album_overview.php?album_id=<?php echo $song_data['album_id']?>&artist_id=<?php echo $get_artist_id; ?>"><img src="img/covers/<?php echo $song_data['path_to_image']?>" alt="Album" width="175"></a>
+												</div>
+										<?php } ?>
+										<div class="cf"></div>
+									</div>
 							</div>
 							<div class="cf"></div>
 						</div>
