@@ -84,7 +84,7 @@ $artist_query = "SELECT * FROM `artist` ORDER BY RAND() LIMIT 8";
 									?>
 									<div class="popular_song">
 										<div class="popular_song_inner">
-											<span class="play_song_wrapper play_song_class" data-song=<?php echo $song_data['song_id']; ?> data-song_name="<?php echo $song_data['song_name'];?>" data-artist_name="<?php echo $song_data['artist_firstname'].' '.$song_data['artist_lastname']; ?>">
+											<span class="play_song_wrapper play_song_class" data-album_id=<?php echo $song_data['album_id_link']; ?> data-artist_id=<?php echo $song_data['artist_id_link']; ?> data-song=<?php echo $song_data['song_id']; ?> data-song_name="<?php echo $song_data['song_name'];?>" data-artist_name="<?php echo $song_data['artist_firstname'].' '.$song_data['artist_lastname']; ?>">
 												 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
 											 </span>
 											<img src="img/covers/<?php echo $song_data['path_to_image']?>" class="cover_img" alt="Cover" width="49px">

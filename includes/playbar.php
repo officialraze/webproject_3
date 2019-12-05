@@ -40,9 +40,11 @@ $(function() {
 		var song_id 	= $.session.get('song_id');
 		var song_name 	= $.session.get('song_name');
 		var artist_name = $.session.get('artist_name');
+		var album_id = $.session.get('album_id');
+		var artist_id = $.session.get('artist_id');
 
 		$('<source class="source_music_player" src="music/song_'+song_id+'.mp3" type="audio/mp3">').appendTo('audio#player');
-		$('<p><a href="album_overview.php?album_id=1">'+song_name+' </a><small>von</small> <a href="artist_detail.php?artist_id=1">'+artist_name+'</a></p>').prependTo('.player-controls.scrubber');
+		$('<p><a href="album_overview.php?album_id='+album_id+'&artist_id='+artist_id+'">'+song_name+' </a><small>von</small> <a href="artist_detail.php?artist_id='+artist_id+'">'+artist_name+'</a></p>').prependTo('.player-controls.scrubber');
 	}
 });
 

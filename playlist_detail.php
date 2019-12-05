@@ -60,7 +60,7 @@ $playlist_song_query = "SELECT playlist_song.playlist_id, songs.*, artists.artis
 
 								?>
 								<tr>
-									<td class="play"><span class="play_song_wrapper play_song_class" data-song=<?php echo $playlist_songs_data['song_id']; ?> data-song_name="<?php echo $playlist_songs_data['song_name'];?>" data-artist_name="<?php echo $playlist_songs_data['artist_firstname'].' '.$playlist_songs_data['artist_lastname']; ?>">
+									<td class="play"><span class="play_song_wrapper play_song_class" data-artist_id=<?php echo $playlist_songs_data['artist_id_link']; ?> data-album_id=<?php echo $playlist_songs_data['album_id_link']; ?> data-song=<?php echo $playlist_songs_data['song_id']; ?> data-song_name="<?php echo $playlist_songs_data['song_name'];?>" data-artist_name="<?php echo $playlist_songs_data['artist_firstname'].' '.$playlist_songs_data['artist_lastname']; ?>">
 										 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
 									 </span></td>
 									<td class="song_name"><?php echo $playlist_songs_data['song_name']; ?></td>

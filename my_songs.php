@@ -59,7 +59,7 @@ $saved_song_query = "SELECT saved_songs.user_id_link, songs.*, artists.artist_fi
 
 							?>
 							<tr>
-								<td class="play"><span class="play_song_wrapper play_song_class" data-song=<?php echo $saved_songs_data['song_id']; ?> data-song_name="<?php echo $saved_songs_data['song_name'];?>" data-artist_name="<?php echo $saved_songs_data['artist_firstname'].' '.$saved_songs_data['artist_lastname']; ?>">
+								<td class="play"><span class="play_song_wrapper play_song_class" data-artist_id=<?php echo $saved_songs_data['artist_id_link']; ?> data-album_id=<?php echo $saved_songs_data['album_id_link']; ?> data-song=<?php echo $saved_songs_data['song_id']; ?> data-song_name="<?php echo $saved_songs_data['song_name'];?>" data-artist_name="<?php echo $saved_songs_data['artist_firstname'].' '.$saved_songs_data['artist_lastname']; ?>">
 									 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
 								 </span></td>
 								<td class="song_name"><?php echo $saved_songs_data['song_name']; ?></td>

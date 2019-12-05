@@ -102,7 +102,7 @@ function login_user($username, $password) {
 		die();
 	}
 	else {
-		header("Location: ../login.php?login=false");
+		header("Location: ../login.php?message=login_false");
 		die();
 	}
 }

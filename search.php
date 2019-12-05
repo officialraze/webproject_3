@@ -78,7 +78,7 @@ if(isset($_POST['search'])) {
 	            if (is_array($song) && !empty($song)) {
 	            // give out grid item / all artists
 							echo "<tr>";
-								echo '<td class="play"><span class="play_song_wrapper play_song_class" data-song='.$song['song_id'].' data-song_name="'.$song['song_name'].'" data-artist_name="'.$artist['artist_firstname'].' '.$artist['artist_lastname'].'">
+								echo '<td class="play"><span class="play_song_wrapper play_song_class" data-artist_id='.$song['artist_id_link'].' data-album_id='.$song['album_id_link'].' data-song='.$song['song_id'].' data-song_name="'.$song['song_name'].'" data-artist_name="'.$artist['artist_firstname'].' '.$artist['artist_lastname'].'">
 									 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
 								 </span></td>';
 								echo "<td class='song_name'>".$song['song_name']."<td>";

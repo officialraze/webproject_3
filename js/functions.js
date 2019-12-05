@@ -30,6 +30,10 @@ $(function() {
 			var message_value = "true";
 			var message_text = 'Erfolgreich abgemeldet!';
 		}
+		else if (window.location.href.indexOf("message=login_false") > -1) {
+			var message_value = "false";
+			var message_text = 'E-Mail oder Passwort ist nicht korrekt!';
+		}
 		else {
 			var message_value = "false";
 			var message_text = "Änderungen wurden nicht übernommen!";
@@ -165,11 +169,15 @@ $(function() {
 		var song_id = $(this).data('song');
 		var song_name = $(this).data('song_name');
 		var artist_name = $(this).data('artist_name');
+		var artist_id = $(this).data('artist_id');
+		var album_id = $(this).data('album_id');
 
 		// set jquery sessions for playbar
 		$.session.set('song_id', song_id);
 		$.session.set('song_name', song_name);
 		$.session.set('artist_name', artist_name);
+		$.session.set('artist_id', artist_id);
+		$.session.set('album_id', album_id);
 
 		// load playbar again for setting new song data
 		$('#playbar_wrapper_loader').load('includes/playbar.php');
