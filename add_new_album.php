@@ -69,7 +69,7 @@ if (isset($_GET['artist_id']) && !empty($_GET['artist_id'])) {
 
 						<fieldset>
 							<h2 class="form_subtitle"><?php echo ALBUM_ADD_SONGS; ?></h2>
-							<span><?php echo MAX_SONGS_UPLOAD; ?>: <strong><?php echo $config['limit_upload_songs']; ?></strong></span>
+							<span class="max_song_upload"><?php echo MAX_SONGS_UPLOAD; ?>: <strong><?php echo $config['limit_upload_songs']; ?></strong></span>
 
 							<!-- limit song upload -->
 							<?php

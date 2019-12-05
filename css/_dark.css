@@ -41,6 +41,10 @@ body.dark h3 {
   color: var(--dark_mode_light) !important;
 }
 
+body.dark h4 {
+  color: var(--dark_mode_light) !important;
+}
+
 body.dark #new_songs .currency .currency_button{
   background-color: var(--dark_mode_input);
 }
@@ -86,5 +90,9 @@ body.dark div.audio-player {
 }
 
 body.dark div.audio-player p a {
+  color: var(--dark_mode_light);
+}
+
+body.dark fieldset span.max_song_upload {
   color: var(--dark_mode_light);
 }
