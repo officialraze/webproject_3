@@ -22,7 +22,7 @@ define('ALL_ARTISTS', 'Alle Künstler');
 
 // content home
 define('RECENTLY_LISTENED', 'Zuletzt gehört');
-define('ARTISTS_U_MIGHT_LIKE', 'Künstler, die dir gefallen könnten');
+define('NEW_ARTISTS', 'Neue Künstler');
 define('NEW_SONGS', 'Neue Songs');
 define('TODAY', 'Heute');
 define('WEEK', 'Woche');

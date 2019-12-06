@@ -32,7 +32,7 @@ if (isset($post['register_form'])) {
 		register_save();
 	}
 	else {
-		header("Location: ../register.php");
+		header("Location: ../register.php?message=empty_fields");
 	}
 }
 

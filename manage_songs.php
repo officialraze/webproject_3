@@ -15,16 +15,21 @@ unset($_SESSION['active']);
 $_SESSION['active'] 			= 'artists';
 $_SESSION['active_meta_nav']	= 'discover';
 
+$artist_id = $_SESSION['user']['id'];
+
 // check if user isset in url
 if (isset($_GET['artist_id']) && !empty($_GET['artist_id'])) {
 	$artist = $_GET['artist_id'];
 }
 else {
-	header('Location: idnex.php');
+	header('Location: index.php');
 }
 
+$statement_is_artist = $pdo->prepare("SELECT * FROM `artist` WHERE (`user_id` = :user_id) AND (`artist_id` = :artist_id)");
+$statement_is_artist->execute(array(':user_id' => $artist_id, ':artist_id' => $artist));
+
 // check if user is the same as artist (security check)
-if ($artist != $_SESSION['user']['id']) {
+if ($statement_is_artist->rowCount() <= 0) {
 	header('Location: artist_detail.php?artist_id='.$artist.'&message=no_permission');
 }
 else {

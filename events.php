@@ -15,6 +15,10 @@ unset($_SESSION['active']);
 $_SESSION['active'] 			= 'events';
 $_SESSION['active_meta_nav']	= 'discover';
 
+// get all events
+$get_events_query = "SELECT * FROM `events` events
+					 INNER JOIN `artist` artist ON artist.artist_id = events.artist_id_link";
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -38,21 +42,23 @@ $_SESSION['active_meta_nav']	= 'discover';
 				<div id="events_table">
 				<table class="concerts_near_you">
 					<tbody>
+						<tr class="event_table">
+							<th class="artist_name_concert"><?php echo ARTISTS; ?></th>
+							<th class="concert_when"><?php echo DATE; ?></th>
+							<th class="concert_where"><?php echo WHERE; ?></th>
+						</tr>
+						<?php foreach ($pdo->query($get_events_query) as $event) { ?>
 							<tr class="event_table">
-								<th class="artist_name_concert"><?php echo ARTISTS; ?></th>
-								<th class="concert_when"><?php echo DATE; ?></th>
-								<th class="concert_where"><?php echo WHERE; ?></th>
+								<td class="artist_name_concert event_table"><?php echo $event['artist_firstname'].' '.$event['artist_lastname']; ?></td>
+								<td class="concert_when event_table">
+									<?php
+									$date = new DateTime($event['event_date']);
+									echo $date->format('d.m.Y');
+									?>
+								</td>
+								<td class="concert_where event_table"><?php echo $event['place']; ?></td>
 							</tr>
-							<tr class="event_table">
-								<td class="artist_name_concert event_table">raze.exe</td>
-								<td class="concert_when event_table">25.04.2021</td>
-								<td class="concert_where event_table">Zürich, Lexikon</td>
-							</tr>
-							<tr class="event_table">
-								<td class="artist_name_concert event_table">Virtual Riot</td>
-								<td class="concert_when event_table">14.03.2021</td>
-								<td class="concert_where event_table">Basel, Hallenstadion</td>
-							</tr>
+						<?php } ?>
 					</tbody>
 				</table>
 			</div>

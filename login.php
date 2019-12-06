@@ -14,22 +14,6 @@ if(isset($_SESSION['user']['id'])) {
 	header('Location: index.php');
 }
 
-// get message
-$message = '';
-if (isset($_GET['message']) && !empty($_GET['message'])) {
-	$message = $_GET['message'];
-}
-
-switch ($message) {
-	case 'register_successfull':
-		$message = REGISTER_SUCCESSFULL;
-		break;
-
-	default:
-		$message = '';
-		break;
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -43,11 +27,6 @@ switch ($message) {
 		<div id="login_form_wrapper">
 			<div class="login_form_inner">
 				<h1 class="title_login"><?php echo PLEASE_LOGIN; ?></h1>
-				<?php if (isset($message) && !empty($message)) { ?>
-						<div class="message">
-							<strong><?php echo $message; ?></strong>
-						</div>
-				<?php } ?>
 				<form class="form_login" action="classes/class.user.php" method="post">
 					<div class="form_element">
 						<input type="text" name="username" placeholder="<?php echo USERNAME_MAIL; ?>">

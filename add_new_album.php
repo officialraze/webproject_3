@@ -15,9 +15,19 @@ unset($_SESSION['active']);
 $_SESSION['active'] 			= 'artists';
 $_SESSION['active_meta_nav']	= 'discover';
 
+$artist = $_SESSION['user']['id'];
+
 // get artist id
 if (isset($_GET['artist_id']) && !empty($_GET['artist_id'])) {
 	$artist_id = $_GET['artist_id'];
+}
+
+$statement_is_artist = $pdo->prepare("SELECT * FROM `artist` WHERE (`user_id` = :user_id) AND (`artist_id` = :artist_id)");
+$statement_is_artist->execute(array(':user_id' => $artist, ':artist_id' => $artist_id));
+
+// check if user is the same as artist (security check)
+if ($statement_is_artist->rowCount() <= 0) {
+	header('Location: artist_detail.php?artist_id='.$artist_id.'&message=no_permission');
 }
 
 ?>

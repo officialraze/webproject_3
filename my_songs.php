@@ -43,21 +43,23 @@ $saved_song_query = "SELECT saved_songs.user_id_link, songs.*, artists.artist_fi
 
 				<table class="saved_songs_list">
 					<tbody>
-						<?php foreach ($pdo->query($saved_song_query) as $saved_songs_data) {
+						<?php
+						$no_data = TRUE;
 
-							// check if song is liked
-							$statement_song = $pdo->prepare("SELECT `song_id` FROM `saved_songs` WHERE `song_id` = :song_id");
-							$statement_song->bindParam(':song_id', $saved_songs_data['song_id']);
-							$statement_song->execute();
+						foreach ($pdo->query($saved_song_query) as $saved_songs_data) {
 
-							if ($statement_song->rowCount() > 0) {
-								$like_class = 'liked';
-							}
-							else {
-								$like_class = '';
-							}
+							if (!empty($saved_songs_data)) {
+								// check if song is liked
+								$statement_song = $pdo->prepare("SELECT `song_id` FROM `saved_songs` WHERE `song_id` = :song_id");
+								$statement_song->bindParam(':song_id', $saved_songs_data['song_id']);
+								$statement_song->execute();
 
-							?>
+								if ($statement_song->rowCount() > 0) {
+									$like_class = 'liked';
+								}
+								else {
+									$like_class = '';
+								} ?>
 							<tr>
 								<td class="play"><span class="play_song_wrapper play_song_class" data-artist_id=<?php echo $saved_songs_data['artist_id_link']; ?> data-album_id=<?php echo $saved_songs_data['album_id_link']; ?> data-song=<?php echo $saved_songs_data['song_id']; ?> data-song_name="<?php echo $saved_songs_data['song_name'];?>" data-artist_name="<?php echo $saved_songs_data['artist_firstname'].' '.$saved_songs_data['artist_lastname']; ?>">
 									 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
@@ -71,9 +73,16 @@ $saved_song_query = "SELECT saved_songs.user_id_link, songs.*, artists.artist_fi
 								</td>
 								<td class="length"><?php echo $saved_songs_data['length']; ?></td>
 							</tr>
-						<?php } ?>
+						<?php }
+						$no_data = FALSE;
+						} ?>
 					</tbody>
 				</table>
+				<?php
+				if ($no_data == TRUE) {
+					echo NO_DATA;
+				}
+				?>
 			</div>
 		</div>
 	</body>

@@ -34,9 +34,25 @@ $(function() {
 			var message_value = "true";
 			var message_text = 'Album erfolgreich hinzugefügt!';
 		}
+		else if (window.location.href.indexOf("message=register_successfull") > -1) {
+			var message_value = "true";
+			var message_text = 'Erfolgreich registriert!';
+		}
+		else if (window.location.href.indexOf("message=upload_artist_image_successfull") > -1) {
+			var message_value = "true";
+			var message_text = 'Künstler Bild erfolgreich hochgeladen!';
+		}
+		else if (window.location.href.indexOf("message=upload_user_image_successfull") > -1) {
+			var message_value = "true";
+			var message_text = 'Profil-Bild erfolgreich hochgeladen!';
+		}
 		else if (window.location.href.indexOf("message=login_false") > -1) {
 			var message_value = "false";
 			var message_text = 'E-Mail oder Passwort ist nicht korrekt!';
+		}
+		else if (window.location.href.indexOf("message=no_permission") > -1) {
+			var message_value = "false";
+			var message_text = 'Keine Berechtigung!';
 		}
 		else {
 			var message_value = "false";

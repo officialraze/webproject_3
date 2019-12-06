@@ -18,8 +18,11 @@ $_SESSION['active_meta_nav']	= 'discover';
 $artist_id = $_SESSION['user']['id'];
 $get_artist_id = $_GET['artist_id'];
 
+$statement_is_artist = $pdo->prepare("SELECT * FROM `artist` WHERE (`user_id` = :user_id) AND (`artist_id` = :artist_id)");
+$statement_is_artist->execute(array(':user_id' => $artist_id, ':artist_id' => $get_artist_id));
+
 // check if artist id is same -> if TRUE -> admin settings visible
-if ($artist_id == $get_artist_id) {
+if ($statement_is_artist->rowCount() > 0) {
 	$artist_admin = 1;
 }
 else {
@@ -84,7 +87,7 @@ else {
 					<div class="artist_image">
 						<?php
 							foreach ($pdo->query($artist_query) as $artist_data) { ?>
-								<img src="img/artists/artist_<?php echo $artist_data['artist_id']; ?>.jpg" alt="<?php echo $artist_data['artist_firstname'].' '.$artist_data['artist_lastname'] ?>">
+								<img src="img/artists/artist_<?php echo $artist_data['user_id']; ?>.jpg" alt="<?php echo $artist_data['artist_firstname'].' '.$artist_data['artist_lastname'] ?>">
 						<?php } ?>
 					</div>
 					<div class="artist_content">
