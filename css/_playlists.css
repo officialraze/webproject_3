@@ -12,3 +12,100 @@
 h4.short_title {
   font-size: 20px;
 }
+
+/* Style The Dropdown Button */
+.svg_more_dropdown {
+  color: var(--dark_mode_light);
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown_show_more {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown_show_more_content {
+  display: none;
+  position: absolute;
+  background-color: var(--dark_mode_light);
+  width: 115px;
+  box-shadow: 0px 8px 16px 0px var(--standard_shadow);
+  z-index: 1;
+  height: 110px;
+}
+
+/* Input-Fields inside dropdown */
+input.dropdown {
+  color: var(--text);
+  font-size: 14px;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border: none;
+  outline: none;
+  width: 115px;
+}
+
+/* fields inside subnav (add to playlist) */
+p.add_to_playlist {
+  color: var(--text) !important;
+  font-size: 14px;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border: none;
+  width: 115px;
+}
+
+input.add_to_playlist_input {
+  color: var(--text) !important;
+  font-size: 14px;
+  padding: 12px 16px;
+  border-radius: 0px;
+  background-color: none;
+  width: 115px;
+}
+
+.subnavi {
+  position: relative;
+  float: left;
+  top: -70px;
+  left: 115px;
+  display: none;
+  width: 115px;
+  background-color: var(--dark_mode_light);
+}
+
+div.dropdown_menu_add:hover .subnavi {
+    display: block;
+}
+
+/* Links inside the dropdown */
+.dropdown_show_more_content a {
+  color: var(--text) !important;
+  font-size: 14px;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown_show_more_content a:hover {background-color: var(--dark_mode_light);}
+
+/* Show the dropdown menu on hover */
+.dropdown_show_more:hover .dropdown_show_more_content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown_show_more:hover .dropdown_show_more {
+  background-color: #3e8e41;
+}
+
+.playlist_list_inner h3 {
+  color: var(--text) !important;
+}

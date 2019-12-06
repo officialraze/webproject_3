@@ -63,8 +63,12 @@ $saved_song_query = "SELECT saved_songs.user_id_link, songs.*, artists.artist_fi
 									 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
 								 </span></td>
 								<td class="song_name"><?php echo $saved_songs_data['song_name']; ?></td>
-								<td class="artist_name"><a href="artist_detail.php?artist_id=<?php echo 1; ?>"><?php echo $saved_songs_data['artist_firstname'].' '.$saved_songs_data['artist_lastname']; ?></a></td>
-								<td class="actions"><span class="like_wrapper like_song like <?php echo $like_class; ?>" data-song=<?php echo $saved_songs_data['song_id']; ?>><img src="img/assets/like.svg" alt="Like" class="svg"></span><img src="img/assets/show_more.svg" class="svg more" alt="show_more"></td>
+								<td class="artist_name"><a href="artist_detail.php?artist_id=<?php echo 1; ?>">
+									<?php echo $saved_songs_data['artist_firstname'].' '.$saved_songs_data['artist_lastname']; ?></a></td>
+								<td class="actions"><span class="like_wrapper like_song like <?php echo $like_class; ?>" data-song=<?php echo $saved_songs_data['song_id']; ?>>
+									<img src="img/assets/like.svg" alt="Like" class="svg"></span>
+									<img src="img/assets/show_more.svg" class="svg more" alt="show_more">
+								</td>
 								<td class="length"><?php echo $saved_songs_data['length']; ?></td>
 							</tr>
 						<?php } ?>
