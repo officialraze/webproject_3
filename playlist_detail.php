@@ -96,11 +96,24 @@ $interact_with_songs_query = "SELECT playlist_song.playlist_id, playlist_song.so
 
 
 																<!-- the playlists listed up -->
-																<?php foreach($pdo->query($playlist_query_menu) as $playlist) { ?>
+																<?php foreach($pdo->query($playlist_query_menu) as $playlist) {
+
+																	$statement_song = $pdo->prepare("SELECT `song_id` FROM `playlist_song` WHERE `song_id` = :song_id AND :playlist_id = :playlist_id");
+																	$statement_song->bindParam(':song_id', $playlist_songs_data['song_id']);
+																	$statement_song->bindParam(':playlist_id', $playlist['playlist_id']);
+																	$statement_song->execute();
+
+																	if ($statement_song->rowCount() > 0) {
+																		$playlist_class = 'in_playlist';
+																	}
+																	else {
+																		$playlist_class = 'not_in_playlist';
+																	}
+
+																	?>
 																	<div class="playlist_list_box">
 																		<div class="playlist_list_inner">
-																			<a href="classes/class.playlist.php?playlist_id=<?php echo $playlist['playlist_id'] ?>">
-																				<h3><?php echo $playlist['playlist_name']; ?></h3></a>
+																			<a class="add_to_playlist_button <?php echo $playlist_class; ?>" data-playlist_checker=<?php echo $playlist_class; ?> data-song_id=<?php echo $playlist_songs_data['song_id']; ?> data-playlist_id=<?php echo $playlist['playlist_id']; ?> ><?php echo $playlist['playlist_name']; ?></a>
 																		</div>
 																	</div>
 																<?php } ?>
@@ -124,5 +137,28 @@ $interact_with_songs_query = "SELECT playlist_song.playlist_id, playlist_song.so
 				</div>
 			</div>
 		</div>
+
+		<script type="text/javascript">
+
+			// add song to playlist
+			$('.add_to_playlist_button').click(function() {
+				var playlist_id = $(this).data('playlist_id');
+				var song_id = $(this).data('song_id');
+				var playlist_checker = $(this).data('playlist_checker');
+
+				$.ajax({
+					url: 'classes/class.playlist.php',
+					type: "POST",
+					data: {
+						playlist_id_link: playlist_id,
+						song_id: song_id,
+						playlist_checker_val: playlist_checker,
+					},
+					success: function(response) {
+
+					}
+				});
+			});
+		</script>
 	</body>
 </html>
