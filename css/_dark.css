@@ -96,3 +96,7 @@ body.dark div.audio-player p a {
 body.dark fieldset span.max_song_upload {
   color: var(--dark_mode_light);
 }
+
+body.dark div.popular_song div.popular_song_inner h4 {
+  color: var(--dark_mode_input) !important;
+}
