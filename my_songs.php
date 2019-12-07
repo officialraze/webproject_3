@@ -15,8 +15,9 @@ unset($_SESSION['active']);
 $_SESSION['active'] 			= 'my_songs';
 $_SESSION['active_meta_nav']	= 'discover';
 
-$saved_song_query = "SELECT saved_songs.user_id_link, songs.*, artists.artist_firstname, artists.artist_lastname FROM `saved_songs` saved_songs
+$saved_song_query = "SELECT saved_songs.user_id_link, songs.*, artists.artist_firstname, artists.artist_lastname, album.path_to_image FROM `saved_songs` saved_songs
 					INNER JOIN `song` songs ON songs.song_id = saved_songs.song_id
+					INNER JOIN `album` album ON album.album_id = songs.album_id_link
 					LEFT JOIN `artist` artists ON artists.artist_id = songs.artist_id_link
 					WHERE `user_id_link` = ".$_SESSION['user']['id'];
 
@@ -61,7 +62,7 @@ $saved_song_query = "SELECT saved_songs.user_id_link, songs.*, artists.artist_fi
 									$like_class = '';
 								} ?>
 							<tr>
-								<td class="play"><span class="play_song_wrapper play_song_class" data-artist_id=<?php echo $saved_songs_data['artist_id_link']; ?> data-album_id=<?php echo $saved_songs_data['album_id_link']; ?> data-song=<?php echo $saved_songs_data['song_id']; ?> data-song_name="<?php echo $saved_songs_data['song_name'];?>" data-artist_name="<?php echo $saved_songs_data['artist_firstname'].' '.$saved_songs_data['artist_lastname']; ?>">
+								<td class="play"><span class="play_song_wrapper play_song_class" data-cover=<?php echo $saved_songs_data['path_to_image']; ?> data-artist_id=<?php echo $saved_songs_data['artist_id_link']; ?> data-album_id=<?php echo $saved_songs_data['album_id_link']; ?> data-song=<?php echo $saved_songs_data['song_id']; ?> data-song_name="<?php echo $saved_songs_data['song_name'];?>" data-artist_name="<?php echo $saved_songs_data['artist_firstname'].' '.$saved_songs_data['artist_lastname']; ?>">
 									 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
 								 </span></td>
 								<td class="song_name"><?php echo $saved_songs_data['song_name']; ?></td>

@@ -13,10 +13,14 @@ body.artist_detail #navigation {
 	display: none;
 }
 h1.artist_detail_title {
+	float: left;
 	font-size: 70px;
 	line-height: 78px;
 	margin-bottom: 15px;
 	margin-top: 0;
+}
+.artist_actions {
+	clear: both;
 }
 a.follow_button,
 a.follow_button.is_following:hover {
@@ -177,9 +181,36 @@ h3.popular_title {
 }
 
 .more_songs {
+	display: none;
 	float: left;
 	clear: both;
 	margin-top: 30px;
+}
+
+.followers {
+	float: left;
+	position: relative;
+	top: 20px;
+	margin-left: 15px;
+}
+
+.followers svg,
+.followers img {
+	float: left;
+	width: 50px;
+	height: auto;
+}
+
+.followers svg path {
+	fill: var(--primary-color) !important;
+}
+
+.follower_count {
+	font-size: 25px;
+    line-height: 32px;
+    position: relative;
+    top: 8px;
+    font-weight: 700;
 }
 
 /* @end */

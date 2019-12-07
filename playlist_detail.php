@@ -16,15 +16,13 @@ $_SESSION['active']				= 'discover';
 $_SESSION['active_meta_nav']	= 'playlists';
 $_SESSION['playlist']['id'] = $_GET['playlist_id'];
 
-$playlist_song_query = "SELECT playlist_song.playlist_id, songs.*, artists.artist_firstname, artists.artist_lastname FROM `playlist_song` playlist_song
+$playlist_song_query = "SELECT playlist_song.playlist_id, songs.*, artists.artist_firstname, artists.artist_lastname, album.path_to_image FROM `playlist_song` playlist_song
 					INNER JOIN `song` songs ON songs.song_id = playlist_song.song_id
-					LEFT JOIN `artist` artists ON artists.artist_id = songs.artist_id_link
+					INNER JOIN `album` album ON album.album_id = songs.album_id_link
+					INNER JOIN `artist` artists ON artists.artist_id = songs.artist_id_link
 					WHERE `playlist_id` = ".$_SESSION['playlist']['id'];
 
 $playlist_query_menu = "SELECT * FROM `playlist`";
-
-$interact_with_songs_query = "SELECT playlist_song.playlist_id, playlist_song.song_id, songs.* FROM `playlist_song` playlist_song
-					INNER JOIN `song` songs ON songs.song_id = playlist_song.song_id";
 
 ?>
 <!DOCTYPE html>
@@ -65,7 +63,7 @@ $interact_with_songs_query = "SELECT playlist_song.playlist_id, playlist_song.so
 
 								?>
 								<tr>
-									<td class="play"><span class="play_song_wrapper play_song_class" data-artist_id=<?php echo $playlist_songs_data['artist_id_link']; ?> data-album_id=<?php echo $playlist_songs_data['album_id_link']; ?> data-song=<?php echo $playlist_songs_data['song_id']; ?> data-song_name="<?php echo $playlist_songs_data['song_name'];?>" data-artist_name="<?php echo $playlist_songs_data['artist_firstname'].' '.$playlist_songs_data['artist_lastname']; ?>">
+									<td class="play"><span class="play_song_wrapper play_song_class" data-cover=<?php echo $playlist_songs_data['path_to_image']; ?> data-artist_id=<?php echo $playlist_songs_data['artist_id_link']; ?> data-album_id=<?php echo $playlist_songs_data['album_id_link']; ?> data-song=<?php echo $playlist_songs_data['song_id']; ?> data-song_name="<?php echo $playlist_songs_data['song_name'];?>" data-artist_name="<?php echo $playlist_songs_data['artist_firstname'].' '.$playlist_songs_data['artist_lastname']; ?>">
 										 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
 									 </span></td>
 									<td class="song_name"><?php echo $playlist_songs_data['song_name']; ?></td>
@@ -139,28 +137,5 @@ $interact_with_songs_query = "SELECT playlist_song.playlist_id, playlist_song.so
 				</div>
 			</div>
 		</div>
-
-		<script type="text/javascript">
-
-			// add song to playlist
-			$('.add_to_playlist_button').click(function() {
-				var playlist_id = $(this).data('playlist_id');
-				var song_id = $(this).data('song_id');
-				var playlist_checker = $(this).data('playlist_checker');
-
-				$.ajax({
-					url: 'classes/class.playlist.php',
-					type: "POST",
-					data: {
-						playlist_id_link: playlist_id,
-						song_id: song_id,
-						playlist_checker_val: playlist_checker,
-					},
-					success: function(response) {
-
-					}
-				});
-			});
-		</script>
 	</body>
 </html>

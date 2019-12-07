@@ -100,3 +100,16 @@ body.dark fieldset span.max_song_upload {
 body.dark div.popular_song div.popular_song_inner h4 {
   color: var(--dark_mode_input) !important;
 }
+
+body.dark .audio-player .player-controls p,
+body.dark .audio-player .player-controls p a,
+body.dark .audio-player .player-controls {
+	color: #fff;
+}
+body.dark .audio-player .player-controls p a:hover {
+	opacity: 0.6;
+}
+
+body.dark .follower_count {
+	color: #fff;
+}

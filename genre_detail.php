@@ -21,6 +21,7 @@ if (isset($_GET['genre_id']) && $_GET['genre_id'] != 0) {
 
 $genre_song_query = "SELECT * FROM `song` songs
 					INNER JOIN `artist` artists ON artists.artist_id = songs.artist_id_link
+					INNER JOIN `album` album ON album.album_id = songs.album_id_link
 					WHERE `genre_id` = ".$genre_id;
 
 ?>
@@ -69,7 +70,7 @@ $genre_song_query = "SELECT * FROM `song` songs
 
 								?>
 								<tr>
-									<td class="play"><span class="play_song_wrapper play_song_class" data-artist_id=<?php echo $genre_songs_data['artist_id_link']; ?> data-album_id=<?php echo $genre_songs_data['album_id_link']; ?> data-song=<?php echo $genre_songs_data['song_id']; ?> data-song_name="<?php echo $genre_songs_data['song_name'];?>" data-artist_name="<?php echo $genre_songs_data['artist_firstname'].' '.$genre_songs_data['artist_lastname']; ?>">
+									<td class="play"><span class="play_song_wrapper play_song_class" data-cover=<?php echo $genre_songs_data['path_to_image']; ?> data-artist_id=<?php echo $genre_songs_data['artist_id_link']; ?> data-album_id=<?php echo $genre_songs_data['album_id_link']; ?> data-song=<?php echo $genre_songs_data['song_id']; ?> data-song_name="<?php echo $genre_songs_data['song_name'];?>" data-artist_name="<?php echo $genre_songs_data['artist_firstname'].' '.$genre_songs_data['artist_lastname']; ?>">
 										 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
 									 </span></td>
 									<td class="song_name"><?php echo $genre_songs_data['song_name']; ?></td>

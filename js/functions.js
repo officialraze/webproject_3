@@ -11,6 +11,23 @@ $(function() {
 	// load playbar
 	$('#playbar_wrapper_loader').load('includes/playbar.php');
 
+	// show all songs in artist detail
+	$('.show_all').click(function() {
+		var button = $(this);
+
+		if ($(button).html() == 'Alle anzeigen') {
+			$(button).html('Weniger anzeigen');
+		}
+		else {
+			$(button).html('Alle anzeigen');
+		}
+
+		var songs_wrapper = $(button).parent().find('.songs_wrapper');
+
+		// show more songs
+		$(songs_wrapper).find('.more_songs').slideToggle();
+	});
+
 	// check if message isset
 	if (window.location.href.indexOf("message=") > -1) {
 
@@ -152,6 +169,30 @@ $(function() {
 });
 
 
+// add song to playlist
+$(function() {
+
+	$('.add_to_playlist_button').click(function() {
+		var playlist_id = $(this).data('playlist_id');
+		var song_id = $(this).data('song_id');
+		var playlist_checker = $(this).data('playlist_checker');
+
+		$.ajax({
+			url: 'classes/class.playlist.php',
+			type: "POST",
+			data: {
+				playlist_id_link: playlist_id,
+				song_id: song_id,
+				playlist_checker_val: playlist_checker,
+			},
+			success: function(response) {
+
+			}
+		});
+	});
+});
+
+
 // follow / unfollow artist
 $(function() {
 
@@ -191,6 +232,7 @@ $(function() {
 		var artist_name = $(this).data('artist_name');
 		var artist_id = $(this).data('artist_id');
 		var album_id = $(this).data('album_id');
+		var cover = $(this).data('cover');
 
 		// set jquery sessions for playbar
 		$.session.set('song_id', song_id);
@@ -198,6 +240,7 @@ $(function() {
 		$.session.set('artist_name', artist_name);
 		$.session.set('artist_id', artist_id);
 		$.session.set('album_id', album_id);
+		$.session.set('cover', cover);
 
 		// load playbar again for setting new song data
 		$('#playbar_wrapper_loader').load('includes/playbar.php');

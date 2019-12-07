@@ -21,6 +21,25 @@ $get_artist_id = $_GET['artist_id'];
 $statement_is_artist = $pdo->prepare("SELECT * FROM `artist` WHERE (`user_id` = :user_id) AND (`artist_id` = :artist_id)");
 $statement_is_artist->execute(array(':user_id' => $artist_id, ':artist_id' => $get_artist_id));
 
+$statement_has_more_songs = $pdo->prepare("SELECT * FROM `song` WHERE `artist_id_link` = :artist_id_link");
+$statement_has_more_songs->execute(array(':artist_id_link' => $get_artist_id));
+$has_more_songs = FALSE;
+
+
+$statement_has_more_albums = $pdo->prepare("SELECT * FROM `album` WHERE `artist_id` = :artist_id");
+$statement_has_more_albums->execute(array(':artist_id' => $get_artist_id));
+$has_more_albums = FALSE;
+
+// check if artist has more than 6 songs
+if ($statement_has_more_songs->rowCount() > 6) {
+	$has_more_songs = TRUE;
+}
+
+// check if artist has more than 6 albums
+if ($statement_has_more_albums->rowCount() > 6) {
+	$has_more_albums = TRUE;
+}
+
 // check if artist id is same -> if TRUE -> admin settings visible
 if ($statement_is_artist->rowCount() > 0) {
 	$artist_admin = 1;
@@ -51,6 +70,17 @@ $album_query_more = "SELECT * FROM `album` album
 				WHERE `artist_id` = ".$get_artist_id."
 				ORDER BY `album_id` DESC
 				LIMIT 6,6";
+
+
+// get followers
+$statement_get_followers = $pdo->prepare("SELECT * FROM `following_artist` WHERE `artist_id` = :artist_id");
+$statement_get_followers->execute(array(':artist_id' => $get_artist_id));
+$followers = 0;
+
+if ($statement_get_followers->rowCount() > 0) {
+	$followers = $statement_get_followers->rowCount();
+}
+
 
 // check if user is following the artist
 $statement_is_following = $pdo->prepare("SELECT * FROM `following_artist` WHERE (`user_id_link` = :user_id_link) AND (`artist_id` = :artist_id)");
@@ -91,6 +121,7 @@ else {
 						<?php } ?>
 					</div>
 					<div class="artist_content">
+
 						<h1 class="artist_detail_title">
 							<?php
 							 	foreach ($pdo->query($artist_query) as $artist_data) {
@@ -99,25 +130,34 @@ else {
 							?>
 						</h1>
 
-						<?php
-						if ($artist_admin == 1) { ?>
-							<a data-artist="<?php echo $get_artist_id; ?>" class="follow_button change_follow_state <?php echo $following_class; ?>"><?php echo $follow_text; ?></a>
-							<a href="add_new_album.php?artist_id=<?php echo $get_artist_id; ?>" class="follow_button"><?php echo ADD_NEW_ALBUM; ?></a>
-							<a href="manage_songs.php?artist_id=<?php echo $get_artist_id; ?>" class="follow_button"><?php echo MANAGE_SONGS_ABLUMS; ?></a>
-							<a href="manage_events.php?artist_id=<?php echo $get_artist_id; ?>" class="follow_button"><?php echo MANAGE_EVENTS; ?></a>
+						<div class="followers">
+							<img class="svg follower_icon" src="img/assets/follower.svg" alt="Followers">
+							<span class="follower_count"><?php echo $followers; ?></span>
+						</div>
+
+						<div class="artist_actions">
+							<?php
+							if ($artist_admin == 1) { ?>
+								<a data-artist="<?php echo $get_artist_id; ?>" class="follow_button change_follow_state <?php echo $following_class; ?>"><?php echo $follow_text; ?></a>
+								<a href="add_new_album.php?artist_id=<?php echo $get_artist_id; ?>" class="follow_button"><?php echo ADD_NEW_ALBUM; ?></a>
+								<a href="manage_songs.php?artist_id=<?php echo $get_artist_id; ?>" class="follow_button"><?php echo MANAGE_SONGS_ABLUMS; ?></a>
+								<a href="manage_events.php?artist_id=<?php echo $get_artist_id; ?>" class="follow_button"><?php echo MANAGE_EVENTS; ?></a>
 								<div class="upload-btn-wrapper" style="top: 15px; left: 10px;">
 									<form class="" action="classes/class.artist.php" method="post" enctype="multipart/form-data">
 										<input accept="image/*" name="artist_image" type="file" class="upload_artist_image" id="artist_image">
 										<button class="btn with_icon"><img src="img/assets/image_upload.svg" class="music_icon svg" alt="<?php echo ALBUM_ADD_SONGS; ?>"></button>
 										<input type="hidden" value="true" name="upload_artist_image_form"/>
 										<input type="hidden" name="artist_id" value="<?php echo $artist_id; ?>">
-								</div>
-								<input class="submit-button" type="submit" value="<?php echo SAVE; ?>" name="submit" id="submit"/>
-							</form>
-						<?php }
-						else { ?>
-							<a data-artist="<?php echo $get_artist_id; ?>" class="follow_button change_follow_state <?php echo $following_class; ?>"><?php echo $follow_text; ?></a>
-						<?php } ?>
+									</div>
+									<input class="submit-button" type="submit" value="<?php echo SAVE; ?>" name="submit" id="submit"/>
+								</form>
+							<?php }
+							else { ?>
+								<a data-artist="<?php echo $get_artist_id; ?>" class="follow_button change_follow_state <?php echo $following_class; ?>"><?php echo $follow_text; ?></a>
+							<?php } ?>
+							<div class="cf"></div>
+						</div>
+
 
 						<div id="popular_wrapper">
 							<h3 class="short_title popular_title"><?php echo NEW_SONGS; ?></h3>
@@ -142,7 +182,7 @@ else {
 										?>
 										<div class="popular_song">
 											<div class="popular_song_inner">
-												<span class="play_song_wrapper play_song_class" data-artist_id=<?php echo $song_data['artist_id_link']; ?> data-album_id=<?php echo $song_data['album_id_link']; ?> data-song=<?php echo $song_data['song_id']; ?> data-song_name="<?php echo $song_data['song_name'];?>" data-artist_name="<?php echo $artist_data['artist_firstname'].' '.$artist_data['artist_lastname']; ?>">
+												<span class="play_song_wrapper play_song_class" data-cover=<?php echo $song_data['path_to_image']; ?> data-artist_id=<?php echo $song_data['artist_id_link']; ?> data-album_id=<?php echo $song_data['album_id_link']; ?> data-song=<?php echo $song_data['song_id']; ?> data-song_name="<?php echo $song_data['song_name'];?>" data-artist_name="<?php echo $artist_data['artist_firstname'].' '.$artist_data['artist_lastname']; ?>">
 													 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
 												 </span>
 												<img src="img/covers/<?php echo $song_data['path_to_image']?>" class="cover_img" alt="Cover" width="49px">
@@ -194,8 +234,7 @@ else {
 
 						<div id="albums_overview">
 							<h3 class="short_title popular_title"><?php echo ALBUM; ?></h3>
-							<?php $limit_album = 0; ?>
-							<?php if ($limit_album >= 6) {?>
+							<?php if ($has_more_albums === TRUE) { ?>
 								<a class="show_all"><?php echo SHOW_ALL; ?></a>
 							<?php } ?>
 							<div class="album_wrapper">
@@ -206,7 +245,7 @@ else {
 										</div>
 									<?php if (++$limit_album == 6) break; } ?>
 
-									<div class="hidden more_songs">
+									<div class="more_songs">
 										<?php foreach ($pdo->query($album_query_more) as $album_data) { ?>
 											<div class="album_item">
 												<a href="album_overview.php?album_id=<?php echo $album_data['album_id']?>&artist_id=<?php echo $get_artist_id; ?>"><img src="img/covers/<?php echo $album_data['path_to_image']?>" alt="Album" width="175"></a>
@@ -220,8 +259,7 @@ else {
 
 						<div id="songs_overview">
 							<h3 class="short_title popular_title"><?php echo SONGS; ?></h3>
-							<?php $limit_songs = 0; ?>
-							<?php if ($limit_songs >= 6) {?>
+							<?php if ($has_more_songs === TRUE) { ?>
 								<a class="show_all"><?php echo SHOW_ALL; ?></a>
 							<?php } ?>
 							<div class="songs_wrapper">
@@ -232,7 +270,7 @@ else {
 											</div>
 									<?php if (++$limit_songs == 6) break; } ?>
 
-									<div class="hidden more_songs">
+									<div class="more_songs">
 										<?php foreach ($pdo->query($song_query_more) as $song_data) { ?>
 												<div class="song_item">
 													<a href="album_overview.php?album_id=<?php echo $song_data['album_id']?>&artist_id=<?php echo $get_artist_id; ?>"><img src="img/covers/<?php echo $song_data['path_to_image']?>" alt="Album" width="175"></a>

@@ -20,6 +20,7 @@ $song_query = "SELECT * FROM `song`
 				ORDER BY `song_id` DESC LIMIT 3";
 
 $artist_query = "SELECT * FROM `artist` ORDER BY RAND() LIMIT 8";
+$playlist_query_menu = "SELECT * FROM `playlist`";
 
 ?>
 <!DOCTYPE html>
@@ -83,7 +84,7 @@ $artist_query = "SELECT * FROM `artist` ORDER BY RAND() LIMIT 8";
 									?>
 									<div class="popular_song">
 										<div class="popular_song_inner">
-											<span class="play_song_wrapper play_song_class" data-album_id=<?php echo $song_data['album_id_link']; ?> data-artist_id=<?php echo $song_data['artist_id_link']; ?> data-song=<?php echo $song_data['song_id']; ?> data-song_name="<?php echo $song_data['song_name'];?>" data-artist_name="<?php echo $song_data['artist_firstname'].' '.$song_data['artist_lastname']; ?>">
+											<span class="play_song_wrapper play_song_class" data-cover=<?php echo $song_data['path_to_image']; ?> data-album_id=<?php echo $song_data['album_id_link']; ?> data-artist_id=<?php echo $song_data['artist_id_link']; ?> data-song=<?php echo $song_data['song_id']; ?> data-song_name="<?php echo $song_data['song_name'];?>" data-artist_name="<?php echo $song_data['artist_firstname'].' '.$song_data['artist_lastname']; ?>">
 												 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
 											 </span>
 											<img src="img/covers/<?php echo $song_data['path_to_image']?>" class="cover_img" alt="Cover" width="49px">
@@ -94,7 +95,62 @@ $artist_query = "SELECT * FROM `artist` ORDER BY RAND() LIMIT 8";
 											<div class="song_options">
 												<span class="time"><?php echo $song_data['length']; ?></span>
 												<span class="like_wrapper like_song <?php echo $like_class; ?>" data-song=<?php echo $song_data['song_id']; ?>><img src="img/assets/like.svg" alt="Like" class="svg"></span>
-												<img src="img/assets/show_more.svg" alt="More" class="svg more_song">
+												<div class="dropdown_show_more">
+													<img src="img/assets/show_more.svg" class="svg_more_dropdown" alt="show_more">
+														<div class="dropdown_show_more_content">
+															<div class="dropdown_menu_delete">
+																<form action="" method="post">
+																<input type="hidden" name="delete" value="yes">
+	  														<input type="hidden" name="row" value="<?php echo $playlist_songs_data['song_id']; ?>">
+																<input class="dropdown" type="submit" name="delete" value="Lösche Song" <?php
+																// function for deleting a specific, current row
+																if (isset($_POST['delete']) && isset($_POST['row']))
+																	{
+																		$current_id = $_POST['row'];
+																		$delete_song_playlist = "DELETE FROM playlist_song WHERE song_id = '$current_id'";
+
+																		$execute_delete_song = $pdo->query($delete_song_playlist);
+																	}
+																?>></input></form>
+															</div>
+															<div class="dropdown_menu_add">
+																<p class="add_to_playlist">zu Playlist hinzufügen</p>
+																<div class="subnavi">
+
+
+																	<!-- the playlists listed up -->
+																	<?php foreach($pdo->query($playlist_query_menu) as $playlist) {
+
+																		$statement_song = $pdo->prepare("SELECT `song_id` FROM `playlist_song` WHERE `song_id` = :song_id AND :playlist_id = :playlist_id");
+																		$statement_song->bindParam(':song_id', $playlist_songs_data['song_id']);
+																		$statement_song->bindParam(':playlist_id', $playlist['playlist_id']);
+																		$statement_song->execute();
+
+																		if ($statement_song->rowCount() > 0) {
+																			$playlist_class = 'in_playlist';
+																		}
+																		else {
+																			$playlist_class = 'not_in_playlist';
+																		}
+
+																		?>
+																		<div class="playlist_list_box">
+																			<div class="playlist_list_inner">
+																				<a class="add_to_playlist_button <?php echo $playlist_class; ?>" data-playlist_checker=<?php echo $playlist_class; ?> data-song_id=<?php echo $playlist_songs_data['song_id']; ?> data-playlist_id=<?php echo $playlist['playlist_id']; ?> ><?php echo $playlist['playlist_name']; ?></a>
+																			</div>
+																		</div>
+																	<?php } ?>
+
+
+																	<form action="classes/class.playlist.php" method="post">
+																		<input class="add_to_playlist_input" type="text" name="new_playlist" value="" placeholder="<?php echo ENTER_NAME ?>">
+																		<input type="hidden" name="new_playlist_form" value="true">
+																		<input type="submit" name="submit_new_playlist" value="<?php echo SAVE; ?>">
+																	</form>
+																</div>
+															</div>
+														</div>
+												</div>
 											</div>
 											<div class="cf"></div>
 										</div>

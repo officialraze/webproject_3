@@ -16,7 +16,6 @@ session_start();
 		</audio>
 	</div>
 	<div class="player-controls scrubber">
-
 		<span id="seekObjContainer">
 			<progress id="seekObj" value="0" max="1"></progress>
 		</span>
@@ -24,7 +23,7 @@ session_start();
 		<small style="float: left; position: relative; left: 15px;" class="start-time"></small>
 		<small style="float: right; position: relative; right: 20px;" class="end-time"></small>
 	</div>
-	<div class="album-image" style="background-image: url('img/covers/preset-junkies.jpg')"></div>
+
 </div>
 
 <script type="text/javascript">
@@ -42,9 +41,11 @@ $(function() {
 		var artist_name = $.session.get('artist_name');
 		var album_id = $.session.get('album_id');
 		var artist_id = $.session.get('artist_id');
+		var cover = $.session.get('cover');
 
 		$('<source class="source_music_player" src="music/song_'+song_id+'.mp3" type="audio/mp3">').appendTo('audio#player');
 		$('<p><a href="album_overview.php?album_id='+album_id+'&artist_id='+artist_id+'">'+song_name+' </a><small>von</small> <a href="artist_detail.php?artist_id='+artist_id+'">'+artist_name+'</a></p>').prependTo('.player-controls.scrubber');
+		$('<div class="album-image" style="background-image: url(img/covers/'+cover+')"></div>').appendTo('.audio-player');
 	}
 });
 

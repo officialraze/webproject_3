@@ -53,7 +53,6 @@ define('CHANGE_PASSWORD', 'Passwort ändern');
 define('RESET_PASSWORD', 'Passwort zurücksetzen');
 define('PASSWORD_RESET_TEXT', 'Hallo %s %d Link zum Passwort zurücksetzen: http://localhost/webproject_3/password_reset_form.php?token=');
 
-
 // artist
 define('IS_FOLLOW', 'Folge ich');
 define('FOLLOW', 'Folgen');
@@ -98,10 +97,10 @@ define('NEAR_CONCERTS', 'Konzerte in der Nähe');
 define('WHERE', 'Ort');
 define('DATE', 'Datum');
 
-// SEARCH
+// search
 define('SEARCH', 'Suche');
 define('SEARCH_ARTISTS', 'Gefundene Artisten');
 define('SEARCH_SONGS', 'Gefundene Lieder');
 
-// PLAYLISTS
+// playlist
 define('ENTER_NAME', 'Bitte Namen eingeben');
