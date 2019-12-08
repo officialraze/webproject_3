@@ -305,6 +305,8 @@ function send_password_reset_link($username) {
 		$message = sprintf(PASSWORD_RESET_TEXT, $user['firstname'], $user['lastname']);
 		$message .= $user['password_token'];
 
+		echo "<pre>";print_r($message);exit;
+
 		// send mail
 		mail($mailto, $subject, $message);
 
@@ -360,7 +362,7 @@ function save_user_settings() {
 			$statement->execute(array('password' => $password_hash));
 		}
 
-		header("Location: ../settings.php");
+		header("Location: ../settings.php?message=true");
 	}
 	else {
 		header("Location: ../settings.php?message=false");

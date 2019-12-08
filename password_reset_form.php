@@ -36,10 +36,10 @@ else {
 			<div class="login_form_inner">
 				<h1 class="title_login"><?php echo CHANGE_PASSWORD; ?></h1>
 				<form class="form_login" action="classes/class.user.php" method="post">
-					<div class="login_form_element">
+					<div class="form_element">
 						<input type="text" name="password1" placeholder="<?php echo PASSWORD; ?>">
 					</div>
-					<div class="login_form_element">
+					<div class="form_element">
 						<input type="text" name="password2" placeholder="<?php echo RETYPE_PASSWORD; ?>">
 					</div>
 					<input type="hidden" name="password_reset_form_validate" value="true">

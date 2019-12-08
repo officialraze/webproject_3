@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 05. Dez 2019 um 22:57
+-- Erstellungszeit: 08. Dez 2019 um 19:18
 -- Server-Version: 5.6.34-log
 -- PHP-Version: 7.1.5
 
@@ -38,18 +38,7 @@ CREATE TABLE IF NOT EXISTS `album` (
   `artist_id` int(11) NOT NULL,
   `path_to_image` varchar(255) NOT NULL,
   PRIMARY KEY (`album_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
-
---
--- Daten für Tabelle `album`
---
-
-INSERT INTO `album` (`album_id`, `album_name`, `album_year`, `artist_id`, `path_to_image`) VALUES
-(1, 'Lost - Single', 2019, 1, 'lost.jpg'),
-(19, 'test', 1234, 1, 'eyes.jpg'),
-(20, 'another test', 2019, 1, 'sphere.jpg'),
-(21, 'gravity', 2020, 1, 'gravity.jpg'),
-(22, 'homie', 2019, 1, 'homie.jpg');
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -65,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `artist` (
   `biography` text NOT NULL,
   PRIMARY KEY (`artist_id`),
   KEY `artist_fk0` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Daten für Tabelle `artist`
@@ -95,8 +84,6 @@ CREATE TABLE IF NOT EXISTS `events` (
 --
 
 INSERT INTO `events` (`id`, `artist_id_link`, `event_name`, `place`, `event_date`) VALUES
-(1, 1, 'EDM Party', 'Bern', '2019-12-20'),
-(2, 1, 'Rampage', 'Belgien', '2020-04-15'),
 (3, 1, 'test', 'test', '2020-02-20');
 
 -- --------------------------------------------------------
@@ -118,31 +105,6 @@ CREATE TABLE IF NOT EXISTS `following_artist` (
 
 INSERT INTO `following_artist` (`user_id_link`, `artist_id`) VALUES
 (1, 1);
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `genre`
---
-
-CREATE TABLE IF NOT EXISTS `genre` (
-  `genre_id` int(11) NOT NULL AUTO_INCREMENT,
-  `genre_name` varchar(255) NOT NULL,
-  PRIMARY KEY (`genre_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `livestream`
---
-
-CREATE TABLE IF NOT EXISTS `livestream` (
-  `livestream_id` int(11) NOT NULL AUTO_INCREMENT,
-  `livestream_name` varchar(255) NOT NULL,
-  `livestream_url` text NOT NULL,
-  PRIMARY KEY (`livestream_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -180,13 +142,6 @@ CREATE TABLE IF NOT EXISTS `playlist_song` (
   KEY `playlist_song_fk1` (`song_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Daten für Tabelle `playlist_song`
---
-
-INSERT INTO `playlist_song` (`playlist_id`, `song_id`) VALUES
-(1, 21);
-
 -- --------------------------------------------------------
 
 --
@@ -217,21 +172,7 @@ CREATE TABLE IF NOT EXISTS `song` (
   KEY `song_fk0` (`artist_id_link`),
   KEY `song_fk2` (`genre_id`),
   KEY `song_fk1` (`album_id_link`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
-
---
--- Daten für Tabelle `song`
---
-
-INSERT INTO `song` (`song_id`, `artist_id_link`, `song_name`, `album_id_link`, `length`, `genre_id`) VALUES
-(1, 1, 'Lost', 1, '03:18', 2),
-(20, 1, 'test 1', 19, '00:02:22', 2),
-(21, 1, 'test 2', 20, '03:18', 2),
-(22, 1, 'gravity', 21, '00:24', 1),
-(23, 1, 'homie', 22, '00:51', 2),
-(24, 1, 'homie 2', 22, '00:29', 3),
-(25, 1, 'homie 3', 22, '00:37', 2),
-(26, 1, 'homie 4', 22, '00:26', 3);
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -252,14 +193,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Daten für Tabelle `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `firstname`, `lastname`, `password_hash`, `password_token`, `is_artist`, `has_darkmode`) VALUES
-(1, 'molvin95', 'molvinlauber@gmail.com', 'Melvin', 'Lauber', '$2y$10$PGceo51mz2ukP88ypW2HXu9VH9W87TPcINRZIzoM7nzU3dkYZlHOi', '1d7622dc2d2bcfc8de531e31790b049d', 1, 1),
+(1, 'molvin95', 'molvinlauber@gmail.com', 'Melvin', 'Lauber', '$2y$10$Ip2e0mRFuXsysKTpi2m7eutFtjE.y1JM9qChKTzQIaXFjl/2lfqjO', '89d2f609914bc2f24c26df162b361d08', 1, 1),
 (2, 'david.clausen', 'davidclausen2@lernende.bfo-vs.ch', 'David', 'Clausen', '$2y$10$h51xi20m3d6MvY8O16Y1A.6FB5vOV5R1uq9e.OWQ4KIXX.PftMUEu', 'e8bac3df99be1fb31c13a79f7a5bea04', 0, 0);
 
 --

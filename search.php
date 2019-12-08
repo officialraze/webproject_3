@@ -48,54 +48,60 @@ if(isset($_POST['search'])) {
 							$search_query_artist = "SELECT * FROM `artist` WHERE artist_firstname LIKE '%".$search."%' OR artist_lastname LIKE '%".$search."%'";
 
 							$search_query_songs = "SELECT * FROM `song` songs
-																		 INNER JOIN `artist` artists ON artists.artist_id = songs.artist_id_link
-																		 WHERE songs.song_name LIKE '%".$search."%'
-																		 OR artist_firstname LIKE '%".$search."%' OR artist_lastname LIKE '%".$search."%'";
-          	}
-          // give out entries
-					echo "<div class='wrapper_search'>";
-          echo "<h3 class='search_title'>".SEARCH_ARTISTS."</h3>";
-					foreach ($pdo->query($search_query_artist) as $artist) {
-            if (is_array($artist) && !empty($artist)) {
-            // give out grid item / all artists
-            echo "<a href='artist_detail.php?artist_id=".$artist['artist_id']."'>";
-              echo "<div class='artist_box'>";
-                echo "<img src='img/artists/artist_".$artist['artist_id'].".jpg'>";
-                echo "<h3 class='artist_name'>".$artist['artist_firstname'].' '.$artist['artist_lastname']."</h3>";
-              echo "</div>";
-            echo "</a>";
-              }
-            else {
-              echo '<strong class="no_entries">Keine Ergebnisse gefunden</strong>';
-              }
-						echo "</div>";
-            }
-					echo "<div class='wrapper_search'>";
-					echo "<h3 class='search_title'>".SEARCH_SONGS."</h3>";
-					echo "<table class='saved_songs_list'>";
-						echo "<tbody>";
-					foreach ($pdo->query($search_query_songs) as $song) {
-	            if (is_array($song) && !empty($song)) {
-	            // give out grid item / all artists
-							echo "<tr>";
-								echo '<td class="play"><span class="play_song_wrapper play_song_class" data-artist_id='.$song['artist_id_link'].' data-album_id='.$song['album_id_link'].' data-song='.$song['song_id'].' data-song_name="'.$song['song_name'].'" data-artist_name="'.$artist['artist_firstname'].' '.$artist['artist_lastname'].'">
-									 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
-								 </span></td>';
-								echo "<td class='song_name'>".$song['song_name']."<td>";
-								echo "<td class='artist_name'><a href='artist_detail.php?artist_id= 1;'>".$artist['artist_firstname'].' '.$artist['artist_lastname']."</a></td>";
-								echo "<td class='actions'><img src='img/assets/like.svg' class='svg like' alt='Like'><img src='img/assets/show_more.svg' class='svg more' alt='show_more'></td>";
-								echo "<td class='length'>".$song['length']."</td>";
-							echo "</tr>";
-              }
-	            else {
-	              echo '<strong class="no_entries">Keine Ergebnisse gefunden</strong>';
-	              }
-	            }
-							echo "</tbody>";
-						echo "</table>";
-					echo "</div>";
-          }
-          ?>
+												 INNER JOIN `artist` artists ON artists.artist_id = songs.artist_id_link
+												 WHERE songs.song_name LIKE '%".$search."%'
+												 OR artist_firstname LIKE '%".$search."%' OR artist_lastname LIKE '%".$search."%'";
+												 // give out entries
+												 echo "<div class='wrapper_search'>";
+												 echo "<h3 class='search_title'>".SEARCH_ARTISTS."</h3>";
+												 foreach ($pdo->query($search_query_artist) as $artist) {
+													 if (is_array($artist) && !empty($artist)) {
+														 // give out grid item / all artists
+														 echo "<a href='artist_detail.php?artist_id=".$artist['artist_id']."'>";
+														 echo "<div class='artist_box'>";
+														 echo "<img src='img/artists/artist_".$artist['artist_id'].".jpg'>";
+														 echo "<h3 class='artist_name'>".$artist['artist_firstname'].' '.$artist['artist_lastname']."</h3>";
+														 echo "</div>";
+														 echo "</a>";
+													 }
+													 else {
+														 echo '<strong class="no_entries">Keine Ergebnisse gefunden</strong>';
+													 }
+													 echo "</div>";
+												 }
+												 echo "<div class='wrapper_search'>";
+												 echo "<h3 class='search_title'>".SEARCH_SONGS."</h3>";
+												 echo "<table class='saved_songs_list'>";
+												 echo "<tbody>";
+												 foreach ($pdo->query($search_query_songs) as $song) {
+													 if (is_array($song) && !empty($song)) {
+														 // give out grid item / all artists
+														 echo "<tr>";
+														 echo '<td class="play"><span class="play_song_wrapper play_song_class" data-artist_id='.$song['artist_id_link'].' data-album_id='.$song['album_id_link'].' data-song='.$song['song_id'].' data-song_name="'.$song['song_name'].'" data-artist_name="'.$artist['artist_firstname'].' '.$artist['artist_lastname'].'">
+														 <img src="img/assets/play.svg" alt="Play" class="svg play_song">
+														 </span></td>';
+														 echo "<td class='song_name'>".$song['song_name']."<td>";
+														 echo "<td class='artist_name'><a href='artist_detail.php?artist_id= 1;'>".$artist['artist_firstname'].' '.$artist['artist_lastname']."</a></td>";
+														 echo "<td class='actions'><img src='img/assets/like.svg' class='svg like' alt='Like'><img src='img/assets/show_more.svg' class='svg more' alt='show_more'></td>";
+														 echo "<td class='length'>".$song['length']."</td>";
+														 echo "</tr>";
+													 }
+													 else {
+														 echo '<strong class="no_entries">Keine Ergebnisse gefunden</strong>';
+													 }
+												 }
+												 echo "</tbody>";
+												 echo "</table>";
+												 echo "</div>";
+											 }
+											 else {
+							 					echo NO_DATA;
+							 				}
+				}
+				else {
+					echo MORE_THAN_3;
+				}
+          		?>
 				</div>
 			</div>
 		</div>

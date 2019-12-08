@@ -24,9 +24,6 @@ define('ALL_ARTISTS', 'Alle Künstler');
 define('RECENTLY_LISTENED', 'Zuletzt gehört');
 define('NEW_ARTISTS', 'Neue Künstler');
 define('NEW_SONGS', 'Neue Songs');
-define('TODAY', 'Heute');
-define('WEEK', 'Woche');
-define('MONTH', 'Monat');
 define('OVERVIEW', 'Übersicht');
 define('CURRENTLY_NO_PLAYING', 'Zurzeit wird kein Song abgespielt');
 
@@ -101,6 +98,7 @@ define('DATE', 'Datum');
 define('SEARCH', 'Suche');
 define('SEARCH_ARTISTS', 'Gefundene Artisten');
 define('SEARCH_SONGS', 'Gefundene Lieder');
+define('MORE_THAN_3', 'Mehr als 3 Zeichen eingeben');
 
 // playlist
 define('ENTER_NAME', 'Bitte Namen eingeben');

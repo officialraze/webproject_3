@@ -117,7 +117,7 @@ else {
 					<div class="artist_image">
 						<?php
 							foreach ($pdo->query($artist_query) as $artist_data) { ?>
-								<img src="img/artists/artist_<?php echo $artist_data['user_id']; ?>.jpg" alt="<?php echo $artist_data['artist_firstname'].' '.$artist_data['artist_lastname'] ?>">
+								<img src="img/artists/artist_<?php echo $get_artist_id; ?>.jpg" alt="<?php echo $artist_data['artist_firstname'].' '.$artist_data['artist_lastname'] ?>">
 						<?php } ?>
 					</div>
 					<div class="artist_content">
@@ -147,7 +147,7 @@ else {
 										<input accept="image/*" name="artist_image" type="file" class="upload_artist_image" id="artist_image">
 										<button class="btn with_icon"><img src="img/assets/image_upload.svg" class="music_icon svg" alt="<?php echo ALBUM_ADD_SONGS; ?>"></button>
 										<input type="hidden" value="true" name="upload_artist_image_form"/>
-										<input type="hidden" name="artist_id" value="<?php echo $artist_id; ?>">
+										<input type="hidden" name="artist_id" value="<?php echo $get_artist_id; ?>">
 									</div>
 									<input class="submit-button" type="submit" value="<?php echo SAVE; ?>" name="submit" id="submit"/>
 								</form>

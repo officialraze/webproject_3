@@ -55,7 +55,7 @@ $playlist_query_menu = "SELECT * FROM `playlist`";
 						<div class="artists_u_like_elements">
 							<?php foreach ($pdo->query($artist_query) as $artist) { ?>
 								<div class="artist_box">
-									<a href="artist_detail.php?artist_id=<?php echo $artist['artist_id']; ?>"><img src="img/artists/artist_<?php echo $artist['user_id']; ?>.jpg" alt="<?php echo $artist['artist_firstname'].' '.$artist['artist_lastname']; ?>"></a>
+									<a href="artist_detail.php?artist_id=<?php echo $artist['artist_id']; ?>"><img src="img/artists/artist_<?php echo $artist['artist_id']; ?>.jpg" alt="<?php echo $artist['artist_firstname'].' '.$artist['artist_lastname']; ?>"></a>
 								</div>
 							<?php } ?>
 							<div class="cf"></div>
