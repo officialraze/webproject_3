@@ -28,7 +28,7 @@ if(isset($_SESSION['user']['id'])) {
 			<div class="login_form_inner">
 				<h1 class="title_login"><?php echo CHANGE_PASSWORD; ?></h1>
 				<form class="form_login" action="classes/class.user.php" method="post">
-					<div class="login_form_element">
+					<div class="form_element">
 						<input type="text" name="username" placeholder="<?php echo USERNAME_MAIL; ?>">
 					</div>
 					<input type="hidden" name="password_reset_form" value="true">

@@ -51,7 +51,7 @@ define('BIOGRAPHY', 'Biographie des Künstler');
 define('PASSWORD_FORGOT', 'Passwort vergessen');
 define('CHANGE_PASSWORD', 'Passwort ändern');
 define('RESET_PASSWORD', 'Passwort zurücksetzen');
-define('PASSWORD_RESET_TEXT', 'Hallo %s %d Link zum Passwort zurücksetzen: http://localhost/webproject_3/password_reset_form.php?token=');
+define('PASSWORD_RESET_TEXT', 'Hallo %s %s <br> Mit diesem Link können Sie ihr Passwort zurücksetzen:<br> http://localhost/webproject_3/password_reset_form.php?token=');
 
 // artist
 define('IS_FOLLOW', 'Folge ich');

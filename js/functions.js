@@ -63,9 +63,25 @@ $(function() {
 			var message_value = "true";
 			var message_text = 'Profil-Bild erfolgreich hochgeladen!';
 		}
+		else if (window.location.href.indexOf("message=mail_sent") > -1) {
+			var message_value = "true";
+			var message_text = 'Es wurde Ihnen ein Mail mit einem Link geschickt, mit dem Sie das Passwort zurücksetzen können!';
+		}
+		else if (window.location.href.indexOf("message=reset_password_successfull") > -1) {
+			var message_value = "true";
+			var message_text = 'Passwort wurde erfolgreich zurückgesetzt!';
+		}
 		else if (window.location.href.indexOf("message=login_false") > -1) {
 			var message_value = "false";
 			var message_text = 'E-Mail oder Passwort ist nicht korrekt!';
+		}
+		else if (window.location.href.indexOf("message=token_used") > -1) {
+			var message_value = "false";
+			var message_text = 'Dieser Link wurde bereits verwendet!';
+		}
+		else if (window.location.href.indexOf("message=no_user_found") > -1) {
+			var message_value = "false";
+			var message_text = 'Konnte Benutzername oder E-Mail nicht finden!';
 		}
 		else if (window.location.href.indexOf("message=no_permission") > -1) {
 			var message_value = "false";
@@ -79,7 +95,7 @@ $(function() {
 		// add message
 		$('<div class="message '+message_value+'">'+message_text+'</div>').prependTo('body');
 
-		// add for smoothing
+		// add for smooth animation show up
 		setTimeout(function(){
 			$('.message').addClass('visible');
 		}, 300);
@@ -92,7 +108,6 @@ $(function() {
 
 	// change img tag with class svg into an svg
     activate('img[src*=".svg"]');
-
     function activate(string){
         jQuery(string).each(function(){
             var $img = jQuery(this);

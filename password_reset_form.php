@@ -14,13 +14,13 @@ if(isset($_SESSION['user']['id'])) {
 	header('Location: index.php');
 }
 
-// check if token isset, if not -> login page
+// check if token isset, if not -> passwort reset page
 if (isset($_GET['token'])) {
 	$token = $_GET['token'];
 }
-// else {
-// 	header('Location: login.php');
-// }
+else {
+	header('Location: password_reset.php');
+}
 
 ?>
 <!DOCTYPE html>

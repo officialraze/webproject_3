@@ -246,8 +246,7 @@ function like_song($save_song, $song_id) {
 /**
  * reset password
  *
- * @param string $password1
- * @param string $password2
+ * @param string $password
  * @param string $token
 */
 function reset_password($password, $token) {
@@ -274,11 +273,9 @@ function reset_password($password, $token) {
 		header("Location: ../login.php?message=reset_password_successfull");
 	}
 	else {
-		header("Location: ../password_reset_form.php?token=".$token);
+		header("Location: ../password_reset.php?message=token_used");
 	}
 	exit;
-
-
 }
 
 
@@ -293,25 +290,28 @@ function send_password_reset_link($username) {
 	// includes
 	include '../config.php';
 	include '../includes/db.php';
+	include '../language/de.php';
 
 	// check if user exists
-	$statement = $pdo->prepare("SELECT * FROM `users` WHERE `username` = :username");
-	$result = $statement->execute(array('username' => $username));
+	$statement = $pdo->prepare("SELECT * FROM `users` WHERE `username` = :username OR `email` = :email");
+	$result = $statement->execute(array('username' => $username, 'email' => $username));
 	$user = $statement->fetch();
-
 
 	// if user exists send mail with password reset form
 	if ($user) {
 		$mailto = $user['email'];
 		$subject = RESET_PASSWORD;
 
-		$message = sprintf($format, $user['firstname'], $user['lastname']);
-		$message = $user['password_token'];
+		$message = sprintf(PASSWORD_RESET_TEXT, $user['firstname'], $user['lastname']);
+		$message .= $user['password_token'];
 
 		// send mail
 		mail($mailto, $subject, $message);
 
 		header("Location: ../login.php?message=mail_sent");
+	}
+	else {
+		header("Location: ../password_reset.php?message=no_user_found");
 	}
 
 }
