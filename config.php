@@ -10,8 +10,8 @@
 $config = array(
 	'admin' => TRUE,
 	'testing' => FALSE,
-	'home' => TRUE,
-	'school' => FALSE,
+	'home' => FALSE,
+	'school' => TRUE,
 	'limit_upload_songs' => 20
 );
 
