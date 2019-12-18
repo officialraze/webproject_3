@@ -95,6 +95,9 @@ else {
 	$follow_text 		= FOLLOW;
 }
 
+$limit_album = 0;
+$limit_songs = 0;
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
