@@ -1,22 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 08. Dez 2019 um 19:18
--- Server-Version: 5.6.34-log
--- PHP-Version: 7.1.5
+-- Erstellungszeit: 18. Dez 2019 um 15:00
+-- Server-Version: 5.7.26
+-- PHP-Version: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Datenbank: `db_music_player`
@@ -38,7 +30,14 @@ CREATE TABLE IF NOT EXISTS `album` (
   `artist_id` int(11) NOT NULL,
   `path_to_image` varchar(255) NOT NULL,
   PRIMARY KEY (`album_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `album`
+--
+
+INSERT INTO `album` (`album_id`, `album_name`, `album_year`, `artist_id`, `path_to_image`) VALUES
+(24, 'moonlight', 2020, 1, 'artist_1.jpg');
 
 -- --------------------------------------------------------
 
@@ -172,7 +171,14 @@ CREATE TABLE IF NOT EXISTS `song` (
   KEY `song_fk0` (`artist_id_link`),
   KEY `song_fk2` (`genre_id`),
   KEY `song_fk1` (`album_id_link`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `song`
+--
+
+INSERT INTO `song` (`song_id`, `artist_id_link`, `song_name`, `album_id_link`, `length`, `genre_id`) VALUES
+(28, 1, 'moonlight', 24, '00:24', 2);
 
 -- --------------------------------------------------------
 
@@ -200,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `firstname`, `lastname`, `password_hash`, `password_token`, `is_artist`, `has_darkmode`) VALUES
-(1, 'molvin95', 'molvinlauber@gmail.com', 'Melvin', 'Lauber', '$2y$10$Ip2e0mRFuXsysKTpi2m7eutFtjE.y1JM9qChKTzQIaXFjl/2lfqjO', '89d2f609914bc2f24c26df162b361d08', 1, 1),
+(1, 'molvin95', 'molvinlauber@gmail.com', 'Melvin', 'Lauber', '$2y$10$Ip2e0mRFuXsysKTpi2m7eutFtjE.y1JM9qChKTzQIaXFjl/2lfqjO', '89d2f609914bc2f24c26df162b361d08', 1, 0),
 (2, 'david.clausen', 'davidclausen2@lernende.bfo-vs.ch', 'David', 'Clausen', '$2y$10$h51xi20m3d6MvY8O16Y1A.6FB5vOV5R1uq9e.OWQ4KIXX.PftMUEu', 'e8bac3df99be1fb31c13a79f7a5bea04', 0, 0);
 
 --
@@ -252,8 +258,3 @@ ALTER TABLE `saved_songs`
 ALTER TABLE `song`
   ADD CONSTRAINT `song_fk0` FOREIGN KEY (`artist_id_link`) REFERENCES `artist` (`artist_id`),
   ADD CONSTRAINT `song_fk1` FOREIGN KEY (`album_id_link`) REFERENCES `album` (`album_id`) ON DELETE CASCADE;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
