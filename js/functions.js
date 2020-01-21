@@ -71,6 +71,14 @@ $(function() {
 			var message_value = "true";
 			var message_text = 'Passwort wurde erfolgreich zurückgesetzt!';
 		}
+		else if (window.location.href.indexOf("message=cover_not_uploaded") > -1) {
+			var message_value = "false";
+			var message_text = 'Cover konnte nicht geladen werden!';
+		}
+		else if (window.location.href.indexOf("message=song_not_uploaded") > -1) {
+			var message_value = "false";
+			var message_text = 'Songs konnte nicht hochgeladen werden!';
+		}
 		else if (window.location.href.indexOf("message=login_false") > -1) {
 			var message_value = "false";
 			var message_text = 'E-Mail oder Passwort ist nicht korrekt!';

@@ -106,6 +106,7 @@ function save_new_album() {
 		}
 		else {
 			$error['upload_artwork'] = TRUE;
+			header("Location: ../add_new_album.php?artist_id='.$artist.'&message=cover_not_uploaded");
 		}
 	}
 
@@ -116,6 +117,9 @@ function save_new_album() {
 		// insert data into db
 		$statement = $pdo->prepare("INSERT INTO `album` (album_name, album_year, artist_id, path_to_image) VALUES (?, ?, ?, ?)");
 		$statement->execute($data_album);
+	}
+	else {
+		header("Location: ../add_new_album.php?artist_id='.$artist.'&message=empty_fields");
 	}
 
 	// get last id
@@ -152,7 +156,7 @@ function save_new_album() {
 						header("Location: ../artist_detail.php?artist_id=".$artist."&message=upload_successfull");
 					}
 					else {
-						$error['upload_song'] = TRUE;
+						header("Location: ../add_new_album.php?artist_id='.$artist.'&message=song_not_uploaded");
 					}
 				}
 			}
